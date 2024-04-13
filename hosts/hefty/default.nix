@@ -6,10 +6,10 @@
   imports = [
     ./hardware-configuration.nix
 
-    ../../system/core
-    ../../system/hardware
-    ../../system/programs
-    ../../system/services
+    ../common/core
+    ../common/hardware
+    ../common/programs
+    ../common/services
   ];
 
   # Networking
