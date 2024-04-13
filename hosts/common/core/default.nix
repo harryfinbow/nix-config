@@ -1,9 +1,5 @@
 {
-  imports = [
-    ./boot.nix
-    ./networking.nix
-    ./users.nix
-  ];
+  imports = [ ./boot.nix ./networking.nix ./users.nix ];
 
   time.timeZone = "Europe/London";
 

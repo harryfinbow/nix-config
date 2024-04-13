@@ -1,9 +1,7 @@
 { pkgs, ... }:
 
-let
-  font = "FiraMono Nerd Font";
-in
-{
+let font = "FiraMono Nerd Font";
+in {
   programs.alacritty = {
     enable = true;
     settings = {

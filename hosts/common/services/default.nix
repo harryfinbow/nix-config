@@ -1,7 +1,1 @@
-{
-  imports = [
-    ./openssh.nix
-    ./pipewire.nix
-    ./xserver.nix
-  ];
-}
+{ imports = [ ./openssh.nix ./pipewire.nix ./xserver.nix ]; }

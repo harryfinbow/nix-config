@@ -2,9 +2,7 @@
 
 {
   fonts = {
-    packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraMono" ]; })
-    ];
+    packages = with pkgs; [ (nerdfonts.override { fonts = [ "FiraMono" ]; }) ];
 
     enableDefaultPackages = false;
 

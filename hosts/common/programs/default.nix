@@ -1,8 +1,1 @@
-{
-  imports = [
-    ./fish.nix
-    ./fonts.nix
-    ./hyprland.nix
-    ./nix.nix
-  ];
-}
+{ imports = [ ./fish.nix ./fonts.nix ./hyprland.nix ./nix.nix ]; }
