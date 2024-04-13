@@ -3,20 +3,17 @@
 { pkgs, self, ... }:
 
 {
-  imports = let 
-    mod = "${self}/system"; 
-  in [
+  imports = [
     ./hardware-configuration.nix
 
-    ${mod}/core
-    ${mod}/programs/fish.nix
-    ${mod}/programs/fonts.nix
-    ${mod}/programs/hyprland.nix
-    ${mod}/programs/nix.nix
+    ../../system/core
+    ../../system/hardware
+    ../../system/programs
+    ../../system/services
   ];
 
   # Networking
-  networking.hostName = "nixos";
+  networking.hostName = "wall-e";
 
   # Uncategorised
   hardware.nvidia.modesetting.enable = true;
