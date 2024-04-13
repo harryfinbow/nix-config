@@ -13,7 +13,7 @@
   ];
 
   # Networking
-  networking.hostName = "wall-e";
+  networking.hostName = "hefty";
 
   # Uncategorised
   hardware.nvidia.modesetting.enable = true;
