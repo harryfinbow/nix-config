@@ -1,17 +1,17 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 
 {
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override {fonts = ["FiraMono"];})
+      (nerdfonts.override { fonts = [ "FiraMono" ]; })
     ];
 
     enableDefaultPackages = false;
 
     fontconfig.defaultFonts = {
-      serif = ["FiraMono"];
-      sansSerif = ["FiraMono"];
-      monospace = ["FiraMono"];
+      serif = [ "FiraMono" ];
+      sansSerif = [ "FiraMono" ];
+      monospace = [ "FiraMono" ];
     };
   };
 }
