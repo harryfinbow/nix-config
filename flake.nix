@@ -2,60 +2,30 @@
   description = "NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager/release-23.11";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
-    flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
 
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
 
-    hyprland.url = "github:hyprwm/Hyprland/c5e28eb";
+    hyprland.url = "github:hyprwm/Hyprland/v0.38.1";
   };
 
-  outputs = inputs@{ flake-parts, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } {
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+
+      imports = [ ./home ./hosts ./pre-commit-hooks.nix ];
+
       systems = [ "x86_64-linux" ];
 
-      imports = [ ./pre-commit-hooks.nix ];
-
-      perSystem = { config, pkgs, ... }: {
-        # Per-system attributes can be defined here. The self' and inputs'
-        # module parameters provide easy access to attributes of the same
-        # system.
-
-        devShells.default = pkgs.mkShell {
+      perSystem = { config, nixpkgs, ... }: {
+        devShells.default = nixpkgs.mkShell {
           shellHook = ''
             ${config.pre-commit.installationScript}
           '';
-        };
-      };
-
-      flake = { config, nixpkgs, outputs, home-manager, ... }: {
-        # The usual flake attributes can be defined here, including system-
-        # agnostic ones like nixosModule and system-enumerating ones, although
-        # those are more easily expressed in perSystem.
-
-        # NixOS configuration entrypoint
-        # Available through 'nixos-rebuild --flake .#your-hostname'
-        nixosConfigurations = {
-          hefty = nixpkgs.lib.nixosSystem {
-            specialArgs = { inherit inputs outputs; };
-            modules = [ ./hosts/hefty ];
-          };
-        };
-
-        # Standalone home-manager configuration entrypoint
-        # Available through 'home-manager --flake .#your-username@your-hostname'
-        homeConfigurations = {
-          "harry@hefty" = home-manager.lib.homeManagerConfiguration {
-            pkgs =
-              nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-            extraSpecialArgs = { inherit inputs outputs; };
-            modules = [ ./home/harry/hefty.nix ];
-          };
         };
       };
     };
