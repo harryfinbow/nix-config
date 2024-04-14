@@ -1,5 +1,5 @@
 {
-  imports = [ ./terminal ];
+  imports = [ ./desktop ./terminal ];
 
   home = {
     username = "harry";
