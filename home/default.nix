@@ -1,11 +1,9 @@
 { self, inputs, ... }:
 let
-  # get these into the module system
   extraSpecialArgs = { inherit inputs self; };
+  pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
 
   inherit (inputs.home-manager.lib) homeManagerConfiguration;
-
-  pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
 in {
   flake = {
     homeConfigurations = {
