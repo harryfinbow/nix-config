@@ -21,8 +21,8 @@
 
       systems = [ "x86_64-linux" ];
 
-      perSystem = { config, nixpkgs, ... }: {
-        devShells.default = nixpkgs.mkShell {
+      perSystem = { config, pkgs, ... }: {
+        devShells.default = pkgs.mkShell {
           shellHook = ''
             ${config.pre-commit.installationScript}
           '';
