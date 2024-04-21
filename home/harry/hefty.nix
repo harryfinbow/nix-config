@@ -1,1 +1,1 @@
-{ imports = [ ./common ./common/games ]; }
+{ imports = [ ./common ./common/desktop ./common/terminal ./common/games ]; }

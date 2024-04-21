@@ -1,6 +1,4 @@
 {
-  imports = [ ./desktop ./terminal ];
-
   home = {
     username = "harry";
     homeDirectory = "/home/harry";

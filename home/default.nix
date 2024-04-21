@@ -11,6 +11,10 @@ in {
         modules = [ ./harry/hefty.nix ];
         inherit pkgs extraSpecialArgs;
       };
+      "harry@mini" = homeManagerConfiguration {
+        modules = [ ./harry/mini.nix ];
+        inherit pkgs extraSpecialArgs;
+      };
     };
   };
 }

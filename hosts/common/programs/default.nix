@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 
 {
-  imports = [ ./fish.nix ./fonts.nix ./hyprland.nix ./nix.nix ];
+  imports = [ ./fish.nix ./fonts.nix ./nix.nix ];
 
   environment.etc."current-system-packages".text = let
     packages = builtins.map (p: "${p.name}") config.environment.systemPackages;

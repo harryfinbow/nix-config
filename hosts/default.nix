@@ -10,6 +10,10 @@ in {
         modules = [ ./hefty ];
         inherit specialArgs;
       };
+      mini = nixosSystem {
+        modules = [ ./mini ];
+        inherit specialArgs;
+      };
     };
   };
 }
