@@ -10,6 +10,7 @@
     ../common/hardware
     ../common/programs
     ../common/services
+    ../common/services/minecraft-server.nix
   ];
 
   # Networking
