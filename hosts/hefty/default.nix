@@ -9,6 +9,7 @@
     ../common/core
     ../common/hardware
     ../common/programs
+    ../common/programs/hyprland.nix
     ../common/services
   ];
 

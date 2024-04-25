@@ -1,1 +1,1 @@
-{ imports = [ ./firefox.nix ./rofi.nix ./wlsunset.nix ]; }
+{ imports = [ ./firefox.nix ./rofi.nix ]; }
