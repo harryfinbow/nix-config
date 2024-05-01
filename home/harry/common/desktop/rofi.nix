@@ -1,1 +1,8 @@
-{ programs.rofi.enable = true; }
+{ pkgs, ... }:
+
+{
+  programs.rofi = {
+    enable = true;
+    package = pkgs.rofi-wayland;
+  };
+}

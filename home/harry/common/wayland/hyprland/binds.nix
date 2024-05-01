@@ -8,7 +8,7 @@
       "$mod, V, togglefloating"
 
       # Programs
-      "$mod, E, exec, alacritty"
+      "$mod, Q, exec, alacritty"
       "$mod, B, exec, firefox"
       "$mod, space, exec, rofi -show drun"
     ] ++ (
