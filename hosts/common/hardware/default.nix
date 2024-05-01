@@ -1,1 +1,1 @@
-{ imports = [ ./opengl.nix ]; }
+{ imports = [ ./opengl.nix ./logitech.nix ]; }
