@@ -10,5 +10,7 @@
 
     dooit # todo list
     gh # github cli
+
+    alsa-utils # audio
   ];
 }
