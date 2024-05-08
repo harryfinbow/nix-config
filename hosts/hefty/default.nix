@@ -10,6 +10,7 @@
     ../common/hardware
     ../common/programs
     ../common/programs/hyprland.nix
+    ../common/programs/theme.nix
     ../common/services
   ];
 

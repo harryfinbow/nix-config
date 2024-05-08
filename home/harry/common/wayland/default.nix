@@ -1,1 +1,1 @@
-{ imports = [ ./hyprland ./wlsunset.nix ]; }
+{ imports = [ ./theme.nix ./hyprland ./waybar.nix ./wlsunset.nix ]; }

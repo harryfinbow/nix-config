@@ -12,6 +12,9 @@
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
 
     hyprland.url = "github:hyprwm/Hyprland/v0.38.1";
+
+    catppuccin.url =
+      "github:catppuccin/nix/2788becbb58bd2a60666fbbf2d4f6ae1721112d5";
   };
 
   outputs = inputs:
