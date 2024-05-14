@@ -1,9 +1,9 @@
 {
   imports = [
-    ./common
-    ./common/desktop
-    ./common/terminal
-    ./common/wayland
-    ./common/games
+    ./
+    ../common/desktop
+    ../common/terminal
+    ../common/wayland
+    ../common/games
   ];
 }

@@ -15,6 +15,11 @@ in {
         modules = [ ./harry/mini.nix ];
         inherit pkgs extraSpecialArgs;
       };
+      "harryf@harryf-malt0" = homeManagerConfiguration {
+	pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
+        modules = [ ./harryf/harryf-malt0.nix ];
+        inherit extraSpecialArgs;
+      };
     };
   };
 }
