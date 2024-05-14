@@ -16,6 +16,9 @@
   programs.git = {
     enable = true;
 
+    userName = "Harry Finbow";
+    userEmail = builtins.getEnv "GIT_EMAIL";
+
     extraConfig.url."git@personal.github.com:harryfinbow".insteadOf = "git@github.com:harryfinbow";
 
     includes = [
