@@ -13,6 +13,16 @@
     };
   };
 
+  programs.ssh = {
+    enable = true;
+    matchBlocks = {
+      "personal.github.com" = {
+        hostname = "github.com";
+        identityFile = "~/.ssh/personal.github.com";
+      };
+    };
+  };
+
   programs.git = {
     enable = true;
 
