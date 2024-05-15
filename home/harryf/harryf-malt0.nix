@@ -5,12 +5,31 @@
     ./default.nix
   ];
 
+  home.packages = with pkgs; [
+    awscli2
+    tenv # tfenv for tofu + tfenv
+    kubectl
+    docker
+    colima
+    poetry
+  ];
+
   programs.alacritty = {
     enable = true;
     settings = {
+      shell = {
+        program = "${pkgs.fish}/bin/fish";
+      };
       window.decorations = "none";
       font.size = 16;
     };
+  };
+
+  programs.fish.enable = true;
+
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
   };
 
   programs.ssh = {

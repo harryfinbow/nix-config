@@ -29,6 +29,7 @@
 
     # Create /etc/zshrc that loads the nix-darwin environment.
     programs.zsh.enable = true;
+    programs.fish.enable = true;
 
     services.nix-daemon.enable = true;
 
