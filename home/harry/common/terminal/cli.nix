@@ -1,7 +1,9 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   home.packages = with pkgs; [
+    jdk21
+
     eza # modern ls
     fzf # fuzzy finder
     jq # json processor
