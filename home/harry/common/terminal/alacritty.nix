@@ -5,6 +5,7 @@ in {
   programs.alacritty = {
     enable = true;
     settings = {
+      shell = { program = "${pkgs.fish}/bin/fish"; };
       window.decorations = "none";
       window.opacity = 0.99;
       window.dynamic_padding = true;
