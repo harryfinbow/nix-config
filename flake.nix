@@ -3,34 +3,65 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    flake-parts.url = "github:hercules-ci/flake-parts";
-
-    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
-
     hyprland.url = "github:hyprwm/Hyprland/v0.38.1";
 
-    catppuccin.url =
-      "github:catppuccin/nix/2788becbb58bd2a60666fbbf2d4f6ae1721112d5";
+    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
   };
 
-  outputs = inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+  outputs = { self, nixpkgs, ... }@inputs:
+    let
+      specialArgs = { inherit inputs self; };
+      extraSpecialArgs = { inherit inputs self; };
 
-      imports = [ ./home ./hosts ./pre-commit-hooks.nix ];
+      inherit (inputs.nixpkgs.lib) nixosSystem;
+      inherit (inputs.home-manager.nixosModules) home-manager;
 
-      systems = [ "x86_64-linux" ];
+      supportedSystems =
+        [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
+      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+    in {
+      nixosConfigurations = {
+        hefty = nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/hefty
 
-      perSystem = { config, pkgs, ... }: {
-        devShells.default = pkgs.mkShell {
-          shellHook = ''
-            ${config.pre-commit.installationScript}
-          '';
+            home-manager
+            {
+              home-manager = {
+                inherit extraSpecialArgs;
+
+                useGlobalPkgs = true;
+                useUserPackages = true;
+
+                users.harry = import ./home/harry;
+              };
+            }
+          ];
         };
       };
+
+      checks = forAllSystems (system: {
+        pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
+          src = ./.;
+          hooks = {
+            end-of-file-fixer.enable = true;
+            trim-trailing-whitespace.enable = true;
+
+            nixpkgs-fmt.enable = true;
+          };
+        };
+      });
+
+      devShells = forAllSystems (system: {
+        default = nixpkgs.legacyPackages.${system}.mkShell {
+          inherit (self.checks.${system}.pre-commit-check) shellHook;
+          buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
+        };
+      });
     };
 }
