@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [ ../common/wayland ];
@@ -6,7 +6,25 @@
   home.username = "harry";
   home.homeDirectory = "/home/harry";
 
-  home.packages = with pkgs; [ jq eza ];
+  home.packages = with pkgs; [
+    # Desktop
+    spotify
+    discord
+
+    # System
+    neofetch
+    btop
+    alsa-utils
+
+    # Utilities
+    jq
+    eza
+
+    # Games
+    inputs.nix-citizen.packages.${pkgs.system}.star-citizen
+    inputs.nix-citizen.packages.${pkgs.system}.lug-helper
+    lutris
+  ];
 
   programs.alacritty = {
     enable = true;

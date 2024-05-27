@@ -9,6 +9,11 @@
 
     hyprland.url = "github:hyprwm/Hyprland/v0.38.1";
 
+    nix-gaming.url = "github:fufexan/nix-gaming";
+
+    nix-citizen.url = "github:LovingMelody/nix-citizen";
+    nix-citizen.inputs.nix-gaming.follows = "nix-gaming";
+
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
   };
 
@@ -23,9 +28,11 @@
       supportedSystems =
         [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-    in {
+    in
+    {
       nixosConfigurations = {
         hefty = nixosSystem {
+          inherit specialArgs;
           system = "x86_64-linux";
           modules = [
             ./hosts/hefty

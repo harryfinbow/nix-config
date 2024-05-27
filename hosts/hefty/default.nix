@@ -8,8 +8,18 @@
     ../common/wayland
   ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true; # What does this do?
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true; # What does this do?
+    };
+
+    # https://github.com/starcitizen-lug/knowledge-base/wiki/Tips-and-Tricks#configuration-differences-required-for-nixos
+    kernel.sysctl = {
+      "vm.max_map_count" = 16777216;
+      "fs.file-max" = 524288;
+    };
+  };
 
   hardware = {
     logitech.wireless = {
@@ -47,11 +57,22 @@
   nix.settings = {
     experimental-features = "nix-command flakes";
     auto-optimise-store = true;
+
+    # nix-gaming
+    substituters = [ "https://nix-citizen.cachix.org" ];
+    trusted-public-keys = [ "nix-citizen.cachix.org-1:lPMkWc2X8XD4/7YPEEwXKKBg+SVbYTVrAaLA2wQTKCo=" ];
   };
 
   nixpkgs.config.allowUnfree = true;
 
+  programs.fish.enable = true; # Required to change default shell
+
   services.xserver.videoDrivers = [ "nvidia" ];
+
+  swapDevices = [{
+    device = "/var/lib/swapfile";
+    size = 24 * 1024;
+  }];
 
   time.timeZone = "Europe/London";
   i18n.defaultLocale = "en_GB.UTF-8";
@@ -60,6 +81,7 @@
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" "input" ];
     packages = with pkgs; [ firefox ];
+    shell = pkgs.fish;
   };
 
   xdg.portal.enable = true;
