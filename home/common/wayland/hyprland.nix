@@ -12,6 +12,8 @@
         "SUPER SHIFT, Q, killactive"
         "SUPER, F, fullscreen"
         "SUPER, V, togglefloating"
+        "SUPER, V, resizeactive, exact 50% 50%"
+        "SUPER, V, centerwindow"
 
         # Programs
         "SUPER, Q, exec, alacritty"
