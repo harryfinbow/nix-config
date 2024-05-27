@@ -14,7 +14,14 @@
     settings = {
       shell = { program = "${pkgs.fish}/bin/fish"; };
       font.size = 16;
-      window.decorations = "none";
+      window = {
+        decorations = "none";
+        dynamic_padding = true;
+        padding = {
+          x = 5;
+          y = 5;
+        };
+      };
     };
   };
 
