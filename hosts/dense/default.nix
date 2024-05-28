@@ -4,7 +4,11 @@
   imports = [ ../common/programs/nix.nix ];
 
   # https://github.com/LnL7/nix-darwin/issues/811
-  users.users.harry.shell = pkgs.fish;
+  users.users.harry.shell = pkgs.bash;
+  environment = {
+    etc.shells.enable = true; # Allow management of /etc/shells
+    shells = [ pkgs.bash pkgs.fish ];
+  };
 
   environment.systemPackages = with pkgs; [
     home-manager
@@ -30,6 +34,7 @@
     };
   };
 
+  programs.bash.enable = true;
   programs.fish.enable = true;
 
   services.nix-daemon.enable = true;
