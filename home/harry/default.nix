@@ -1,7 +1,7 @@
-{ pkgs, inputs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
-  imports = [ ../common/wayland ];
+  imports = [ inputs.agenix.homeManagerModules.default ../common/wayland ];
 
   home.username = "harry";
   home.homeDirectory = "/home/harry";
@@ -89,6 +89,19 @@
   programs.zoxide = {
     enable = true;
     enableFishIntegration = true;
+  };
+
+  age = {
+    identityPaths = [ "/home/harry/.ssh/id_ed25519" ];
+    secrets.wallpaper.file = ../../secrets/wallpaper.age;
+  };
+
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      preload = [ "${config.age.secrets.wallpaper.path}" ];
+      wallpaper = [ ",${config.age.secrets.wallpaper.path}" ];
+    };
   };
 
   # Let `home-manager` manage itself
