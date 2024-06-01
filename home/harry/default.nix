@@ -24,6 +24,8 @@
     inputs.nix-citizen.packages.${pkgs.system}.star-citizen
     inputs.nix-citizen.packages.${pkgs.system}.lug-helper
     lutris
+    gamescope
+    mangohud
   ];
 
   programs.alacritty = {
