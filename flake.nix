@@ -4,6 +4,9 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -21,13 +24,15 @@
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
   };
 
-  outputs = { self, nixpkgs, stylix, ... }@inputs:
+  outputs = { self, nixpkgs, ... }@inputs:
     let
       specialArgs = { inherit inputs self; };
       extraSpecialArgs = { inherit inputs self; };
 
       inherit (inputs.nixpkgs.lib) nixosSystem;
-      inherit (inputs.home-manager.nixosModules) home-manager;
+      inherit (inputs.nix-darwin.lib) darwinSystem;
+      inherit (inputs.home-manager) nixosModules;
+      inherit (inputs.home-manager) darwinModules;
 
       supportedSystems =
         [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
@@ -40,9 +45,9 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/hefty
-            stylix.nixosModules.stylix
+            inputs.stylix.nixosModules.stylix
 
-            home-manager
+            nixosModules.home-manager
             {
               home-manager = {
                 inherit extraSpecialArgs;
@@ -50,7 +55,36 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
 
-                users.harry = import ./home/harry;
+                users.harry.imports = [
+                  ./home/harry
+                  inputs.agenix.homeManagerModules.default
+                ];
+              };
+            }
+          ];
+        };
+      };
+
+      darwinConfigurations = {
+        dense = darwinSystem {
+          inherit specialArgs;
+          system = "aarch64-darwin";
+          modules = [
+            ./hosts/dense
+            inputs.stylix.darwinModules.stylix
+
+            darwinModules.home-manager
+            {
+              home-manager = {
+                inherit extraSpecialArgs;
+
+                useGlobalPkgs = true;
+                useUserPackages = true;
+
+                users.harryf.imports = [
+                  ./home/harryf
+                  inputs.agenix.homeManagerModules.default
+                ];
               };
             }
           ];

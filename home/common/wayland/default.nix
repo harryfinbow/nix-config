@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./hyprland.nix ];
+  imports = [ ./hyprland.nix ./hyprpaper ];
 
   programs.rofi = {
     enable = true;
