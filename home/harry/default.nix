@@ -8,6 +8,13 @@
     secrets.wallpaper.file = ../../secrets/wallpaper.age;
   };
 
+  home.pointerCursor = {
+    package = lib.mkForce pkgs.gnome.adwaita-icon-theme;
+    gtk.enable = true;
+  };
+
+  gtk.enable = true;
+
   home.username = "harry";
   home.homeDirectory = "/home/harry";
 

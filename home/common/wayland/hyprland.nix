@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 
 {
   imports = [ inputs.hyprland.homeManagerModules.default ];
@@ -49,8 +49,13 @@
         "SUPER, mouse:273, resizewindow"
       ];
 
+
       decoration = {
         rounding = 10;
+      };
+
+      general = {
+        "col.active_border" = lib.mkForce "0xffffffff";
       };
 
       input = {
@@ -58,7 +63,10 @@
         accel_profile = "flat";
       };
 
-      windowrulev2 = [ "suppressevent maximize, class:.*" ];
+      windowrulev2 = [
+        "suppressevent maximize, class:.*"
+        "opacity 0.9, class:.*"
+      ];
     };
   };
 }

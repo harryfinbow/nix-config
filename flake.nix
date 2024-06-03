@@ -16,10 +16,12 @@
     nix-citizen.url = "github:LovingMelody/nix-citizen";
     nix-citizen.inputs.nix-gaming.follows = "nix-gaming";
 
+    stylix.url = "github:danth/stylix";
+
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, stylix, ... }@inputs:
     let
       specialArgs = { inherit inputs self; };
       extraSpecialArgs = { inherit inputs self; };
@@ -38,6 +40,7 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/hefty
+            stylix.nixosModules.stylix
 
             home-manager
             {
