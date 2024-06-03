@@ -1,7 +1,12 @@
-{ config, pkgs, inputs, ... }:
+{ config, inputs, lib, pkgs, ... }:
 
 {
   imports = [ inputs.agenix.homeManagerModules.default ../common/wayland ];
+
+  age = {
+    identityPaths = [ "/home/harry/.ssh/id_ed25519" ];
+    secrets.wallpaper.file = ../../secrets/wallpaper.age;
+  };
 
   home.username = "harry";
   home.homeDirectory = "/home/harry";
@@ -33,7 +38,7 @@
 
     settings = {
       shell = { program = "${pkgs.fish}/bin/fish"; };
-      font.size = 16;
+      font.size = lib.mkForce 16;
       window = {
         decorations = "none";
         dynamic_padding = true;
@@ -91,11 +96,6 @@
   programs.zoxide = {
     enable = true;
     enableFishIntegration = true;
-  };
-
-  age = {
-    identityPaths = [ "/home/harry/.ssh/id_ed25519" ];
-    secrets.wallpaper.file = ../../secrets/wallpaper.age;
   };
 
   services.hyprpaper = {
