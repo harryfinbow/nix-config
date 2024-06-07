@@ -45,7 +45,7 @@
 
     settings = {
       shell = { program = "${pkgs.fish}/bin/fish"; };
-      font.size = lib.mkForce 16;
+      font.size = lib.mkForce 14;
       window = {
         decorations = "none";
         dynamic_padding = true;

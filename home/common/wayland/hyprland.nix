@@ -65,7 +65,7 @@
 
       windowrulev2 = [
         "suppressevent maximize, class:.*"
-        "opacity 0.9, class:.*"
+        "opacity 0.95, class:.*"
       ];
     };
   };

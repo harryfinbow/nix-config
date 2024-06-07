@@ -72,6 +72,21 @@
   stylix = {
     base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
 
+    fonts = {
+      serif = {
+        package = (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; });
+        name = "FiraCode Nerd Font Serif";
+      };
+      sansSerif = {
+        package = (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; });
+        name = "FiraCode Nerd Font Sans";
+      };
+      monospace = {
+        package = (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; });
+        name = "FiraCode Nerd Font Mono";
+      };
+    };
+
     # https://github.com/danth/stylix/issues/200
     image = pkgs.fetchurl {
       url = "https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png";
