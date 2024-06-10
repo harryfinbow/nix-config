@@ -66,6 +66,8 @@
       windowrulev2 = [
         "suppressevent maximize, class:.*"
         "opacity 0.95, class:.*"
+        "float, title:^(Picture-in-Picture)$"
+        "pin, title:^(Picture-in-Picture)$"
       ];
     };
   };

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 
 {
   imports = [
@@ -58,9 +58,15 @@
     experimental-features = "nix-command flakes";
     auto-optimise-store = true;
 
-    # nix-gaming
-    substituters = [ "https://nix-citizen.cachix.org" ];
-    trusted-public-keys = [ "nix-citizen.cachix.org-1:lPMkWc2X8XD4/7YPEEwXKKBg+SVbYTVrAaLA2wQTKCo=" ];
+    substituters = [
+      "https://nix-gaming.cachix.org"
+      "https://nix-citizen.cachix.org"
+    ];
+
+    trusted-public-keys = [
+      "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
+      "nix-citizen.cachix.org-1:lPMkWc2X8XD4/7YPEEwXKKBg+SVbYTVrAaLA2wQTKCo="
+    ];
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -105,8 +111,18 @@
   users.users.harry = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" "input" ];
-    packages = with pkgs; [ firefox ];
     shell = pkgs.fish;
+    packages = with pkgs; [
+      firefox
+
+      # Games
+      inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
+      inputs.nix-citizen.packages.${pkgs.system}.star-citizen
+      inputs.nix-citizen.packages.${pkgs.system}.lug-helper
+      lutris
+      gamescope
+      mangohud
+    ];
   };
 
   xdg.portal.enable = true;
