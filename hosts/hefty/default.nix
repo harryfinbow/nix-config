@@ -6,6 +6,7 @@
 
     ../common/audio.nix
     ../common/wayland
+    ../common/games
   ];
 
   boot = {
@@ -57,16 +58,6 @@
   nix.settings = {
     experimental-features = "nix-command flakes";
     auto-optimise-store = true;
-
-    substituters = [
-      "https://nix-gaming.cachix.org"
-      "https://nix-citizen.cachix.org"
-    ];
-
-    trusted-public-keys = [
-      "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
-      "nix-citizen.cachix.org-1:lPMkWc2X8XD4/7YPEEwXKKBg+SVbYTVrAaLA2wQTKCo="
-    ];
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -100,11 +91,6 @@
     };
   };
 
-  swapDevices = [{
-    device = "/var/lib/swapfile";
-    size = 24 * 1024;
-  }];
-
   time.timeZone = "Europe/London";
   i18n.defaultLocale = "en_GB.UTF-8";
 
@@ -114,14 +100,6 @@
     shell = pkgs.fish;
     packages = with pkgs; [
       firefox
-
-      # Games
-      inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
-      inputs.nix-citizen.packages.${pkgs.system}.star-citizen
-      inputs.nix-citizen.packages.${pkgs.system}.lug-helper
-      lutris
-      gamescope
-      mangohud
     ];
   };
 
