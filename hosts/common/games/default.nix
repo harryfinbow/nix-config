@@ -1,9 +1,27 @@
 { inputs, pkgs, ... }:
 
 {
+  imports = [ inputs.nix-citizen.nixosModules.StarCitizen ];
+
+
+  # Star Citizen
+  nix-citizen.starCitizen = {
+    enable = true;
+    preCommands = ''
+      export DXVK_HUD=compiler;
+      export MANGO_HUD=1;
+      export dual_color_blend_by_location="true";
+    '';
+    helperScript = {
+      enable = true;
+    };
+  };
+
   environment.systemPackages = with pkgs; [
-    inputs.nix-citizen.packages.${system}.star-citizen
+    inputs.nix-citizen.packages.${pkgs.system}.lug-helper
     lutris
+    mangohud
+    inputs.nix-citizen.packages.${pkgs.system}.umu
   ];
 
   nix.settings = {
