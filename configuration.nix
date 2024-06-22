@@ -14,58 +14,64 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.postDeviceCommands = lib.mkAfter ''
-    MNTPOINT=$(mktemp -d)
-    mount /dev/disk/by-partlabel/disk-main-root $MNTPOINT -o subvol=/
+  boot.initrd.systemd.enable = true;
+  boot.initrd.supportedFilesystems = ["btrfs"];
 
-    trap 'umount $MNTPOINT; rm -rf $MNTPOINT' EXIT
+  # https://github.com/nix-community/impermanence/issues/121
+  boot.initrd.systemd.services.impermanence = {
+    description = "Rollback root subvolume to a clean state (requires btrfs)";
+    wantedBy = [ "initrd.target" ];
+    before = [ "sysroot.mount" ];
+    after = [ "dev-disk-by\\x2dpartlabel-disk\\x2dmain\\x2droot.device" ];
+    requires = [ "dev-disk-by\\x2dpartlabel-disk\\x2dmain\\x2droot.device" ];
+    unitConfig.DefaultDependencies = "no";
+    serviceConfig.Type = "oneshot";
+    script = ''
+      MNTPOINT=$(mktemp -d)
+      mount /dev/disk/by-partlabel/disk-main-root $MNTPOINT -o subvol=/
 
-    # Recursively delete child subvolumes (as `btrfs subvolume delete` doesn't)
-    btrfs subvolume list -o $MNTPOINT/rootfs |
-    cut -f9 -d' ' |
-    while read SUBVOLUME; do
-      echo "deleting $SUBVOLUME..."
-      btrfs subvolume delete "$MNTPOINT/$SUBVOLUME"
-    done
+      trap 'umount $MNTPOINT; rm -rf $MNTPOINT' EXIT
 
-    echo "deleting $MNTPOINT/rootfs..."
-    btrfs subvolume delete $MNTPOINT/rootfs
+      # Recursively delete child subvolumes (as `btrfs subvolume delete` doesn't)
+      btrfs subvolume list -o $MNTPOINT/rootfs |
+      cut -f9 -d' ' |
+      while read SUBVOLUME; do
+        echo "deleting $SUBVOLUME..."
+        btrfs subvolume delete "$MNTPOINT/$SUBVOLUME"
+      done
 
-    echo "creating snapshot..."
-    btrfs subvolume snapshot $MNTPOINT/rootfs@blank $MNTPOINT/rootfs
-  '';
+      echo "deleting $MNTPOINT/rootfs..."
+      btrfs subvolume delete $MNTPOINT/rootfs
 
-  # systemd.tmpfiles.rules = [
-  #   "d /persist/system 0777 root root -"
-  #   "d /persist/home 0777 root root -"
-  #   "d /persist/home/harry 0700 harry users -"
-  # ];
+      echo "creating snapshot..."
+      btrfs subvolume snapshot $MNTPOINT/rootfs@blank $MNTPOINT/rootfs
+    '';
+  };
 
-  # fileSystems."/persist".neededForBoot = true;
-  # environment.persistence."/persist/system" = {
-  #   hideMounts = true;
-  #   directories = [
-  #     "/var/log"
-  #     "/var/lib/alsa"
-  #     "/var/lib/bluetooth"
-  #     "/var/lib/nixos"
-  #     "/var/lib/systemd/coredump"
-  #     "/etc/NetworkManager/system-connections"
-  #     { directory = "/var/lib/colord"; user = "colord"; group = "colord"; mode = "u=rwx,g=rx,o="; }
-  #   ];
-  #   files = [
-  #     "/etc/machine-id"
-  #     { file = "/var/keys/secret_file"; parentDirectory = { mode = "u=rwx,g=,o="; }; }
-  #   ];
-  # };
+  environment.persistence."/persist/system" = {
+    hideMounts = true;
+    directories = [
+      "/var/log"
+      "/var/lib/bluetooth"
+      "/var/lib/nixos"
+      "/var/lib/systemd/coredump"
+      "/etc/NetworkManager/system-connections"
+    ];
+  };
 
-  # programs.fuse.userAllowOther = true;
-  # home-manager = {
-  #   extraSpecialArgs = {inherit inputs;};
-  #   users = {
-  #     "harry" = import ./home.nix;
-  #   };
-  # };
+  systemd.tmpfiles.rules = [
+    "d /persist/home 0777 root root -"
+    "d /persist/home/harry 0700 harry users -"
+  ];
+
+  programs.fuse.userAllowOther = true;
+  home-manager = {
+    extraSpecialArgs = {inherit inputs;};
+    users.harry.imports = [
+      ./home.nix
+      inputs.impermanence.nixosModules.home-manager.impermanence
+    ];
+  };
 
   nixpkgs.config.allowUnfree = true;
 
@@ -184,6 +190,7 @@
       firefox
       neovim
       tree
+      git
     ];
   };
 

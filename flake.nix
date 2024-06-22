@@ -9,14 +9,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # impermanence = {
-    #   url = "github:nix-community/impermanence";
-    # };
+    impermanence = {
+      url = "github:nix-community/impermanence";
+    };
 
-    # home-manager = {
-    #   url = "github:nix-community/home-manager";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Star Citizen
     # nix-gaming.url = "github:fufexan/nix-gaming";
@@ -31,8 +31,8 @@
       specialArgs = {inherit inputs;};
       modules = [
         inputs.disko.nixosModules.default
-        # inputs.home-manager.nixosModules.default
-        # inputs.impermanence.nixosModules.impermanence
+        inputs.home-manager.nixosModules.default
+        inputs.impermanence.nixosModules.impermanence
 	# inputs.nix-citizen.nixosModules.StarCitizen
 
         (import ./disko.nix { device = "/dev/nvme0n1"; })
