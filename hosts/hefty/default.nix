@@ -2,11 +2,14 @@
 
 {
   imports = [
+    ./disko.nix
     ./hardware-configuration.nix
 
     ../common/audio.nix
-    ../common/games
+    ../common/impermanence
     ../common/nix
+    ../common/star-citizen
+    ../common/steam
     ../common/theme
     ../common/wayland
   ];
@@ -17,10 +20,9 @@
       efi.canTouchEfiVariables = true; # What does this do?
     };
 
-    # https://github.com/starcitizen-lug/knowledge-base/wiki/Tips-and-Tricks#configuration-differences-required-for-nixos
-    kernel.sysctl = {
-      "vm.max_map_count" = 16777216;
-      "fs.file-max" = 524288;
+    initrd = {
+      systemd.enable = true;
+      supportedFilesystems = [ "btrfs" ];
     };
   };
 
@@ -57,17 +59,17 @@
     networkmanager.enable = true;
   };
 
+  programs.fish.enable = true;
+
   services.xserver.videoDrivers = [ "nvidia" ];
 
   time.timeZone = "Europe/London";
   i18n.defaultLocale = "en_GB.UTF-8";
 
   users.users.harry = {
+    initialPassword = "PepsiMax!";
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" "input" ];
-    packages = with pkgs; [
-      firefox
-    ];
   };
 
   xdg.portal.enable = true;

@@ -2,8 +2,9 @@
 
 {
   imports = [
-    inputs.agenix.homeManagerModules.default
     ../common
+    ../common/desktop
+    ../common/impermanence
     ../common/wayland
     ../common/terminal.nix
   ];

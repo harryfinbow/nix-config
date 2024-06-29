@@ -3,7 +3,6 @@
 {
   environment.systemPackages = with pkgs; [
     inputs.nix-citizen.packages.${system}.star-citizen
-    lutris
   ];
 
   nix.settings = {
@@ -17,9 +16,4 @@
       "nix-citizen.cachix.org-1:lPMkWc2X8XD4/7YPEEwXKKBg+SVbYTVrAaLA2wQTKCo="
     ];
   };
-
-  swapDevices = [{
-    device = "/var/lib/swapfile";
-    size = 24 * 1024;
-  }];
 }
