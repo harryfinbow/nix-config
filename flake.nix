@@ -12,6 +12,11 @@
 
     agenix.url = "github:ryantm/agenix";
 
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+
+    impermanence.url = "github:nix-community/impermanence";
+
     hyprland.url = "github:hyprwm/Hyprland/v0.38.1";
 
     nix-gaming.url = "github:fufexan/nix-gaming";
@@ -19,9 +24,9 @@
     nix-citizen.url = "github:LovingMelody/nix-citizen";
     nix-citizen.inputs.nix-gaming.follows = "nix-gaming";
 
-    stylix.url = "github:danth/stylix";
-
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+
+    stylix.url = "github:danth/stylix";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
@@ -45,6 +50,7 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/hefty
+            inputs.disko.nixosModules.default
             inputs.stylix.nixosModules.stylix
 
             nixosModules.home-manager
@@ -57,7 +63,6 @@
 
                 users.harry.imports = [
                   ./home/harry
-                  inputs.agenix.homeManagerModules.default
                 ];
               };
             }
@@ -83,7 +88,6 @@
 
                 users.harryf.imports = [
                   ./home/harryf
-                  inputs.agenix.homeManagerModules.default
                 ];
               };
             }
