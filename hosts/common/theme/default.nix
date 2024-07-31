@@ -5,17 +5,9 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
 
     fonts = {
-      serif = {
-        package = (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; });
-        name = "FiraCode Nerd Font Serif";
-      };
-      sansSerif = {
-        package = (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; });
-        name = "FiraCode Nerd Font Sans";
-      };
       monospace = {
         package = (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; });
-        name = "FiraCode Nerd Font Mono";
+        name = "FiraCode Nerd Font";
       };
     };
 
