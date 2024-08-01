@@ -68,6 +68,30 @@
             }
           ];
         };
+
+        mini = nixosSystem {
+          inherit specialArgs;
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/mini
+            inputs.disko.nixosModules.default
+            inputs.stylix.nixosModules.stylix
+
+            nixosModules.home-manager
+            {
+              home-manager = {
+                inherit extraSpecialArgs;
+
+                useGlobalPkgs = true;
+                useUserPackages = true;
+
+                users.harry.imports = [
+                  ./home/harry
+                ];
+              };
+            }
+          ];
+        };
       };
 
       darwinConfigurations = {
