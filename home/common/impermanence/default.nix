@@ -9,6 +9,7 @@
       ".local/share/fish"
       ".local/share/zoxide"
       ".mozilla"
+      ".runelite"
       ".ssh"
       "Games"
       "git"
