@@ -18,7 +18,7 @@
     packages = with pkgs; [
       # Desktop
       spotify
-      discord
+      vesktop
 
       # System
       neofetch

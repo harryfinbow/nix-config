@@ -5,7 +5,7 @@
 
   home.persistence."/persist/${config.home.homeDirectory}" = {
     directories = [
-      ".config/discord"
+      ".config/vesktop"
       ".local/share/fish"
       ".local/share/zoxide"
       ".mozilla"
