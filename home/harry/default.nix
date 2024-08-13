@@ -5,6 +5,7 @@
     ../common
     ../common/desktop
     ../common/impermanence
+    ../common/librewolf
     ../common/wayland
     ../common/terminal.nix
   ];
