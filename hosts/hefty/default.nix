@@ -6,6 +6,7 @@
     ./hardware-configuration.nix
 
     ../common/audio.nix
+    ../common/docker
     ../common/impermanence
     ../common/nix
     ../common/star-citizen
