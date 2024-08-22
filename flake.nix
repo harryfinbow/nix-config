@@ -68,6 +68,12 @@
             }
           ];
         };
+
+        openstack = nixosSystem {
+          inherit specialArgs;
+          system = "x86_64-linux";
+          modules = [ ./hosts/openstack ];
+        };
       };
 
       darwinConfigurations = {
