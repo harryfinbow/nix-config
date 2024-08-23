@@ -48,10 +48,9 @@
       package = config.boot.kernelPackages.nvidiaPackages.beta;
     };
 
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
+      enable32Bit = true;
     };
   };
 

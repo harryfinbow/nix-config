@@ -10,7 +10,8 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    agenix.url = "github:ryantm/agenix";
+    # Replaces $XDG_RUNTIME_DIR with ${XDG_RUNTIME_DIR} which Hyprpaper doesn't evaluate
+    agenix.url = "github:ryantm/agenix?ref=c2fc0762bbe8feb06a2e59a364fa81b3a57671c9";
 
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
@@ -26,7 +27,8 @@
 
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
 
-    stylix.url = "github:danth/stylix";
+    # Theme just isn't applying
+    stylix.url = "github:danth/stylix?ref=1d3826ceed91ae67562f28ee2e135813a11e47a6";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:

@@ -37,6 +37,7 @@
     ];
 
     pointerCursor = {
+      name = lib.mkForce "adwaita";
       package = lib.mkForce pkgs.gnome.adwaita-icon-theme;
       gtk.enable = true;
     };
