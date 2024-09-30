@@ -29,6 +29,7 @@
       # Utilities
       jq
       eza
+      psmisc
 
       # Games
       inputs.nix-citizen.packages.${pkgs.system}.star-citizen
