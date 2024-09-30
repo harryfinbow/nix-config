@@ -18,7 +18,7 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
-    hyprland.url = "github:hyprwm/Hyprland/v0.38.1";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.43.0&submodules=1";
 
     nix-gaming.url = "github:fufexan/nix-gaming";
 
