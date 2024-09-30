@@ -115,12 +115,6 @@
         format = "[$virtualenv]($style) ";
         style = "bright-black";
       };
-
-      nix_shell = {
-        format = "[$symbol]($style) ";
-        symbol = "❄️";
-        heuristic = true;
-      };
     };
   };
 
