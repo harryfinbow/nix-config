@@ -13,10 +13,14 @@
       bind = [
         # Main
         "SUPER SHIFT, Q, killactive"
-        "SUPER, F, fullscreen"
+        "SUPER, F, fullscreen, 1"
+        "SUPER SHIFT, F, fullscreen, 0"
         "SUPER, V, togglefloating"
         "SUPER, V, resizeactive, exact 50% 50%"
         "SUPER, V, centerwindow"
+
+        "ALT, TAB, cyclenext, prev"
+        "ALT, TAB, bringactivetotop"
 
         # Programs
         "SUPER, Q, exec, alacritty"
@@ -68,9 +72,16 @@
 
       windowrulev2 = [
         "suppressevent maximize, class:.*"
+        "suppressevent fullsreen, class:.*"
+
         "opacity 0.95, class:.*"
+
+        # Picture-in-picture
         "float, title:^(Picture-in-Picture)$"
         "pin, title:^(Picture-in-Picture)$"
+
+        # World of Warcraft
+        "opacity 1, title:^(World of Warcraft)$"
       ];
     };
   };
