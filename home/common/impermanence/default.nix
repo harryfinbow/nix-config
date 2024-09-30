@@ -5,9 +5,14 @@
 
   home.persistence."/persist/${config.home.homeDirectory}" = {
     directories = [
+      ".config/Bitwarden"
       ".config/vesktop"
+      ".config/WowUpCf"
       ".local/share/fish"
+      ".local/share/vulkan"
       ".local/share/zoxide"
+      ".local/state/wireplumber"
+      ".librewolf"
       ".mozilla"
       ".runelite"
       ".ssh"
