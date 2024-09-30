@@ -8,6 +8,8 @@
     xwayland.enable = true;
 
     settings = {
+      exec-once = "wl-paste -t text -w xclip -selection clipboard";
+
       bind = [
         # Main
         "SUPER SHIFT, Q, killactive"
