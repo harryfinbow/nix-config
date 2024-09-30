@@ -36,12 +36,6 @@
       inputs.nix-citizen.packages.${pkgs.system}.lug-helper
       runelite
     ];
-
-    pointerCursor = {
-      name = lib.mkForce "adwaita";
-      package = lib.mkForce pkgs.gnome.adwaita-icon-theme;
-      gtk.enable = true;
-    };
   };
 
   # Restart systemd

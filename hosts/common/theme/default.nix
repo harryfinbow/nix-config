@@ -11,6 +11,12 @@
       };
     };
 
+    cursor = {
+      package = pkgs.adwaita-icon-theme;
+      name = "Adwaita";
+      size = 16;
+    };
+
     # https://github.com/danth/stylix/issues/200
     image = pkgs.fetchurl {
       url = "https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png";
