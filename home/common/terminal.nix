@@ -73,9 +73,9 @@
         "$git_state"
         "$git_status"
         "$cmd_duration"
-        "$line_break"
         "$nix_shell"
         "$python"
+        "$line_break"
         "$character"
       ];
 
@@ -114,6 +114,12 @@
       cmd_duration = {
         format = "[$duration]($style) ";
         style = "yellow";
+      };
+
+      nix_shell = {
+        format = "[$symbol]($style) ";
+        symbol = "❄️";
+        heuristic = true;
       };
 
       python = {
