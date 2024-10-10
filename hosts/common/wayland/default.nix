@@ -18,8 +18,14 @@
     trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };
 
-  services.xserver = {
-    enable = true;
-    displayManager.startx.enable = true;
+  services = {
+    displayManager.defaultSession = "hyprland";
+
+    xserver = {
+      enable = true;
+      # Enable X11 compatible desktop
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
+    };
   };
 }
