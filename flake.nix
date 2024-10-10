@@ -28,6 +28,9 @@
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
 
     stylix.url = "github:danth/stylix";
+
+    # https://github.com/NixOS/nixpkgs/issues/327982
+    zen-browser.url = "github:heywoodlh/flakes/main?dir=zen-browser";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:

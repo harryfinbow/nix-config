@@ -73,7 +73,7 @@
         "$git_state"
         "$git_status"
         "$cmd_duration"
-        "$nix_shell"
+        # "$nix_shell"
         "$python"
         "$line_break"
         "$character"
@@ -116,11 +116,11 @@
         style = "yellow";
       };
 
-      nix_shell = {
-        format = "[$symbol]($style) ";
-        symbol = "❄️";
-        heuristic = true;
-      };
+      # nix_shell = {
+      #   format = "[$symbol]($style) ";
+      #   symbol = "❄️";
+      #   heuristic = true;
+      # };
 
       python = {
         format = "[$virtualenv]($style) ";
