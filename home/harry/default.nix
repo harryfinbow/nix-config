@@ -6,6 +6,7 @@
     ../common/desktop
     ../common/impermanence
     ../common/librewolf
+    ../common/theme
     ../common/wayland
     ../common/terminal.nix
   ];

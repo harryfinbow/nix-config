@@ -27,8 +27,7 @@
 
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
 
-    # Theme just isn't applying
-    stylix.url = "github:danth/stylix?ref=1d3826ceed91ae67562f28ee2e135813a11e47a6";
+    stylix.url = "github:danth/stylix";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
