@@ -56,11 +56,6 @@
     userEmail = lib.mkDefault "harry@finbow.dev";
   };
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-  };
-
   programs.starship = {
     enable = true;
 

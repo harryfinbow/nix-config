@@ -4,6 +4,7 @@
   imports = [
     ../common
     ../common/terminal.nix
+    ../common/neovim
   ];
 
   home = {
@@ -20,6 +21,8 @@
       poetry
       eza
       vscode
+      pre-commit
+      packer
     ];
   };
 

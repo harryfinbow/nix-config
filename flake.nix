@@ -25,6 +25,8 @@
     nix-citizen.url = "github:LovingMelody/nix-citizen";
     nix-citizen.inputs.nix-gaming.follows = "nix-gaming";
 
+    nixvim.url = "github:nix-community/nixvim";
+
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
 
     stylix.url = "github:danth/stylix";

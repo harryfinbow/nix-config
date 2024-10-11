@@ -5,6 +5,7 @@
     ../common
     ../common/desktop
     ../common/impermanence
+    ../common/neovim
     ../common/theme
     ../common/wayland
     ../common/terminal.nix
