@@ -1,14 +1,13 @@
 { inputs, lib, config, ... }:
 
 {
+  imports = [ inputs.impermanence.nixosModules.impermanence ];
 
   options.modules.impermanence = {
     enable = lib.mkEnableOption "enables impermanence";
   };
 
   config = lib.mkIf config.modules.impermanence.enable {
-    imports = [ inputs.impermanence.nixosModules.impermanence ];
-
     # https://github.com/nix-community/impermanence/issues/121
     boot.initrd.systemd.services.impermanence = {
       description = "Rollback root subvolume to a clean state (requires btrfs)";

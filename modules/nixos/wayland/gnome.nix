@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, lib, config, ... }:
 
 {
   options.modules.gnome = {
@@ -14,4 +14,5 @@
         desktopManager.gnome.enable = true;
       };
     };
-  }
+  };
+}

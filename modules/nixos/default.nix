@@ -23,8 +23,7 @@
     star-citizen.enable = lib.mkDefault false;
     steam.enable = lib.mkDefault false;
     theme.enable = lib.mkDefault true;
-    users.enable = lib.mkDefault true;
-    wayland.enable = lib.mkDefault true;
+    desktop.enable = lib.mkDefault true;
   };
 
 }

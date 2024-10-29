@@ -10,6 +10,7 @@
     impermanence.enable = true;
     star-citizen.enable = true;
     steam.enable = true;
+    gnome.enable = true;
   };
 
   boot = {

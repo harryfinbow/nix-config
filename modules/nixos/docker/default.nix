@@ -9,7 +9,7 @@
 
     virtualisation.docker.enable = true;
 
-    users.users."${config.users.name}".extraGroups = [ "docker" ];
+    users.users."${config.modules.users.name}".extraGroups = [ "docker" ];
 
   };
 }

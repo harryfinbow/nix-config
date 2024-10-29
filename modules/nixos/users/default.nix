@@ -9,7 +9,7 @@
   };
 
   config = {
-    users.users."${config.users.name}" = {
+    users.users."${config.modules.users.name}" = {
       initialPassword = "PepsiMax!";
       isNormalUser = true;
       extraGroups = [ "networkmanager" "wheel" "input" ];

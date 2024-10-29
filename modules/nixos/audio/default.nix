@@ -6,8 +6,6 @@
   };
 
   config = lib.mkIf config.modules.audio.enable {
-    imports = [ inputs.nix-gaming.nixosModules.pipewireLowLatency ];
-
     hardware.pulseaudio.enable = lib.mkForce false;
     security.rtkit.enable = true;
     services.pipewire = {
