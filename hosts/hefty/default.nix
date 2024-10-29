@@ -7,6 +7,7 @@
 
     ../common/audio.nix
     ../common/docker
+    ../common/firewall
     ../common/impermanence
     ../common/nix
     ../common/star-citizen
