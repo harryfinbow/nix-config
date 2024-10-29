@@ -4,17 +4,13 @@
   imports = [
     ./disko.nix
     ./hardware-configuration.nix
-
-    ../common/audio.nix
-    ../common/docker
-    ../common/firewall
-    ../common/impermanence
-    ../common/nix
-    ../common/star-citizen
-    ../common/steam
-    ../common/theme
-    ../common/wayland
   ];
+
+  modules = {
+    impermanence.enable = true;
+    star-citizen.enable = true;
+    steam.enable = true;
+  };
 
   boot = {
     loader = {
@@ -69,11 +65,11 @@
   time.timeZone = "Europe/London";
   i18n.defaultLocale = "en_GB.UTF-8";
 
-  users.users.harry = {
-    initialPassword = "PepsiMax!";
-    isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "input" ];
-  };
+  # users.users.harry = {
+  #   initialPassword = "PepsiMax!";
+  #   isNormalUser = true;
+  #   extraGroups = [ "networkmanager" "wheel" "input" ];
+  # };
 
   xdg.portal.enable = true;
 

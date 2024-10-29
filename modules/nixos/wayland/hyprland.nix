@@ -2,11 +2,11 @@
 
 {
 
-  options.hyprland = {
+  options.modules.hyprland = {
     enable = lib.mkEnableOption "enables hyprland";
   };
 
-  config = lib.mkIf config.hyprland.enable {
+  config = lib.mkIf config.modules.hyprland.enable {
     # Fix missing cursor on Hyprland
     environment.sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = "1";

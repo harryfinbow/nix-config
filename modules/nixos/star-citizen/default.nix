@@ -1,11 +1,11 @@
 { inputs, pkgs, lib, config, ... }:
 
 {
-  options.star-citizen = {
+  options.modules.star-citizen = {
     enable = lib.mkEnableOption "enables star-citizen";
   };
 
-  config = lib.mkIf config.star-citizen.enable {
+  config = lib.mkIf config.modules.star-citizen.enable {
     environment.systemPackages = with pkgs; [
       inputs.nix-citizen.packages.${system}.star-citizen
     ];

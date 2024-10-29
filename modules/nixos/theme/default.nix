@@ -1,11 +1,13 @@
-{ pkgs, lib, config, ... }:
+{ inputs, pkgs, lib, config, ... }:
 
 {
-  options.theme = {
+  options.modules.theme = {
     enable = lib.mkEnableOption "enables theme";
   };
 
-  config = lib.mkIf config.theme.enable {
+  config = lib.mkIf config.modules.theme.enable {
+    imports = [ inputs.stylix.nixosModules.stylix ];
+
     stylix = {
       enable = true;
 

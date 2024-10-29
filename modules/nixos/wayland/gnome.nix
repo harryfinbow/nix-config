@@ -1,11 +1,11 @@
 { inputs, pkgs, ... }:
 
 {
-  options.gnome = {
+  options.modules.gnome = {
     enable = lib.mkEnableOption "enables gnome";
   };
 
-  config = lib.mkIf config.gnome.enable {
+  config = lib.mkIf config.modules.gnome.enable {
     services = {
       xserver = {
         enable = true;

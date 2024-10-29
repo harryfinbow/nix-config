@@ -1,11 +1,11 @@
 { lib, config, ... }:
 
 {
-  options.firewall = {
+  options.modules.firewall = {
     enable = lib.mkEnableOption "enables firewall";
   };
 
-  config = lib.mkIf config.firewall.enable {
+  config = lib.mkIf config.modules.firewall.enable {
     networking.firewall = {
       enable = true;
 

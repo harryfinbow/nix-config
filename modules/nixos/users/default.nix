@@ -1,7 +1,7 @@
 { lib, config, ... }:
 
 {
-  options.users = {
+  options.modules.users = {
     name = lib.mkOption {
       type = lib.types.str;
       default = "harry";

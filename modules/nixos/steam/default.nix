@@ -1,11 +1,11 @@
 { pkgs, lib, config, ... }:
 
 {
-  options.steam = {
+  options.modules.steam = {
     enable = lib.mkEnableOption "enables steam";
   };
 
-  config = lib.mkIf config.steam.enable {
+  config = lib.mkIf config.modules.steam.enable {
     environment.sessionVariables = {
       MANGOHUD = 1;
     };

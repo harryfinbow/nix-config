@@ -1,17 +1,17 @@
 { lib, config, ... }:
 
 {
-  options.nix = {
-    enable = lib.mkEnableOption "enables nix";
+  options.modules.nix = {
+    enable = lib.mkEnableOption "config,res nix";
   };
 
-  config = lib.mkIf config.nix.enable {
+  config = lib.mkIf config.modules.nix.enable {
     nix.settings = {
       experimental-features = "nix-command flakes";
       auto-optimise-store = true;
       use-xdg-base-directories = true;
     };
 
-    nixpkgs.config.allowUnfree = true;
+    nixpkgs.config,allowUnfree = true;
   };
 }

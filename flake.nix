@@ -56,8 +56,8 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/hefty
+            ./modules/nixos
             inputs.disko.nixosModules.default
-            inputs.stylix.nixosModules.stylix
 
             nixosModules.home-manager
             {

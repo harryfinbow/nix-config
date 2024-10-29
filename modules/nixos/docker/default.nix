@@ -1,11 +1,11 @@
 { lib, config, ... }:
 
 {
-  options.docker = {
+  options.modules.docker = {
     enable = lib.mkEnableOption "enables docker";
   };
 
-  config = lib.mkIf config.docker.enable {
+  config = lib.mkIf config.modules.docker.enable {
 
     virtualisation.docker.enable = true;
 

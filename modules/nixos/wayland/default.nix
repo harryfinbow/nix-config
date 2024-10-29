@@ -1,12 +1,13 @@
 { inputs, pkgs, lib, config, ... }:
 
 {
-  options.desktop = {
+  options.modules.desktop = {
     enable = lib.mkEnableOption "enables desktop";
   };
 
-  config = lib.mkIf config.desktop.enable {
-    config.hyprland.enable = lib.mkDefault true;
-    config.gnome.enable = lib.mkDefault false;
+  config = lib.mkIf config.modules.modules.desktop.enable {
+    imports = [ ./hyprland.nix ./gnome.nix ];
+    modules.hyprland.enable = lib.mkDefault true;
+    modules.gnome.enable = lib.mkDefault false;
   };
 }

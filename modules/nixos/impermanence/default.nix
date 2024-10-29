@@ -2,11 +2,11 @@
 
 {
 
-  options.impermanence = {
+  options.modules.impermanence = {
     enable = lib.mkEnableOption "enables impermanence";
   };
 
-  config = lib.mkIf config.impermanence.enable {
+  config = lib.mkIf config.modules.impermanence.enable {
     imports = [ inputs.impermanence.nixosModules.impermanence ];
 
     # https://github.com/nix-community/impermanence/issues/121

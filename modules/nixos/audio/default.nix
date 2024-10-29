@@ -1,11 +1,11 @@
 { inputs, lib, config, ... }:
 
 {
-  options.audio = {
+  options.modules.audio = {
     enable = lib.mkEnableOption "enables audio";
   };
 
-  config = lib.mkIf config.audio.enable {
+  config = lib.mkIf config.modules.audio.enable {
     imports = [ inputs.nix-gaming.nixosModules.pipewireLowLatency ];
 
     hardware.pulseaudio.enable = lib.mkForce false;
