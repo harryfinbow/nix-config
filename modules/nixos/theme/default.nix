@@ -1,28 +1,34 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 
 {
-  stylix = {
-    enable = true;
+  options.theme = {
+    enable = lib.mkEnableOption "enables theme";
+  };
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
+  config = lib.mkIf config.theme.enable {
+    stylix = {
+      enable = true;
 
-    fonts = {
-      monospace = {
-        package = (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; });
-        name = "FiraCode Nerd Font";
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
+
+      fonts = {
+        monospace = {
+          package = (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; });
+          name = "FiraCode Nerd Font";
+        };
       };
-    };
 
-    cursor = {
-      package = pkgs.adwaita-icon-theme;
-      name = "Adwaita";
-      size = 16;
-    };
+      cursor = {
+        package = pkgs.adwaita-icon-theme;
+        name = "Adwaita";
+        size = 16;
+      };
 
-    # https://github.com/danth/stylix/issues/200
-    image = pkgs.fetchurl {
-      url = "https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png";
-      sha256 = "028bgjzr4q5yhdd4i6ypvk6ch4jjs5qz34ag8b4wcpr835mc37by";
+      # https://github.com/danth/stylix/issues/200
+      image = pkgs.fetchurl {
+        url = "https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png";
+        sha256 = "028bgjzr4q5yhdd4i6ypvk6ch4jjs5qz34ag8b4wcpr835mc37by";
+      };
     };
   };
 }

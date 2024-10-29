@@ -1,9 +1,17 @@
+{ lib, config, ... }:
+
 {
-  nix.settings = {
-    experimental-features = "nix-command flakes";
-    auto-optimise-store = true;
-    use-xdg-base-directories = true;
+  options.nix = {
+    enable = lib.mkEnableOption "enables nix";
   };
 
-  nixpkgs.config.allowUnfree = true;
+  config = lib.mkIf config.nix.enable {
+    nix.settings = {
+      experimental-features = "nix-command flakes";
+      auto-optimise-store = true;
+      use-xdg-base-directories = true;
+    };
+
+    nixpkgs.config.allowUnfree = true;
+  };
 }

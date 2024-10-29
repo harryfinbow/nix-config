@@ -1,18 +1,24 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 
 {
-  environment.sessionVariables = {
-    MANGOHUD = 1;
+  options.steam = {
+    enable = lib.mkEnableOption "enables steam";
   };
 
-  environment.systemPackages = with pkgs; [
-    mangohud
-  ];
+  config = lib.mkIf config.steam.enable {
+    environment.sessionVariables = {
+      MANGOHUD = 1;
+    };
 
-  programs.steam = {
-    enable = true;
-    extraCompatPackages = with pkgs; [
-      proton-ge-bin
+    environment.systemPackages = with pkgs; [
+      mangohud
     ];
+
+    programs.steam = {
+      enable = true;
+      extraCompatPackages = with pkgs; [
+        proton-ge-bin
+      ];
+    };
   };
 }

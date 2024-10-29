@@ -1,31 +1,12 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, lib, config, ... }:
 
 {
-  # Fix missing cursor on Hyprland
-  environment.sessionVariables = {
-    WLR_NO_HARDWARE_CURSORS = "1";
-    NIXOS_OZONE_WL = "1";
+  options.desktop = {
+    enable = lib.mkEnableOption "enables desktop";
   };
 
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-  };
-
-  nix.settings = {
-    substituters = [ "https://hyprland.cachix.org" ];
-    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
-  };
-
-  services = {
-    displayManager.defaultSession = "hyprland";
-
-    xserver = {
-      enable = true;
-      # Enable X11 compatible desktop
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
-    };
+  config = lib.mkIf config.desktop.enable {
+    config.hyprland.enable = lib.mkDefault true;
+    config.gnome.enable = lib.mkDefault false;
   };
 }

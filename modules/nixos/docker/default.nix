@@ -1,5 +1,15 @@
-{
-  virtualisation.docker.enable = true;
+{ lib, config, ... }:
 
-  users.users.harry.extraGroups = [ "docker" ];
+{
+  options.docker = {
+    enable = lib.mkEnableOption "enables docker";
+  };
+
+  config = lib.mkIf config.docker.enable {
+
+    virtualisation.docker.enable = true;
+
+    users.users."${config.users.name}".extraGroups = [ "docker" ];
+
+  };
 }
