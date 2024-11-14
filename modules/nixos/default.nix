@@ -3,6 +3,7 @@
 {
   imports = [
     ./audio
+    ./desktop
     ./docker
     ./firewall
     ./impermanence
@@ -11,7 +12,6 @@
     ./steam
     ./theme
     ./users
-    ./wayland
   ];
 
   modules = {
