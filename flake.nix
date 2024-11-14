@@ -32,7 +32,7 @@
     stylix.url = "github:danth/stylix";
 
     # https://github.com/NixOS/nixpkgs/issues/327982
-    zen-browser.url = "github:ch4og/zen-browser-flake";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
