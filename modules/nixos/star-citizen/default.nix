@@ -10,6 +10,7 @@
       inputs.nix-citizen.packages.${system}.star-citizen
     ];
 
+    # https://github.com/cachix/cachix/issues/323
     nix.settings = {
       substituters = [
         "https://nix-gaming.cachix.org"

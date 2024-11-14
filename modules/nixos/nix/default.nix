@@ -2,7 +2,7 @@
 
 {
   options.modules.nix = {
-    enable = lib.mkEnableOption "config,res nix";
+    enable = lib.mkEnableOption "configures nix";
   };
 
   config = lib.mkIf config.modules.nix.enable {

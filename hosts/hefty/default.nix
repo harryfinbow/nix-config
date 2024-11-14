@@ -6,6 +6,7 @@
     ./hardware-configuration.nix
   ];
 
+  # Enable additional modules
   modules = {
     impermanence.enable = true;
     star-citizen.enable = true;
