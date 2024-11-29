@@ -45,5 +45,8 @@
 
   services.nix-daemon.enable = true;
 
+  system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
+  system.defaults.NSGlobalDomain.KeyRepeat = 1;
+
   system.stateVersion = 4;
 }
