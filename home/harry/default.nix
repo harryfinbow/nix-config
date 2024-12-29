@@ -1,15 +1,20 @@
 { config, inputs, lib, pkgs, ... }:
 
 {
-  imports = [
-    ../common
-    ../common/desktop
-    ../common/impermanence
-    ../common/neovim
-    ../common/theme
-    ../common/wayland
-    ../common/terminal.nix
-  ];
+  # imports = [
+  #   ../common
+  #   ../common/desktop
+  #   ../common/impermanence
+  #   ../common/neovim
+  #   ../common/theme
+  #   ../common/wayland
+  #   ../common/terminal.nix
+  # ];
+
+  # Enable additional modules
+  modules = {
+    impermanence.enable = true;
+  };
 
   gtk.enable = true;
 

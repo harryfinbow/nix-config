@@ -18,7 +18,7 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.43.0&submodules=1";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.45.2&submodules=1";
 
     nix-gaming.url = "github:fufexan/nix-gaming";
 
@@ -56,8 +56,8 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/hefty
+            ./modules/nixos
             inputs.disko.nixosModules.default
-            inputs.stylix.nixosModules.stylix
 
             nixosModules.home-manager
             {
@@ -68,6 +68,7 @@
                 useUserPackages = true;
 
                 users.harry.imports = [
+                  ./modules/home
                   ./home/harry
                 ];
               };
