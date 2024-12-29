@@ -76,6 +76,11 @@
         "float, title:^(Picture-in-Picture)$"
         "pin, title:^(Picture-in-Picture)$"
       ];
+
+      misc = {
+        disable_hyprland_logo = true;
+        force_default_wallpaper = "0";
+      };
     };
   };
 }
