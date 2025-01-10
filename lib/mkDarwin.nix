@@ -23,8 +23,8 @@ let
   };
 
   nixosSystem = inputs.nix-darwin.lib.darwinSystem;
-  stylixModules = inputs.home-manager.darwinModules;
-  homeManagerModules = inputs.home-manager.darwinModules;
+  stylixModules = inputs.stylix.darwinModules.stylix;
+  homeManagerModules = inputs.home-manager.darwinModules.home-manager;
 
 in
 nixosSystem {
@@ -46,7 +46,7 @@ nixosSystem {
         useUserPackages = true;
 
         users.${user}.imports = [
-          # ../modules/home
+          ../modules/home
           ../home/${name}
         ];
       };

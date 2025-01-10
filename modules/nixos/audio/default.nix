@@ -1,4 +1,4 @@
-{ inputs, lib, config, ... }:
+{ inputs, lib, config, pkgs, ... }:
 
 {
   options.modules.audio = {
@@ -15,5 +15,9 @@
       jack.enable = true;
       pulse.enable = true;
     };
+
+    environment.systemPackages = with pkgs; [
+      alsa-utils
+    ];
   };
 }

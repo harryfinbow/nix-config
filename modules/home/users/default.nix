@@ -1,7 +1,7 @@
-{ currentSystem, currentSystemUser, ... }:
+{ currentSystem, currentSystemUser, lib, ... }:
 
 let
-  homeDirPrefix = if builtins.hasSuffix "darwin" currentSystem then "Users" else "home";
+  homeDirPrefix = if lib.hasSuffix "darwin" currentSystem then "Users" else "home";
 in
 {
   home = {

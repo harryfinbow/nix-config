@@ -10,12 +10,10 @@
       # System
       neofetch
       btop
-      alsa-utils
 
       # Utilities
       jq
       eza
-      psmisc
     ];
   };
 }
