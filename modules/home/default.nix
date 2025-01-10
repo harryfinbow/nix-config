@@ -11,6 +11,9 @@
     ./neovim
     ./starship
     ./theme
+    ./users
+    ./utilities
+    ./work
     ./zoxide
   ];
 
@@ -24,8 +27,13 @@
     neovim.enable = lib.mkDefault true;
     starship.enable = lib.mkDefault true;
     theme.enable = lib.mkDefault true;
+    utilities.enable = lib.mkDefault true;
+    work.enable = lib.mkDefault false;
     zoxide.enable = lib.mkDefault true;
   };
+
+  # Restart systemd
+  systemd.user.startServices = "sd-switch";
 
   # Let `home-manager` manage itself
   programs.home-manager.enable = true;

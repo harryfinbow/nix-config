@@ -19,6 +19,8 @@
       portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
 
+    xdg.portal.enable = true;
+
     # https://github.com/cachix/cachix/issues/323
     nix.settings = {
       substituters = [ "https://hyprland.cachix.org" ];

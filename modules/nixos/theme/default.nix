@@ -1,8 +1,6 @@
 { inputs, pkgs, lib, config, ... }:
 
 {
-  imports = [ inputs.stylix.nixosModules.stylix ];
-
   options.modules.theme = {
     enable = lib.mkEnableOption "enables theme";
   };

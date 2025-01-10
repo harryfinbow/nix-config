@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, currentSystemUser, ... }:
 
 {
   options.modules.docker = {
@@ -9,7 +9,7 @@
 
     virtualisation.docker.enable = true;
 
-    users.users."${config.modules.users.name}".extraGroups = [ "docker" ];
+    users.users."${currentSystemUser}".extraGroups = [ "docker" ];
 
   };
 }
