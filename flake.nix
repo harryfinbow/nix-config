@@ -37,69 +37,33 @@
 
   outputs = { self, nixpkgs, ... }@inputs:
     let
-      specialArgs = { inherit inputs self; };
-      extraSpecialArgs = { inherit inputs self; };
-
-      inherit (inputs.nixpkgs.lib) nixosSystem;
-      inherit (inputs.nix-darwin.lib) darwinSystem;
-      inherit (inputs.home-manager) nixosModules;
-      inherit (inputs.home-manager) darwinModules;
+      mkSystem = import ./lib/mkSystem.nix { inherit nixpkgs inputs self; };
+      mkDarwin = import ./lib/mkDarwin.nix { inherit nixpkgs inputs self; };
+      mkHome = import ./lib/mkHome.nix { inherit nixpkgs inputs self; };
 
       supportedSystems =
         [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
     in
     {
-      nixosConfigurations = {
-        hefty = nixosSystem {
-          inherit specialArgs;
-          system = "x86_64-linux";
-          modules = [
-            ./hosts/hefty
-            ./modules/nixos
-            inputs.disko.nixosModules.default
-
-            nixosModules.home-manager
-            {
-              home-manager = {
-                inherit extraSpecialArgs;
-
-                useGlobalPkgs = true;
-                useUserPackages = true;
-
-                users.harry.imports = [
-                  ./modules/home
-                  ./home/harry
-                ];
-              };
-            }
-          ];
-        };
+      nixosConfigurations.alpha = mkSystem "alpha" rec {
+        system = "x86_64-linux";
+        user = "harry";
       };
 
-      darwinConfigurations = {
-        dense = darwinSystem {
-          inherit specialArgs;
-          system = "aarch64-darwin";
-          modules = [
-            ./hosts/dense
-            inputs.stylix.darwinModules.stylix
+      darwinConfigurations.bravo = mkDarwin "bravo" rec {
+        system = "aarch64-darwin";
+        user = "harryf";
+      };
 
-            darwinModules.home-manager
-            {
-              home-manager = {
-                inherit extraSpecialArgs;
+      nixosConfigurations.charlie = mkSystem "charlie" rec {
+        system = "aarch64-linux";
+        user = "harry";
+      };
 
-                useGlobalPkgs = true;
-                useUserPackages = true;
-
-                users.harryf.imports = [
-                  ./home/harryf
-                ];
-              };
-            }
-          ];
-        };
+      homeConfigurations.echo = mkHome "echo" rec {
+        system = "x86_64-linux";
+        user = "ubuntu";
       };
 
       checks = forAllSystems (system: {

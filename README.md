@@ -1,3 +1,3 @@
 # nix-config
 
-Partially yoinked from `fufexan` + `misterio77`
+Partially yoinked from `fufexan` + `misterio77` + `mitchellh`
