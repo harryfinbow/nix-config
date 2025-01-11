@@ -1,5 +1,3 @@
-# This function creates a NixOS system based on our VM setup for a
-# particular architecture.
 { nixpkgs, inputs, self }:
 
 name:
@@ -23,22 +21,29 @@ let
   };
 
   nixosSystem = nixpkgs.lib.nixosSystem;
-  diskoModules = inputs.disko.nixosModules.default;
-  stylixModules = inputs.stylix.nixosModules.stylix;
-  homeManagerModules = inputs.home-manager.nixosModules.home-manager;
+
+  nixosModules = with inputs; [
+    disko.nixosModules.default
+    home-manager.nixosModules.home-manager
+    impermanence.nixosModules.impermanence
+    stylix.nixosModules.stylix
+  ];
+
+  homeManagerModules = with inputs; [
+    hyprland.homeManagerModules.default
+    agenix.homeManagerModules.default
+    impermanence.nixosModules.home-manager.impermanence
+    nixvim.homeManagerModules.nixvim
+  ];
 
 in
 nixosSystem {
   inherit system;
   inherit specialArgs;
 
-  modules = [
+  modules = nixosModules ++ [
     ../modules/nixos
     ../hosts/${name}
-
-    diskoModules
-    stylixModules
-    homeManagerModules
 
     {
       home-manager = {
@@ -47,7 +52,7 @@ nixosSystem {
         useGlobalPkgs = true;
         useUserPackages = true;
 
-        users.${user}.imports = [
+        users.${user}.imports = homeManagerModules ++ [
           ../modules/home
           ../home/${name}
         ];

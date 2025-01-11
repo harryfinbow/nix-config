@@ -1,5 +1,3 @@
-# This function creates a NixOS system based on our VM setup for a
-# particular architecture.
 { nixpkgs, inputs, self }:
 
 name:
@@ -22,21 +20,28 @@ let
     currentSystemUser = user;
   };
 
-  nixosSystem = inputs.nix-darwin.lib.darwinSystem;
-  stylixModules = inputs.stylix.darwinModules.stylix;
-  homeManagerModules = inputs.home-manager.darwinModules.home-manager;
+  darwinSystem = inputs.nix-darwin.lib.darwinSystem;
+
+  darwinModules = with inputs; [
+    stylix.darwinModules.stylix
+    home-manager.darwinModules.home-manager;
+  ];
+
+  homeManagerModules = with inputs; [
+    hyprland.homeManagerModules.default
+    agenix.homeManagerModules.default
+    impermanence.nixosModules.home-manager.impermanence
+    nixvim.homeManagerModules.nixvim
+  ];
 
 in
-nixosSystem {
+darwinSystem {
   inherit system;
   inherit specialArgs;
 
-  modules = [
+  modules = darwinModules ++ [
     ../modules/darwin
     ../hosts/${name}
-
-    stylixModules
-    homeManagerModules
 
     {
       home-manager = {
@@ -45,7 +50,7 @@ nixosSystem {
         useGlobalPkgs = true;
         useUserPackages = true;
 
-        users.${user}.imports = [
+        users.${user}.imports = homeManagerModules ++ [
           ../modules/home
           ../home/${name}
         ];

@@ -37,16 +37,16 @@
 
   outputs = { self, nixpkgs, ... }@inputs:
     let
-      mkSystem = import ./lib/mkSystem.nix { inherit nixpkgs inputs self; };
-      mkDarwin = import ./lib/mkDarwin.nix { inherit nixpkgs inputs self; };
+      mkHost = import ./lib/mkHost.nix { inherit nixpkgs inputs self; };
       mkHome = import ./lib/mkHome.nix { inherit nixpkgs inputs self; };
+      mkDarwin = import ./lib/mkDarwin.nix { inherit nixpkgs inputs self; };
 
       supportedSystems =
         [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
     in
     {
-      nixosConfigurations.alpha = mkSystem "alpha" rec {
+      nixosConfigurations.alpha = mkHost "alpha" rec {
         system = "x86_64-linux";
         user = "harry";
       };
@@ -56,7 +56,7 @@
         user = "harryf";
       };
 
-      nixosConfigurations.charlie = mkSystem "charlie" rec {
+      nixosConfigurations.charlie = mkHost "charlie" rec {
         system = "aarch64-linux";
         user = "harry";
       };

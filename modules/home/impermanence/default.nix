@@ -1,8 +1,6 @@
 { config, inputs, lib, ... }:
 
 {
-  imports = [ inputs.impermanence.nixosModules.home-manager.impermanence ];
-
   options.modules.impermanence = {
     enable = lib.mkEnableOption "enables impermanence";
   };

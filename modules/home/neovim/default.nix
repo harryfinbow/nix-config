@@ -1,8 +1,6 @@
 { config, inputs, lib, ... }:
 
 {
-  imports = [ inputs.nixvim.homeManagerModules.nixvim ];
-
   options.modules.neovim = {
     enable = lib.mkEnableOption "enables neovim";
   };

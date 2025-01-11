@@ -1,8 +1,6 @@
 { config, inputs, lib, ... }:
 
 {
-  imports = [ inputs.agenix.homeManagerModules.default ];
-
   config = lib.mkIf config.modules.hyprland.enable {
     age = {
       identityPaths = [ "/home/harry/.ssh/id_ed25519" ]; # This should probably be moved to `home/harry/default.nix`
