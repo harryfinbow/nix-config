@@ -10,11 +10,14 @@
   config = lib.mkIf config.modules.neovim.enable {
     programs.nixvim = {
       enable = true;
-      clipboard.providers.wl-copy.enable = true;
+      defaultEditor = true;
+
       plugins = {
         neo-tree.enable = true;
         telescope.enable = true;
       };
+
+      clipboard.providers.wl-copy.enable = true;
     };
   };
 }
