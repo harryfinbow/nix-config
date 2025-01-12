@@ -2,7 +2,7 @@
   description = "NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:harryfinbow/nixpkgs/fix--openstack-virtulisation";
 
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -25,6 +25,9 @@
     nix-citizen.url = "github:LovingMelody/nix-citizen";
     nix-citizen.inputs.nix-gaming.follows = "nix-gaming";
 
+    nixos-generators.url = "github:nix-community/nixos-generators";
+    nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
+
     nixvim.url = "github:nix-community/nixvim";
 
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
@@ -46,6 +49,11 @@
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
     in
     {
+      nixosConfigurations._bootstrap = mkHost "_bootstrap" rec {
+        system = "x86_64-linux";
+        user = "harry";
+      };
+
       nixosConfigurations.alpha = mkHost "alpha" rec {
         system = "x86_64-linux";
         user = "harry";
@@ -65,6 +73,7 @@
         system = "x86_64-linux";
         user = "ubuntu";
       };
+
 
       checks = forAllSystems (system: {
         pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
