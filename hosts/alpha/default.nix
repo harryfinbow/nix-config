@@ -12,6 +12,8 @@
     star-citizen.enable = true;
     steam.enable = true;
     gnome.enable = true;
+    logitech.enable = true;
+    nvidia.enable = true;
   };
 
   # TODO: Why did I add this?
