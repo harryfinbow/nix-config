@@ -61,6 +61,11 @@
         user = "harry";
       };
 
+      nixosConfigurations.delta = mkHost "delta" rec {
+        system = "x86_64-linux";
+        user = "harry";
+      };
+
       homeConfigurations.echo = mkHome "echo" rec {
         system = "x86_64-linux";
         user = "ubuntu";
