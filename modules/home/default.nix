@@ -14,6 +14,7 @@
     ./users
     ./utilities
     ./work
+    ./zellij
     ./zoxide
   ];
 
@@ -29,6 +30,7 @@
     theme.enable = lib.mkDefault true;
     utilities.enable = lib.mkDefault true;
     work.enable = lib.mkDefault false;
+    zellij.enable = lib.mkDefault true;
     zoxide.enable = lib.mkDefault true;
   };
 
