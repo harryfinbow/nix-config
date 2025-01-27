@@ -6,6 +6,11 @@
   };
 
   config = lib.mkIf config.modules.work.enable {
+    age.secrets.git-config = {
+      file = ../../../secrets/work.git.age;
+      path = "${config.home.homeDirectory}/.config/git/config.work";
+    };
+
     programs.git = {
       userName = lib.mkForce null;
       userEmail = lib.mkForce null;
@@ -14,7 +19,7 @@
         "git@github.com:harryfinbow";
 
       includes = [
-        { path = "/Users/harryf/.config/git/config.work"; }
+        { path = "${config.home.homeDirectory}/.config/git/config.work"; }
         {
           contents = { user = { email = "harry@finbow.dev"; }; };
           condition = "hasconfig:remote.*.url:git@github.com:harryfinbow/*";
