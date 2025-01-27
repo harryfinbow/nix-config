@@ -22,6 +22,7 @@
 
   modules = {
     audio.enable = lib.mkDefault true;
+    boot.enable = lib.mkDefault true;
     docker.enable = lib.mkDefault true;
     firewall.enable = lib.mkDefault true;
     fish.enable = lib.mkDefault true;
@@ -29,6 +30,7 @@
     hyprland.enable = lib.mkDefault true;
     impermanence.enable = lib.mkDefault false;
     logitech.enable = lib.mkDefault false;
+    networking.enable = lib.mkDefault true;
     nix.enable = lib.mkDefault true;
     nvidia.enable = lib.mkDefault false;
     star-citizen.enable = lib.mkDefault false;
