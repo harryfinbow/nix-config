@@ -11,7 +11,6 @@
 
       settings = {
         format = lib.concatStrings [
-          "$username"
           "$hostname"
           "$directory"
           "$git_branch"
@@ -23,6 +22,12 @@
           "$line_break"
           "$character"
         ];
+
+        hostname = {
+          ssh_symbol = "";
+          format = "[$hostname]($style) ";
+          style = "bright-black";
+        };
 
         directory = {
           style = "blue";
