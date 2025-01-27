@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ pkgs, lib, config, currentSystemUser, ... }:
 
 {
   options.modules.fish = {
@@ -7,5 +7,7 @@
 
   config = lib.mkIf config.modules.fish.enable {
     programs.fish.enable = true;
+
+    users.users."${currentSystemUser}".shell = pkgs.fish;
   };
 }
