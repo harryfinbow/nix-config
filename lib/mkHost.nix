@@ -43,6 +43,7 @@ nixosSystem {
   inherit specialArgs;
 
   modules = nixosModules ++ [
+    ../overlays
     ../modules/nixos
     ../hosts/${name}
 
