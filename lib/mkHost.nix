@@ -43,7 +43,8 @@ nixosSystem {
   inherit specialArgs;
 
   modules = nixosModules ++ [
-    ../overlays
+    # Disable overlays as not being used and takes ages to build
+    # ../overlays
     ../modules/nixos
     ../hosts/${name}
 
