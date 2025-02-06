@@ -12,6 +12,8 @@
       enableFishIntegration = config.modules.zellij.remote;
     };
 
+    xdg.configFile."zellij/config.kdl".source = ./config.kdl;
+
     home = lib.mkIf config.modules.zellij.remote {
       sessionVariables = {
         ZELLIJ_AUTO_ATTACH = "true";
