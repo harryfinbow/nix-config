@@ -24,7 +24,7 @@ let
 
   darwinModules = with inputs; [
     stylix.darwinModules.stylix
-    home-manager.darwinModules.home-manager;
+    home-manager.darwinModules.home-manager
   ];
 
   homeManagerModules = with inputs; [
