@@ -1,7 +1,8 @@
-{ config, lib, ... }:
+{ lib, ... }:
 
 {
   imports = [
+    ./aerospace
     ./nix
     ./shells
     ./system
@@ -11,8 +12,9 @@
   ];
 
   modules = {
+    aerospace.enable = lib.mkDefault true;
     nix.enable = lib.mkDefault true;
-    yabai.enable = lib.mkDefault true;
+    yabai.enable = lib.mkDefault false;
     theme.enable = lib.mkDefault true;
   };
 
