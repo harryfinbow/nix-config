@@ -11,7 +11,7 @@
 
       settings = {
         font.size = lib.mkForce 16; # TODO: Move to Stylix
-        shell.program = "${pkgs.fish}/bin/fish";
+        terminal.shell.program = "${pkgs.fish}/bin/fish";
         window = {
           decorations = "none";
           dynamic_padding = true;
