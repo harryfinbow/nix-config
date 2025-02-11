@@ -134,7 +134,6 @@ keybinds clear-defaults=true {
         bind "Ctrl f" { ToggleFloatingPanes; }
         bind "Ctrl Shift g" { SwitchToMode "locked"; }
         bind "Ctrl i" { MoveTab "left"; }
-        bind "Ctrl n" { NewPane; }
         bind "Ctrl o" { MoveTab "right"; }
         bind "Ctrl Shift q" { Quit; }
     }
