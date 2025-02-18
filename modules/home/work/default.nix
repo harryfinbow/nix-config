@@ -22,7 +22,7 @@
         { path = "${config.home.homeDirectory}/.config/git/config.work"; }
         {
           contents = { user = { email = "harry@finbow.dev"; }; };
-          condition = "hasconfig:remote.*.url:git@github.com:harryfinbow/*";
+          condition = "hasconfig:remote.*.url:git@*:harryfinbow/*";
         }
       ];
     };
@@ -33,6 +33,10 @@
         "personal.github.com" = {
           hostname = "github.com";
           identityFile = "~/.ssh/personal.github.com";
+        };
+        "personal.gitlab.com" = {
+          hostname = "gitlab.com";
+          identityFile = "~/.ssh/personal.gitlab.com";
         };
       };
     };
