@@ -5,6 +5,9 @@
     wayland.windowManager.hyprland.settings = {
       exec-once = "wl-paste -t text -w xclip -selection clipboard";
 
+      # Disable all animations
+      animation = [ "global, off" ];
+
       bind = [
         # Main
         "SUPER SHIFT, Q, killactive"
@@ -51,9 +54,8 @@
         "SUPER, mouse:273, resizewindow"
       ];
 
-
       decoration = {
-        rounding = 10;
+        rounding = 0;
         active_opacity = 0.95;
         inactive_opacity = 0.95;
         fullscreen_opacity = 1;
@@ -80,7 +82,6 @@
       # Not really compatible with impermanence
       ecosystem = {
         no_update_news = true;
-        no_donation_nag = true;
       };
 
       misc = {
