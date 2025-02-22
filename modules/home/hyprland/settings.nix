@@ -47,6 +47,18 @@
         "SUPER SHIFT, 8, movetoworkspace,  8"
         "SUPER SHIFT, 9, movetoworkspace,  9"
         "SUPER SHIFT, 0, movetoworkspace, 10"
+
+        # Move focus
+        "SUPER, H, movefocus, l"
+        "SUPER, J, movefocus, d"
+        "SUPER, K, movefocus, u"
+        "SUPER, L, movefocus, r"
+
+        # Move window position
+        "SUPER SHIFT, H, movewindow, l"
+        "SUPER SHIFT, L, movewindow, r"
+        "SUPER SHIFT, K, movewindow, u"
+        "SUPER SHIFT, J, movewindow, d"
       ];
 
       bindm = [
