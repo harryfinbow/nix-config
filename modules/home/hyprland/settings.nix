@@ -77,6 +77,12 @@
         "pin, title:^(Picture-in-Picture)$"
       ];
 
+      # Not really compatible with impermanence
+      ecosystem = {
+        no_update_news = true;
+        no_donation_nag = true;
+      };
+
       misc = {
         disable_hyprland_logo = true;
         force_default_wallpaper = "0";
