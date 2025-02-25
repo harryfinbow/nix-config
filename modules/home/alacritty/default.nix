@@ -10,6 +10,7 @@
       enable = true;
 
       settings = {
+        font.size = lib.mkForce 16; # TODO: Move to Stylix
         terminal.shell.program = "${pkgs.fish}/bin/fish";
         window = {
           decorations = "none";

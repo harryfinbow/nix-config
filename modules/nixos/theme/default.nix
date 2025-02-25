@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ inputs, pkgs, lib, config, ... }:
 
 {
   options.modules.theme = {
@@ -8,6 +8,8 @@
   config = lib.mkIf config.modules.theme.enable {
     stylix = {
       enable = true;
+
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
 
       fonts = {
         monospace = {
