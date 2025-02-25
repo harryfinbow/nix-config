@@ -18,7 +18,5 @@
     theme.enable = lib.mkDefault true;
   };
 
-  services.nix-daemon.enable = true;
-
   system.stateVersion = 4;
 }
