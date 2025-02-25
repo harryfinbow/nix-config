@@ -16,6 +16,10 @@
           package = pkgs.nerd-fonts.fira-code;
           name = "FiraCode Nerd Font";
         };
+
+        sizes = {
+          terminal = 14;
+        };
       };
 
       # https://github.com/danth/stylix/issues/200
