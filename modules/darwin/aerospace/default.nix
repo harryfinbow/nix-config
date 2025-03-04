@@ -48,6 +48,9 @@
           alt-8 = "workspace 8";
           alt-9 = "workspace 9";
 
+          alt-n = "workspace n"; # Notes
+          alt-z = "workspace z"; # Zoom
+
           # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
           alt-shift-0 = "move-node-to-workspace 0";
           alt-shift-1 = "move-node-to-workspace 1";
@@ -60,6 +63,9 @@
           alt-shift-8 = "move-node-to-workspace 8";
           alt-shift-9 = "move-node-to-workspace 9";
 
+          alt-shift-n = "move-node-to-workspace n"; # Notes
+          alt-shift-z = "move-node-to-workspace z"; # Zoom
+
           alt-shift-f = "fullscreen";
 
           # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
@@ -71,6 +77,7 @@
         on-window-detected = [
           { "if".app-id = "com.apple.finder"; run = [ "layout floating" ]; }
           { "if".app-id = "com.kagi.kagimacOS"; run = [ "move-node-to-workspace 1" ]; }
+          { "if".app-id = "us.zoom.xos"; run = [ "move-node-to-workspace z" ]; }
         ];
       };
     };
