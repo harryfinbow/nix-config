@@ -12,5 +12,10 @@
     hyprland.enable = false;
   };
 
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = false;
+    };
+  };
 }
