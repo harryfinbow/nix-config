@@ -1,5 +1,3 @@
-{ modulesPath, lib, pkgs, ... }:
-
 {
   imports = [
     ./disko.nix
@@ -10,6 +8,7 @@
   modules = {
     audio.enable = false;
     hyprland.enable = false;
+    minecraft.enable = true;
   };
 
   services.openssh = {
