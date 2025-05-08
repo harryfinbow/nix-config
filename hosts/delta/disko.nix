@@ -2,7 +2,7 @@
   disko.devices = {
     disk = {
       main = {
-        device = "/dev/sda";
+        device = "/dev/nvme0n1";
         type = "disk";
         content = {
           type = "gpt";
@@ -18,7 +18,7 @@
               };
             };
             root = {
-              end = "-8G";
+              end = "-16G";
               content = {
                 type = "btrfs";
                 extraArgs = [ "-f" ]; # Override existing partition
