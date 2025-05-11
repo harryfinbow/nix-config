@@ -83,9 +83,6 @@
       };
 
       windowrulev2 = [
-        "suppressevent maximize, class:.*"
-        "suppressevent fullscreen, class:.*"
-
         # Picture-in-picture
         "float, title:^(Picture-in-Picture)$"
         "pin, title:^(Picture-in-Picture)$"
