@@ -20,6 +20,9 @@
 
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.46.2&submodules=1";
 
+    microvm.url = "github:astro/microvm.nix";
+    microvm.inputs.nixpkgs.follows = "nixpkgs";
+
     minix.url = "github:matt1432/minix";
 
     nix-gaming.url = "github:fufexan/nix-gaming";
@@ -74,6 +77,21 @@
       nixosConfigurations.echo = mkHost "echo" rec {
         system = "x86_64-linux";
         user = "harry";
+      };
+
+
+      # TODO: Rename these
+      nixosConfigurations.router = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          # Include the microvm module
+          inputs.microvm.nixosModules.microvm
+          ./modules/nixos/router
+          (import ./modules/nixos/users { currentSystemUser="harry";})
+          {
+            networking.hostName = "my-microvm";
+          }
+        ];
       };
 
 

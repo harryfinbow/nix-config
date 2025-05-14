@@ -1,4 +1,4 @@
-{ lib, config, currentSystemUser, ... }:
+{ currentSystemUser, ... }:
 
 {
   config = {
