@@ -6,10 +6,6 @@
   };
 
   config = lib.mkIf config.modules.star-citizen.enable {
-    environment.systemPackages = with pkgs; [
-      inputs.nix-citizen.packages.${system}.star-citizen
-    ];
-
     # https://github.com/cachix/cachix/issues/323
     nix.settings = {
       substituters = [
@@ -22,5 +18,7 @@
         "nix-citizen.cachix.org-1:lPMkWc2X8XD4/7YPEEwXKKBg+SVbYTVrAaLA2wQTKCo="
       ];
     };
+
+    nix-citizen.starCitizen.enable = true;
   };
 }
