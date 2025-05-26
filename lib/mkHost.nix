@@ -26,6 +26,7 @@ let
     disko.nixosModules.default
     home-manager.nixosModules.home-manager
     impermanence.nixosModules.impermanence
+    microvm.nixosModules.host
     nixos-generators.nixosModules.all-formats
     stylix.nixosModules.stylix
   ];

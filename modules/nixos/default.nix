@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ lib, ... }:
 
 {
   imports = [
@@ -11,7 +11,7 @@
     ./hyprland
     ./impermanence
     ./logitech
-    ./minecraft
+    ./minecraft-server
     ./networking
     ./nix
     ./nvidia
@@ -31,7 +31,7 @@
     hyprland.enable = lib.mkDefault true;
     impermanence.enable = lib.mkDefault false;
     logitech.enable = lib.mkDefault false;
-    minecraft.enable = lib.mkDefault false;
+    minecraft-server.enable = lib.mkDefault false;
     networking.enable = lib.mkDefault true;
     nix.enable = lib.mkDefault true;
     nvidia.enable = lib.mkDefault false;
