@@ -19,6 +19,7 @@
     ./steam
     ./theme
     ./users
+    ./vms/minecraft-server
   ];
 
   modules = {
@@ -38,6 +39,7 @@
     star-citizen.enable = lib.mkDefault false;
     steam.enable = lib.mkDefault false;
     theme.enable = lib.mkDefault true;
+    vm.minecraft-server.enable = lib.mkDefault false;
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
