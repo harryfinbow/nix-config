@@ -8,7 +8,6 @@
   modules = {
     audio.enable = false;
     hyprland.enable = false;
-    minecraft-server.enable = false;
     vm.minecraft-server.enable = true;
   };
 

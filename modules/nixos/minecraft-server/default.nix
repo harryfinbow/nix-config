@@ -1,3 +1,4 @@
+# Not in use - only kept as example
 # Based on https://github.com/NixOS/nixpkgs/blob/62b852f6c6742134ade1abdd2a21685fd617a291/nixos/tests/oci-containers.nix#L66
 { config, lib, ... }:
 
