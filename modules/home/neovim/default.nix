@@ -38,6 +38,7 @@
             yamlls.enable = true;
           };
         };
+        web-devicons.enable = true;
       };
 
       clipboard.providers.wl-copy.enable = true;
