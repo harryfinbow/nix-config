@@ -15,10 +15,11 @@
         ".local/share/vulkan"
         ".local/share/zoxide"
         ".local/state/wireplumber"
+        ".librewolf"
         ".mozilla"
         ".runelite"
         ".ssh"
-        ".zen"
+        ".zen" # TODO: Remove this at some point
         "Games"
         "git"
 

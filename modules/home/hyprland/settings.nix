@@ -22,7 +22,7 @@
 
         # Programs
         "SUPER, Q, exec, alacritty"
-        "SUPER, B, exec, zen"
+        "SUPER, B, exec, librewolf"
         "SUPER, space, exec, rofi -show drun"
 
         # Workspaces

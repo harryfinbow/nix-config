@@ -8,6 +8,7 @@
     ./git
     ./hyprland
     ./impermanence
+    ./librewolf
     ./neovim
     ./starship
     ./theme
@@ -25,6 +26,7 @@
     git.enable = lib.mkDefault true;
     hyprland.enable = lib.mkDefault true;
     impermanence.enable = lib.mkDefault false;
+    librewolf.enable = lib.mkDefault true;
     neovim.enable = lib.mkDefault true;
     starship.enable = lib.mkDefault true;
     theme.enable = lib.mkDefault true;
