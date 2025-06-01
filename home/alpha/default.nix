@@ -24,8 +24,6 @@
       psmisc
 
       # Games
-      inputs.nix-citizen.packages.${pkgs.system}.star-citizen
-      inputs.nix-citizen.packages.${pkgs.system}.lug-helper
       runelite
     ];
   };

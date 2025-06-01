@@ -21,10 +21,8 @@
     microvm.url = "github:astro/microvm.nix";
     microvm.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix-gaming.url = "github:fufexan/nix-gaming";
-
-    nix-citizen.url = "github:LovingMelody/nix-citizen";
-    nix-citizen.inputs.nix-gaming.follows = "nix-gaming";
+    # /nix/store/prgaw5y3kjcf91y1ld5g9diqnambgyib-wine-tkg-full-10.8.drv fails to build
+    nix-gaming.url = "github:fufexan/nix-gaming?ref=a094fde06697aba9c514b627850261810e771495";
 
     nixos-generators.url = "github:nix-community/nixos-generators";
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";

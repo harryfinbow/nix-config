@@ -28,7 +28,6 @@ let
     home-manager.nixosModules.home-manager
     impermanence.nixosModules.impermanence
     microvm.nixosModules.host
-    nix-citizen.nixosModules.StarCitizen
     nixos-generators.nixosModules.all-formats
     stylix.nixosModules.stylix
   ];
