@@ -14,6 +14,8 @@
       ];
     };
 
+    age.identityPaths = [ "${config.users.users."${currentSystemUser}".home}/.ssh/id_ed25519" ];
+
     time.timeZone = "Europe/London";
     i18n.defaultLocale = "en_GB.UTF-8";
 

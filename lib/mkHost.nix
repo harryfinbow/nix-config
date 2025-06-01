@@ -23,9 +23,11 @@ let
   nixosSystem = nixpkgs.lib.nixosSystem;
 
   nixosModules = with inputs; [
+    agenix.nixosModules.default
     disko.nixosModules.default
     home-manager.nixosModules.home-manager
     impermanence.nixosModules.impermanence
+    microvm.nixosModules.host
     nixos-generators.nixosModules.all-formats
     stylix.nixosModules.stylix
   ];

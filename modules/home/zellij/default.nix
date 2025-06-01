@@ -16,8 +16,8 @@
 
     home = lib.mkIf config.modules.zellij.remote {
       sessionVariables = {
-        ZELLIJ_AUTO_ATTACH = "true";
-        ZELLIJ_AUTO_EXIT = "true";
+        ZELLIJ_AUTO_ATTACH = lib.mkForce "true";
+        ZELLIJ_AUTO_EXIT = lib.mkForce "true";
       };
     };
   };

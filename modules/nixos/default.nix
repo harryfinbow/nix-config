@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ lib, ... }:
 
 {
   imports = [
@@ -11,7 +11,6 @@
     ./hyprland
     ./impermanence
     ./logitech
-    ./minecraft
     ./networking
     ./nix
     ./nvidia
@@ -19,6 +18,7 @@
     ./steam
     ./theme
     ./users
+    ./vms/minecraft-server
   ];
 
   modules = {
@@ -31,13 +31,13 @@
     hyprland.enable = lib.mkDefault true;
     impermanence.enable = lib.mkDefault false;
     logitech.enable = lib.mkDefault false;
-    minecraft.enable = lib.mkDefault false;
     networking.enable = lib.mkDefault true;
     nix.enable = lib.mkDefault true;
     nvidia.enable = lib.mkDefault false;
     star-citizen.enable = lib.mkDefault false;
     steam.enable = lib.mkDefault false;
     theme.enable = lib.mkDefault true;
+    vm.minecraft-server.enable = lib.mkDefault false;
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

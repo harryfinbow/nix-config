@@ -20,6 +20,9 @@
 
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.46.2&submodules=1";
 
+    microvm.url = "github:astro/microvm.nix";
+    microvm.inputs.nixpkgs.follows = "nixpkgs";
+
     minix.url = "github:matt1432/minix";
 
     nix-gaming.url = "github:fufexan/nix-gaming";
