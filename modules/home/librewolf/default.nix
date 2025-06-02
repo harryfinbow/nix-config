@@ -22,6 +22,7 @@
         # UI
         "browser.ctrlTab.sortByRecentlyUsed" = true;
         "browser.toolbars.bookmarks.visibility" = "never";
+        "browser.startup.page" = 3; # Restore previous sessions on startup
         "sidebar.revamp" = true;
         "sidebar.verticalTabs" = true;
         "sidebar.visibility" = "always-show";
