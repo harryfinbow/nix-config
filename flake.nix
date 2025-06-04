@@ -70,6 +70,11 @@
         user = "harry";
       };
 
+      nixosConfigurations.foxtrot = mkHost "foxtrot" rec {
+        system = "x86_64-linux";
+        user = "harry";
+      };
+
 
       checks = forAllSystems (system: {
         pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
