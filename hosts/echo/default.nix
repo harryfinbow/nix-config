@@ -1,4 +1,4 @@
-{ config, lib, modulesPath, ... }:
+{ modulesPath, ... }:
 
 {
   imports = [ (modulesPath + "/virtualisation/openstack-config.nix") ];

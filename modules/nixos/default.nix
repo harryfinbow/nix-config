@@ -4,7 +4,6 @@
   imports = [
     ./audio
     ./boot
-    ./docker
     ./firewall
     ./fish
     ./gnome
@@ -18,13 +17,13 @@
     ./steam
     ./theme
     ./users
+    ./virtualisation
     ./vms/minecraft-server
   ];
 
   modules = {
     audio.enable = lib.mkDefault true;
     boot.enable = lib.mkDefault true;
-    docker.enable = lib.mkDefault true;
     firewall.enable = lib.mkDefault true;
     fish.enable = lib.mkDefault true;
     gnome.enable = lib.mkDefault false;
@@ -37,6 +36,7 @@
     star-citizen.enable = lib.mkDefault false;
     steam.enable = lib.mkDefault false;
     theme.enable = lib.mkDefault true;
+    virtualisation.enable = lib.mkDefault true;
     vm.minecraft-server.enable = lib.mkDefault false;
   };
 
