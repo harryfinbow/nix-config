@@ -10,6 +10,7 @@
       directories = [
         ".config/Bitwarden"
         ".config/vesktop"
+        ".config/VintagestoryData"
         ".config/WowUpCf"
         ".local/share/fish"
         ".local/share/vulkan"

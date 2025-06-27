@@ -17,4 +17,9 @@
 
   # TODO: Why did I add this?
   security.polkit.enable = true;
+
+  # Required for Vintage Story
+  nixpkgs.config.permittedInsecurePackages = [
+    "dotnet-runtime-7.0.20"
+  ];
 }

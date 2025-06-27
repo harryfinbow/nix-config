@@ -25,6 +25,7 @@
 
       # Games
       runelite
+      vintagestory
     ];
   };
 }
