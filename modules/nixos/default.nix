@@ -17,6 +17,7 @@
     ./steam
     ./theme
     ./users
+    ./vintagestory
     ./virtualisation
     ./vms/minecraft-server
   ];
@@ -36,6 +37,7 @@
     star-citizen.enable = lib.mkDefault false;
     steam.enable = lib.mkDefault false;
     theme.enable = lib.mkDefault true;
+    vintagestory.enable = lib.mkDefault false;
     virtualisation.enable = lib.mkDefault true;
     vm.minecraft-server.enable = lib.mkDefault false;
   };

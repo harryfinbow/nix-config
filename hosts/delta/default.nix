@@ -9,6 +9,7 @@
     audio.enable = false;
     hyprland.enable = false;
     vm.minecraft-server.enable = true;
+    vintagestory.enable = true;
   };
 
   services.openssh = {
@@ -33,4 +34,9 @@
       };
     };
   };
+
+  # Required for Vintage Story
+  nixpkgs.config.permittedInsecurePackages = [
+    "dotnet-runtime-7.0.20"
+  ];
 }

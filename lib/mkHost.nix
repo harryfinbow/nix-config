@@ -3,6 +3,7 @@
 name:
 { system
 , user
+, nixpkgsOverride
 }:
 
 let
@@ -20,7 +21,7 @@ let
     currentSystemUser = user;
   };
 
-  nixosSystem = nixpkgs.lib.nixosSystem;
+  nixosSystem = if nixpkgsOverride != "" then inputs.${nixpkgsOverride}.lib.nixosSystem else nixpkgs.lib.nixosSystem;
 
   nixosModules = with inputs; [
     agenix.nixosModules.default

@@ -793,7 +793,8 @@
         "nixpkgs": "nixpkgs_3",
         "nixvim": "nixvim",
         "pre-commit-hooks": "pre-commit-hooks",
-        "stylix": "stylix"
+        "stylix": "stylix",
+        "vintagestory": "vintagestory"
       }
     },
     "spectrum": {
@@ -1022,6 +1023,22 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "vintagestory": {
+      "locked": {
+        "lastModified": 1750697927,
+        "narHash": "sha256-VcMa+ej9yjq05aGL56n9+f5YMEffIi8otBxHrwT1C8U=",
+        "owner": "dtomvan",
+        "repo": "nixpkgs",
+        "rev": "e29d673ab2265008ecfb91cbe97620fa71ba8ced",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dtomvan",
+        "ref": "vintagestory-module",
+        "repo": "nixpkgs",
         "type": "github"
       }
     }

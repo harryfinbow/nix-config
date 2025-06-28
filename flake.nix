@@ -32,6 +32,9 @@
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
 
     stylix.url = "github:danth/stylix";
+
+    # https://github.com/NixOS/nixpkgs/pull/414845
+    vintagestory.url = "github:dtomvan/nixpkgs/vintagestory-module";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
@@ -63,6 +66,7 @@
       nixosConfigurations.delta = mkHost "delta" rec {
         system = "x86_64-linux";
         user = "harry";
+        nixpkgsOverride = "vintagestory";
       };
 
       nixosConfigurations.echo = mkHost "echo" rec {
