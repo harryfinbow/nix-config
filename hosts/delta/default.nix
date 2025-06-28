@@ -8,7 +8,7 @@
   modules = {
     audio.enable = false;
     hyprland.enable = false;
-    vm.minecraft-server.enable = true;
+    vm.minecraft-server.enable = false;
     vintagestory.enable = true;
   };
 
