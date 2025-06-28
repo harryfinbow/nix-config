@@ -4,6 +4,7 @@
   imports = [
     ./audio
     ./boot
+    ./ddclient
     ./firewall
     ./fish
     ./gnome
@@ -25,6 +26,7 @@
   modules = {
     audio.enable = lib.mkDefault true;
     boot.enable = lib.mkDefault true;
+    ddclient.enable = lib.mkDefault false;
     firewall.enable = lib.mkDefault true;
     fish.enable = lib.mkDefault true;
     gnome.enable = lib.mkDefault false;
