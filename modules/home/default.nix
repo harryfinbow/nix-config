@@ -6,6 +6,7 @@
     ./desktop
     ./fish
     ./git
+    ./helix
     ./hyprland
     ./impermanence
     ./librewolf
@@ -24,6 +25,7 @@
     desktop.enable = lib.mkDefault true;
     fish.enable = lib.mkDefault true;
     git.enable = lib.mkDefault true;
+    helix.enable = lib.mkDefault true;
     hyprland.enable = lib.mkDefault true;
     impermanence.enable = lib.mkDefault false;
     librewolf.enable = lib.mkDefault true;
