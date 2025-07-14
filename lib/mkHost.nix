@@ -3,7 +3,6 @@
 name:
 { system
 , user
-, nixpkgsOverride
 }:
 
 let
@@ -21,7 +20,7 @@ let
     currentSystemUser = user;
   };
 
-  nixosSystem = if nixpkgsOverride != "" then inputs.${nixpkgsOverride}.lib.nixosSystem else nixpkgs.lib.nixosSystem;
+  nixosSystem = nixpkgs.lib.nixosSystem;
 
   nixosModules = with inputs; [
     agenix.nixosModules.default
@@ -31,6 +30,7 @@ let
     microvm.nixosModules.host
     nixos-generators.nixosModules.all-formats
     stylix.nixosModules.stylix
+    vs2nix.nixosModules.default
   ];
 
   homeManagerModules = with inputs; [

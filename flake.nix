@@ -34,7 +34,7 @@
     stylix.url = "github:danth/stylix";
 
     # https://github.com/NixOS/nixpkgs/pull/414845
-    vintagestory.url = "github:dtomvan/nixpkgs/vintagestory-module";
+    vs2nix.url = "github:dtomvan/vs2nix";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
