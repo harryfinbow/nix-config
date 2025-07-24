@@ -1,4 +1,8 @@
-{ config, lib, ... }:
+{ config
+, lib
+, pkgs
+, ...
+}:
 
 {
   options.modules.helix = {
@@ -8,6 +12,18 @@
   config = lib.mkIf config.modules.helix.enable {
     programs.helix = {
       enable = true;
+      extraPackages = with pkgs; [
+        # Go
+        gopls
+        gotools
+
+        # Markdown
+        marksman
+
+        # Nix
+        nil
+        nixfmt-rfc-style
+      ];
       settings = {
         editor = {
           line-number = "relative";
@@ -15,10 +31,31 @@
         };
       };
       languages = {
-        language = [{
-          name = "yaml";
-          file-types = [ "yml" "yaml" "bst" "conf" ]; # Add Buildstream support
-        }];
+        language = [
+          {
+            name = "go";
+            auto-format = true;
+            formatter = {
+              command = lib.getExe' pkgs.gotools "goimports";
+            };
+          }
+          {
+            name = "nix";
+            auto-format = true;
+            formatter = {
+              command = lib.getExe pkgs.nixfmt-rfc-style;
+            };
+          }
+          {
+            name = "yaml";
+            file-types = [
+              "yml"
+              "yaml"
+              "bst"
+              "conf"
+            ]; # Add Buildstream support
+          }
+        ];
       };
     };
   };
