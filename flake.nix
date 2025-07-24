@@ -37,14 +37,19 @@
     vs2nix.url = "github:dtomvan/vs2nix";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs =
+    { self, nixpkgs, ... }@inputs:
     let
       mkHost = import ./lib/mkHost.nix { inherit nixpkgs inputs self; };
       mkHome = import ./lib/mkHome.nix { inherit nixpkgs inputs self; };
       mkDarwin = import ./lib/mkDarwin.nix { inherit nixpkgs inputs self; };
 
-      supportedSystems =
-        [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
+      supportedSystems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
     in
     {
@@ -79,7 +84,6 @@
         user = "harry";
       };
 
-
       checks = forAllSystems (system: {
         pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
           src = ./.;
@@ -87,7 +91,7 @@
             end-of-file-fixer.enable = true;
             trim-trailing-whitespace.enable = true;
 
-            nixpkgs-fmt.enable = true;
+            nixfmt-rfc-style.enable = true;
           };
         };
       });
