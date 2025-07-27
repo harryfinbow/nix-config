@@ -15,13 +15,16 @@
       userName = lib.mkForce null;
       userEmail = lib.mkForce null;
 
-      extraConfig.url."git@personal.github.com:harryfinbow".insteadOf =
-        "git@github.com:harryfinbow";
+      extraConfig.url."git@personal.github.com:harryfinbow".insteadOf = "git@github.com:harryfinbow";
 
       includes = [
         { path = "${config.home.homeDirectory}/.config/git/config.work"; }
         {
-          contents = { user = { email = "harry@finbow.dev"; }; };
+          contents = {
+            user = {
+              email = "harry@finbow.dev";
+            };
+          };
           condition = "hasconfig:remote.*.url:git@*:harryfinbow/*";
         }
       ];

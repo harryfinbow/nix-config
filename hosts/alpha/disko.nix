@@ -1,6 +1,8 @@
-{ device ? "dev/nvme0n1"
-, ...
-}: {
+{
+  device ? "dev/nvme0n1",
+  ...
+}:
+{
   disko.devices = {
     disk = {
       main = {
@@ -29,11 +31,17 @@
                     mountpoint = "/";
                   };
                   "/nix" = {
-                    mountOptions = [ "compress=zstd" "noatime" ];
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                    ];
                     mountpoint = "/nix";
                   };
                   "/persist" = {
-                    mountOptions = [ "compress=zstd" "noatime" ];
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                    ];
                     mountpoint = "/persist";
                   };
                 };

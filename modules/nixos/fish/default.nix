@@ -1,4 +1,10 @@
-{ pkgs, lib, config, currentSystemUser, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  currentSystemUser,
+  ...
+}:
 
 {
   options.modules.fish = {

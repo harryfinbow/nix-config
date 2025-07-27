@@ -1,6 +1,8 @@
-{ device ? "dev/nvme0n1"
-, ...
-}: {
+{
+  device ? "dev/nvme0n1",
+  ...
+}:
+{
   disko.devices = {
     disk = {
       main = {
@@ -25,7 +27,10 @@
                 type = "btrfs";
                 extraArgs = [ "-f" ]; # Override existing partition
                 mountpoint = "/";
-                mountOptions = [ "compress=zstd" "noatime" ];
+                mountOptions = [
+                  "compress=zstd"
+                  "noatime"
+                ];
               };
             };
             swap = {

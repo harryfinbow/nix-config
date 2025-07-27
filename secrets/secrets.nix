@@ -10,7 +10,22 @@ let
   minecraft-server = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIS89xEADvGWof1OBRgdaJ3+h7Zvu1CGBSGFnFta/k3/";
 in
 {
-  "ddclient.age".publicKeys = [ alpha delta minecraft-server ];
-  "wallpaper.age".publicKeys = [ alpha bravo echo foxtrot ]; # https://byamarmuric.gumroad.com/l/beautiful-topo-wallpaper-pack
-  "work.git.age".publicKeys = [ alpha bravo echo ];
+  "ddclient.age".publicKeys = [
+    alpha
+    delta
+    minecraft-server
+  ];
+
+  "wallpaper.age".publicKeys = [
+    alpha
+    bravo
+    echo
+    foxtrot
+  ]; # https://byamarmuric.gumroad.com/l/beautiful-topo-wallpaper-pack
+
+  "work.git.age".publicKeys = [
+    alpha
+    bravo
+    echo
+  ];
 }

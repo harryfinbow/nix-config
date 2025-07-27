@@ -1,4 +1,9 @@
-{ lib, config, currentSystemUser, ... }:
+{
+  lib,
+  config,
+  currentSystemUser,
+  ...
+}:
 
 {
   options.modules.virtualisation = {

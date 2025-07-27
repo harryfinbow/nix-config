@@ -75,9 +75,18 @@
         };
 
         on-window-detected = [
-          { "if".app-id = "com.apple.finder"; run = [ "layout floating" ]; }
-          { "if".app-id = "com.kagi.kagimacOS"; run = [ "move-node-to-workspace 1" ]; }
-          { "if".app-id = "us.zoom.xos"; run = [ "move-node-to-workspace z" ]; }
+          {
+            "if".app-id = "com.apple.finder";
+            run = [ "layout floating" ];
+          }
+          {
+            "if".app-id = "com.kagi.kagimacOS";
+            run = [ "move-node-to-workspace 1" ];
+          }
+          {
+            "if".app-id = "us.zoom.xos";
+            run = [ "move-node-to-workspace z" ];
+          }
         ];
       };
     };

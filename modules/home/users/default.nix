@@ -1,4 +1,10 @@
-{ currentSystem, currentSystemUser, config, lib, ... }:
+{
+  currentSystem,
+  currentSystemUser,
+  config,
+  lib,
+  ...
+}:
 
 let
   homeDirPrefix = if lib.hasSuffix "darwin" currentSystem then "Users" else "home";

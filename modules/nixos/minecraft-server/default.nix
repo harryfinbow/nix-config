@@ -25,7 +25,9 @@
 
     networking.firewall.allowedTCPPorts = [ 25565 ];
 
-    systemd.tmpfiles.rules = [ "d /var/lib/containers/minecraft-server/data 0700 minecraft-server minecraft-server -" ];
+    systemd.tmpfiles.rules = [
+      "d /var/lib/containers/minecraft-server/data 0700 minecraft-server minecraft-server -"
+    ];
 
     virtualisation = {
       containers.enable = true;

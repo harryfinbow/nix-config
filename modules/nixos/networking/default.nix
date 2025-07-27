@@ -1,4 +1,9 @@
-{ lib, config, currentSystemName, ... }:
+{
+  lib,
+  config,
+  currentSystemName,
+  ...
+}:
 
 {
   options.modules.networking = {

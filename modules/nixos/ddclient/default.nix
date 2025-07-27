@@ -1,4 +1,9 @@
-{ self, lib, config, ... }:
+{
+  self,
+  lib,
+  config,
+  ...
+}:
 
 {
 

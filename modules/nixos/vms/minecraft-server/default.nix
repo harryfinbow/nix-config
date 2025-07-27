@@ -1,4 +1,11 @@
-{ self, config, inputs, lib, modulesPath, ... }:
+{
+  self,
+  config,
+  inputs,
+  lib,
+  modulesPath,
+  ...
+}:
 
 let
   data-path = "/var/lib/containers/minecraft-server/data";
@@ -49,15 +56,17 @@ in
             ];
 
             # Attach directly to physical interface
-            interfaces = [{
-              id = "vm-mc-server";
-              mac = "02:01:8a:15:cd:28"; # Randomly generated with VM prefix (02)
-              type = "macvtap";
-              macvtap = {
-                mode = "private";
-                link = "enp1s0";
-              };
-            }];
+            interfaces = [
+              {
+                id = "vm-mc-server";
+                mac = "02:01:8a:15:cd:28"; # Randomly generated with VM prefix (02)
+                type = "macvtap";
+                macvtap = {
+                  mode = "private";
+                  link = "enp1s0";
+                };
+              }
+            ];
           };
 
           fileSystems."/persist".neededForBoot = lib.mkForce true;

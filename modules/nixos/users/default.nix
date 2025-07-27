@@ -1,11 +1,20 @@
-{ lib, config, currentSystemUser, ... }:
+{
+  lib,
+  config,
+  currentSystemUser,
+  ...
+}:
 
 {
   config = {
     users.users."${currentSystemUser}" = {
       initialPassword = "PepsiMax!";
       isNormalUser = true;
-      extraGroups = [ "networkmanager" "wheel" "input" ];
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "input"
+      ];
 
       # TODO: Move public keys to `keys` folder
       openssh.authorizedKeys.keys = [

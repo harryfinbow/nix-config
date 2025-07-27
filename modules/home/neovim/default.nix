@@ -10,7 +10,9 @@
       enable = true;
       defaultEditor = true;
       colorschemes.nord.enable = true;
-      filetype.pattern = { ".*.bst" = "yaml"; };
+      filetype.pattern = {
+        ".*.bst" = "yaml";
+      };
 
       opts = {
         number = true;

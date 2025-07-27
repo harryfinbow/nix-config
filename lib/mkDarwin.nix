@@ -1,8 +1,13 @@
-{ nixpkgs, inputs, self }:
+{
+  nixpkgs,
+  inputs,
+  self,
+}:
 
 name:
-{ system
-, user
+{
+  system,
+  user,
 }:
 
 let

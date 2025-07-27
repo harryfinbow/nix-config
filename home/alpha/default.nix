@@ -1,11 +1,16 @@
-{ config, inputs, lib, pkgs, ... }:
+{
+  config,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   # Enable additional modules
   modules = {
     impermanence.enable = true;
   };
-
 
   home = {
     packages = with pkgs; [

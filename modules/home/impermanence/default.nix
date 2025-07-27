@@ -1,4 +1,9 @@
-{ config, inputs, lib, ... }:
+{
+  config,
+  inputs,
+  lib,
+  ...
+}:
 
 {
   options.modules.impermanence = {
@@ -24,7 +29,10 @@
         "Games"
         "git"
 
-        { directory = ".local/share/Steam"; method = "symlink"; }
+        {
+          directory = ".local/share/Steam";
+          method = "symlink";
+        }
       ];
 
       allowOther = true;
