@@ -30,5 +30,11 @@
 
       };
     };
+
+    # https://github.com/adriankarlen/textfox/pull/120
+    # textfox = {
+    #   enable = true;
+    #   profile = "default";
+    # };
   };
 }

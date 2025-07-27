@@ -1,8 +1,13 @@
-{ nixpkgs, inputs, self }:
+{
+  nixpkgs,
+  inputs,
+  self,
+}:
 
 name:
-{ system
-, user
+{
+  system,
+  user,
 }:
 
 let
@@ -37,6 +42,7 @@ let
     agenix.homeManagerModules.default
     impermanence.nixosModules.home-manager.impermanence
     nixvim.homeManagerModules.nixvim
+    textfox.homeManagerModules.default
   ];
 
 in

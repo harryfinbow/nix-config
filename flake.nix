@@ -33,6 +33,8 @@
 
     stylix.url = "github:danth/stylix";
 
+    textfox.url = "github:adriankarlen/textfox";
+
     # https://github.com/NixOS/nixpkgs/pull/414845
     vs2nix.url = "github:dtomvan/vs2nix";
   };

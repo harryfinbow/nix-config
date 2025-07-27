@@ -6,7 +6,7 @@
       exec-once = "wl-paste -t text -w xclip -selection clipboard";
 
       # Disable all animations
-      animation = [ "global, off" ];
+      animation = [ "global, on, 2, default" ];
 
       bind = [
         # Main
@@ -67,11 +67,20 @@
       ];
 
       decoration = {
-        rounding = 0;
+        rounding = 8;
+        active_opacity = 0.9;
+        inactive_opacity = 0.8;
+        fullscreen_opacity = 1.0;
+
+        blur = {
+          enabled = true;
+          passes = 3;
+        };
       };
 
       general = {
-        "col.active_border" = lib.mkForce "0xffffffff";
+        border_size = 3;
+        "col.active_border" = lib.mkForce "rgb(${config.lib.stylix.colors.base07})";
       };
 
       input = {
@@ -79,10 +88,11 @@
         accel_profile = "flat";
       };
 
-      windowrulev2 = [
+      windowrule = [
         # Picture-in-picture
         "float, title:^(Picture-in-Picture)$"
         "pin, title:^(Picture-in-Picture)$"
+        "opacity 1.0 override 1.0 override,title:(.*)(YouTube)(.*)"
       ];
 
       # Not really compatible with impermanence
