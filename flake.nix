@@ -73,7 +73,6 @@
       nixosConfigurations.delta = mkHost "delta" rec {
         system = "x86_64-linux";
         user = "harry";
-        nixpkgsOverride = "vintagestory";
       };
 
       nixosConfigurations.echo = mkHost "echo" rec {
