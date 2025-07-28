@@ -24,6 +24,9 @@
         # Nix
         nil
         nixfmt-rfc-style
+
+        # Yaml
+        yaml-language-server
       ];
       settings = {
         editor = {
