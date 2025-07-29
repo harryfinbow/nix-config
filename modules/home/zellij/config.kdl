@@ -1,3 +1,7 @@
+layout {
+    pane borderless=true
+}
+
 keybinds clear-defaults=true {
     locked {
         bind "Ctrl Shift g" { SwitchToMode "normal"; }
@@ -249,9 +253,16 @@ plugins {
     strider location="zellij:strider"
     tab-bar location="zellij:tab-bar"
     welcome-screen location="zellij:session-manager" {
-        welcome_screen true
+        welcome_screen false
     }
 }
+
+// Show usage tips on Zellij startup
+// Options:
+//   - true (Default)
+//   - false
+
+show_startup_tips false
 
 // Plugins to load in the background when a new session starts
 // eg. "file:/path/to/my-plugin.wasm"
@@ -287,8 +298,8 @@ default_mode "normal"
 
 // The name of the default layout to load on startup
 // Default: "default"
-//
-// default_layout "compact"
+
+default_layout "minimal"
 
 // The folder in which Zellij will look for layouts
 // (Requires restart)
