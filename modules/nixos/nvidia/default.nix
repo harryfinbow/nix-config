@@ -1,12 +1,13 @@
 { lib, config, ... }:
 
 {
+  imports = [ ./fan-controller.nix ];
+
   options.modules.nvidia = {
     enable = lib.mkEnableOption "enables nvidia";
   };
 
   config = lib.mkIf config.modules.nvidia.enable {
-
     hardware = {
       nvidia = {
         # Modesetting is required.
