@@ -68,6 +68,8 @@
 
           alt-shift-f = "fullscreen";
 
+          alt-v = "layout floating tiling";
+
           # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
           alt-tab = "workspace-back-and-forth";
           # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
