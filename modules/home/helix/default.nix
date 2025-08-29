@@ -25,6 +25,11 @@
         nil
         nixfmt-rfc-style
 
+        # Python
+        ruff
+        python3Packages.jedi-language-server
+        python3Packages.python-lsp-server
+
         # Yaml
         yaml-language-server
       ];
