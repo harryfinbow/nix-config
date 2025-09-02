@@ -4,6 +4,7 @@
   imports = [
     ./audio
     ./boot
+    ./caddy
     ./ddclient
     ./firewall
     ./fish
@@ -26,6 +27,7 @@
   modules = {
     audio.enable = lib.mkDefault true;
     boot.enable = lib.mkDefault true;
+    caddy.enable = lib.mkDefault false;
     ddclient.enable = lib.mkDefault false;
     firewall.enable = lib.mkDefault true;
     fish.enable = lib.mkDefault true;

@@ -10,6 +10,11 @@ let
   minecraft-server = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIS89xEADvGWof1OBRgdaJ3+h7Zvu1CGBSGFnFta/k3/";
 in
 {
+  "caddy.age".publicKeys = [
+    alpha
+    delta
+  ];
+
   "ddclient.age".publicKeys = [
     alpha
     delta

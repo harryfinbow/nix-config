@@ -7,7 +7,8 @@
   # Configure modules
   modules = {
     audio.enable = false;
-    ddclient.enable = true;
+    caddy.enable = true;
+    ddclient.enable = false;
     hyprland.enable = false;
     vm.minecraft-server.enable = false;
     vintagestory.enable = true;
