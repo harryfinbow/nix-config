@@ -9,6 +9,7 @@
     actual.enable = true;
     audio.enable = false;
     caddy.enable = true;
+    glance.enable = true;
     ddclient.enable = false;
     hyprland.enable = false;
     vm.minecraft-server.enable = false;

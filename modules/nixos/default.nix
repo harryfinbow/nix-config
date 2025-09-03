@@ -9,6 +9,7 @@
     ./ddclient
     ./firewall
     ./fish
+    ./glance
     ./gnome
     ./hyprland
     ./impermanence
@@ -33,6 +34,7 @@
     ddclient.enable = lib.mkDefault false;
     firewall.enable = lib.mkDefault true;
     fish.enable = lib.mkDefault true;
+    glance.enable = lib.mkDefault false;
     gnome.enable = lib.mkDefault false;
     hyprland.enable = lib.mkDefault true;
     impermanence.enable = lib.mkDefault false;
