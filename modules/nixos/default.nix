@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./actual
     ./audio
     ./boot
     ./caddy
@@ -25,6 +26,7 @@
   ];
 
   modules = {
+    actual.enable = lib.mkDefault false;
     audio.enable = lib.mkDefault true;
     boot.enable = lib.mkDefault true;
     caddy.enable = lib.mkDefault false;

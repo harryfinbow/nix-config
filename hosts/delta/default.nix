@@ -6,6 +6,7 @@
 
   # Configure modules
   modules = {
+    actual.enable = true;
     audio.enable = false;
     caddy.enable = true;
     ddclient.enable = false;
