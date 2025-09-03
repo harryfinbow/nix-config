@@ -12,6 +12,7 @@
     glance.enable = true;
     ddclient.enable = false;
     hyprland.enable = false;
+    uptime-kuma.enable = true;
     vm.minecraft-server.enable = false;
     vintagestory.enable = true;
   };
