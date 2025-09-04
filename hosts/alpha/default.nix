@@ -18,6 +18,7 @@
     steam.enable = true;
     logitech.enable = true;
     nvidia.enable = true;
+    orcaslicer.enable = true;
   };
 
   # TODO: Why did I add this?

@@ -17,6 +17,7 @@
     ./networking
     ./nix
     ./nvidia
+    ./orcaslicer
     ./star-citizen
     ./steam
     ./theme
@@ -43,6 +44,7 @@
     networking.enable = lib.mkDefault true;
     nix.enable = lib.mkDefault true;
     nvidia.enable = lib.mkDefault false;
+    orcaslicer.enable = lib.mkDefault false;
     star-citizen.enable = lib.mkDefault false;
     steam.enable = lib.mkDefault false;
     theme.enable = lib.mkDefault true;
