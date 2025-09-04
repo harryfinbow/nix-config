@@ -6,8 +6,8 @@
   };
 
   config = lib.mkIf config.modules.work.enable {
-    age.secrets.git-config = {
-      file = ../../../secrets/work.git.age;
+    age.secrets.git = {
+      file = ../../../secrets/git.age;
       path = "${config.home.homeDirectory}/.config/git/config.work";
     };
 
