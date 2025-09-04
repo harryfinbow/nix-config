@@ -5,6 +5,6 @@
   modules = {
     desktop.enable = false;
     hyprland.enable = false;
-    zellij.remote = true;
+    zellij.autoAttach = true;
   };
 }
