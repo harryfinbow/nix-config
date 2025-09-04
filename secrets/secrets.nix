@@ -12,11 +12,6 @@ in
     delta
   ];
 
-  "ddclient.age".publicKeys = [
-    alpha
-    delta
-  ];
-
   "git.age".publicKeys = [
     alpha
     bravo
