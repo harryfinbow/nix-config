@@ -43,7 +43,6 @@
     { self, nixpkgs, ... }@inputs:
     let
       mkHost = import ./lib/mkHost.nix { inherit nixpkgs inputs self; };
-      mkHome = import ./lib/mkHome.nix { inherit nixpkgs inputs self; };
       mkDarwin = import ./lib/mkDarwin.nix { inherit nixpkgs inputs self; };
 
       supportedSystems = [
@@ -55,32 +54,32 @@
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
     in
     {
-      nixosConfigurations.alpha = mkHost "alpha" rec {
+      nixosConfigurations.alpha = mkHost "alpha" {
         system = "x86_64-linux";
         user = "harry";
       };
 
-      darwinConfigurations.bravo = mkDarwin "bravo" rec {
+      darwinConfigurations.bravo = mkDarwin "bravo" {
         system = "aarch64-darwin";
         user = "harryf";
       };
 
-      nixosConfigurations.charlie = mkHost "charlie" rec {
+      nixosConfigurations.charlie = mkHost "charlie" {
         system = "aarch64-linux";
         user = "harry";
       };
 
-      nixosConfigurations.delta = mkHost "delta" rec {
+      nixosConfigurations.delta = mkHost "delta" {
         system = "x86_64-linux";
         user = "harry";
       };
 
-      nixosConfigurations.echo = mkHost "echo" rec {
+      nixosConfigurations.echo = mkHost "echo" {
         system = "x86_64-linux";
         user = "harry";
       };
 
-      nixosConfigurations.foxtrot = mkHost "foxtrot" rec {
+      nixosConfigurations.foxtrot = mkHost "foxtrot" {
         system = "x86_64-linux";
         user = "harry";
       };
