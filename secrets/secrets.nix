@@ -17,4 +17,9 @@ in
     bravo
     echo
   ];
+
+  "glance.age".publicKeys = [
+    alpha
+    delta
+  ];
 }

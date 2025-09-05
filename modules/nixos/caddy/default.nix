@@ -42,6 +42,10 @@
       virtualHosts."*.{$BASE_DOMAIN}".extraConfig = ''
         respond "Not found" 404
       '';
+
+      virtualHosts."health.{$BASE_DOMAIN}".extraConfig = ''
+        respond 200
+      '';
     };
 
     age.secrets.caddy.file = (self + "/secrets/caddy.age");
