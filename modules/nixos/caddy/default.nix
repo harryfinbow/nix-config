@@ -12,6 +12,8 @@
   };
 
   config = lib.mkIf config.modules.caddy.enable {
+    age.secrets.caddy.file = (self + "/secrets/caddy.age");
+
     services.caddy = {
       enable = true;
       package = pkgs.caddy.withPlugins {
@@ -48,7 +50,6 @@
       '';
     };
 
-    age.secrets.caddy.file = (self + "/secrets/caddy.age");
     systemd.services.caddy.serviceConfig.EnvironmentFile = [ config.age.secrets.caddy.path ];
 
     networking.firewall.allowedTCPPorts = [

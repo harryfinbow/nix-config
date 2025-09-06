@@ -33,6 +33,7 @@ let
     home-manager.nixosModules.home-manager
     impermanence.nixosModules.impermanence
     microvm.nixosModules.host
+    nixarr.nixosModules.default
     nixos-generators.nixosModules.all-formats
     stylix.nixosModules.stylix
     vs2nix.nixosModules.default

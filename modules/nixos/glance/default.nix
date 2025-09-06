@@ -15,6 +15,8 @@
   };
 
   config = lib.mkIf config.modules.glance.enable {
+    age.secrets.glance.file = (self + "/secrets/glance.age");
+
     services.glance = {
       enable = true;
       settings = {
@@ -42,6 +44,21 @@
                         title = "Caddy";
                         url = "https://health.\${BASE_DOMAIN}";
                         icon = "si:caddy";
+                      }
+                      {
+                        title = "Prowlarr";
+                        url = "https://indexers.\${BASE_DOMAIN}";
+                        icon = "si:prowlarr";
+                      }
+                      {
+                        title = "Radarr";
+                        url = "https://movies.\${BASE_DOMAIN}";
+                        icon = "si:radarr";
+                      }
+                      {
+                        title = "Transmission";
+                        url = "https://torrents.\${BASE_DOMAIN}";
+                        icon = "si:transmission";
                       }
                     ];
                   }
@@ -87,6 +104,15 @@
                     units = "metric";
                     hour-format = "24h";
                   }
+                  {
+                    type = "server-stats";
+                    servers = [
+                      {
+                        type = "local";
+                        name = "Delta";
+                      }
+                    ];
+                  }
                 ];
               }
             ];
@@ -101,7 +127,6 @@
       '';
     };
 
-    age.secrets.glance.file = (self + "/secrets/glance.age");
     systemd.services.glance.serviceConfig.EnvironmentFile = [ config.age.secrets.glance.path ];
 
     environment.persistence = lib.mkIf config.modules.impermanence.enable {

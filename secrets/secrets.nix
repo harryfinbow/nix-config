@@ -22,4 +22,14 @@ in
     alpha
     delta
   ];
+
+  "transmission.age".publicKeys = [
+    alpha
+    delta
+  ];
+
+  "vpn.age".publicKeys = [
+    alpha
+    delta
+  ];
 }

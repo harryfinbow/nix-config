@@ -27,6 +27,8 @@
     nixos-generators.url = "github:nix-community/nixos-generators";
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
 
+    nixarr.url = "github:rasmus-kirk/nixarr";
+
     nixvim.url = "github:nix-community/nixvim";
 
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
@@ -34,6 +36,8 @@
     stylix.url = "github:danth/stylix";
 
     textfox.url = "github:adriankarlen/textfox";
+
+    transmission-protonvpn.url = "github:pborzenkov/transmission-protonvpn-nat-pmp";
 
     # https://github.com/NixOS/nixpkgs/pull/414845
     vs2nix.url = "github:dtomvan/vs2nix";

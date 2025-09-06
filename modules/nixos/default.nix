@@ -15,6 +15,7 @@
     ./logitech
     ./networking
     ./nix
+    ./nixarr
     ./nvidia
     ./orcaslicer
     ./star-citizen
@@ -41,6 +42,7 @@
     logitech.enable = lib.mkDefault false;
     networking.enable = lib.mkDefault true;
     nix.enable = lib.mkDefault true;
+    nixarr.enable = lib.mkDefault false;
     nvidia.enable = lib.mkDefault false;
     orcaslicer.enable = lib.mkDefault false;
     star-citizen.enable = lib.mkDefault false;
