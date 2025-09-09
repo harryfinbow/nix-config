@@ -32,6 +32,10 @@
         editor = {
           line-number = "relative";
           true-color = true; # Required for most themes (including `stylix`)
+          bufferline = "always";
+        };
+        editor.file-picker = {
+          hidden = false;
         };
       };
       languages = {
