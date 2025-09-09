@@ -28,6 +28,11 @@
         "Games"
         "git"
 
+        # Steam Games
+        ".config/unity3d/Ludeon Studios/RimWorld by Ludeon Studios" # Rimworld
+        ".config/unity3d/Team Cherry/Hollow Knight" # Hollow Knight
+        ".factorio" # Factorio
+
         {
           directory = ".local/share/Steam";
           method = "symlink";
