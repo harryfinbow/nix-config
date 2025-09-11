@@ -30,6 +30,11 @@
         gr = "git rebase";
         gro = "git rebase origin/main";
         gru = "git remote update";
+
+        gc = {
+          expansion = "git commit -m \"%\"";
+          setCursor = true;
+        };
       };
     };
   };
