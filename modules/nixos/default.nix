@@ -12,6 +12,7 @@
     ./gnome
     ./hyprland
     ./impermanence
+    ./linkding
     ./logitech
     ./networking
     ./nix
@@ -39,6 +40,7 @@
     gnome.enable = lib.mkDefault false;
     hyprland.enable = lib.mkDefault true;
     impermanence.enable = lib.mkDefault false;
+    linkding.enable = lib.mkDefault false;
     logitech.enable = lib.mkDefault false;
     networking.enable = lib.mkDefault true;
     nix.enable = lib.mkDefault true;

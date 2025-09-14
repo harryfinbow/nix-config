@@ -23,6 +23,11 @@ in
     delta
   ];
 
+  "linkding.age".publicKeys = [
+    alpha
+    delta
+  ];
+
   "transmission.age".publicKeys = [
     alpha
     delta

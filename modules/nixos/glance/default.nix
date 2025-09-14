@@ -46,6 +46,11 @@
                         icon = "si:caddy";
                       }
                       {
+                        title = "Linkding";
+                        url = "https://bookmarks.\${BASE_DOMAIN}";
+                        icon = "si:linkding";
+                      }
+                      {
                         title = "Prowlarr";
                         url = "https://indexers.\${BASE_DOMAIN}";
                         icon = "si:prowlarr";

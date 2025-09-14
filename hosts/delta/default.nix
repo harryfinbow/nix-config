@@ -11,6 +11,7 @@
     caddy.enable = true;
     glance.enable = true;
     hyprland.enable = false;
+    linkding.enable = true;
     nixarr.enable = true;
     uptime-kuma.enable = true;
     vm.minecraft-server.enable = false;
