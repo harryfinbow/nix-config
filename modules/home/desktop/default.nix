@@ -13,6 +13,7 @@
   config = lib.mkIf config.modules.desktop.enable {
     home.packages = with pkgs; [
       bitwarden-desktop
+      obsidian
     ];
   };
 }

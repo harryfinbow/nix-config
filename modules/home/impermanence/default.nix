@@ -27,6 +27,7 @@
         ".zen" # TODO: Remove this at some point
         "Games"
         "git"
+        "notes"
 
         # Steam Games
         ".config/unity3d/Ludeon Studios/RimWorld by Ludeon Studios" # Rimworld
