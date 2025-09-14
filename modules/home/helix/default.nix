@@ -13,6 +13,7 @@
   config = lib.mkIf config.modules.helix.enable {
     programs.helix = {
       enable = true;
+      defaultEditor = true;
       extraPackages = with pkgs; [
         # Go
         gopls

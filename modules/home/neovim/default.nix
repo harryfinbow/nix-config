@@ -8,7 +8,6 @@
   config = lib.mkIf config.modules.neovim.enable {
     programs.nixvim = {
       enable = true;
-      defaultEditor = true;
       colorschemes.nord.enable = true;
       filetype.pattern = {
         ".*.bst" = "yaml";
