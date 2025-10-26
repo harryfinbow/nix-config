@@ -25,7 +25,7 @@ let
     hyprland.homeManagerModules.default
     agenix.homeManagerModules.default
     impermanence.nixosModules.home-manager.impermanence
-    nixvim.homeManagerModules.nixvim
+    nixvim.homeModules.nixvim
   ];
 
 in

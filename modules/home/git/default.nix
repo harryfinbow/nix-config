@@ -8,8 +8,10 @@
   config = lib.mkIf config.modules.git.enable {
     programs.git = {
       enable = true;
-      userName = lib.mkDefault "Harry Finbow";
-      userEmail = lib.mkDefault "harry@finbow.dev";
+      settings.user = {
+        email = lib.mkDefault "harry@finbow.dev";
+        name = lib.mkDefault "Harry Finbow";
+      };
     };
   };
 }

@@ -34,7 +34,7 @@ let
   homeManagerModules = with inputs; [
     agenix.homeManagerModules.default
     impermanence.nixosModules.home-manager.impermanence
-    nixvim.homeManagerModules.nixvim
+    nixvim.homeModules.nixvim
   ];
 
 in
