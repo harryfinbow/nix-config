@@ -14,6 +14,7 @@
       # Desktop
       spotify
       vesktop
+      discord
 
       # System
       neofetch

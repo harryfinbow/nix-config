@@ -13,6 +13,7 @@
     home.persistence."/persist/${config.home.homeDirectory}" = {
       directories = [
         ".config/Bitwarden"
+        ".config/discord"
         ".config/vesktop"
         ".config/VintagestoryData"
         ".config/WowUpCf"
