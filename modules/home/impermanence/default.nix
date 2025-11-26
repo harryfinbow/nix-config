@@ -14,6 +14,7 @@
       directories = [
         ".config/Bitwarden"
         ".config/discord"
+        ".config/OrcaSlicer"
         ".config/vesktop"
         ".config/VintagestoryData"
         ".config/WowUpCf"
