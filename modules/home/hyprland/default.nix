@@ -7,6 +7,7 @@
 
 {
   imports = [
+    ./hypridle.nix
     ./hyprpaper.nix
     ./settings.nix
   ];
