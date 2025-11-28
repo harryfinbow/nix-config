@@ -9,6 +9,7 @@
   imports = [
     ./hypridle.nix
     ./hyprpaper.nix
+    ./mako.nix
     ./settings.nix
   ];
 
