@@ -11,6 +11,7 @@
     ./hyprpaper.nix
     ./mako.nix
     ./settings.nix
+    ./waybar.nix
   ];
 
   options.modules.hyprland = {
