@@ -18,9 +18,16 @@
 
       fonts = {
         monospace = {
-          package = pkgs.nerd-fonts.fira-code;
-          name = "FiraCode Nerd Font";
+          package = pkgs.maple-mono.Normal-NF;
+          name = "Maple Mono Normal NF";
         };
+
+        sansSerif = {
+          package = pkgs.inter;
+          name = "Inter";
+        };
+
+        serif = config.stylix.fonts.sansSerif;
 
         sizes = {
           terminal = 14;
