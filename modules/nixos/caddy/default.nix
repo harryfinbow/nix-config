@@ -21,7 +21,7 @@
           "github.com/caddy-dns/porkbun@v0.3.1"
           "github.com/mholt/caddy-dynamicdns@v0.0.0-20250430031602-b846b9e8fb83"
         ];
-        hash = "sha256-yZIgEy46y/XAar0vXcUmuOxp7qLttls015Fizjw8CAw=";
+        hash = "sha256-ybKGdU9SNtLBdeyWX+OE3z0UubGKWIcQy4VwNPj7FMU=";
       };
 
       globalConfig = ''
