@@ -15,7 +15,7 @@
     nixarr.enable = true;
     uptime-kuma.enable = true;
     vm.minecraft-server.enable = false;
-    vintagestory.enable = true;
+    vintagestory.enable = false;
   };
 
   services.openssh = {
