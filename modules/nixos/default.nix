@@ -10,6 +10,7 @@
     ./fish
     ./glance
     ./gnome
+    ./grafana
     ./hyprland
     ./impermanence
     ./intel
@@ -20,6 +21,7 @@
     ./nixarr
     ./nvidia
     ./orcaslicer
+    ./prometheus
     ./star-citizen
     ./steam
     ./theme
@@ -39,6 +41,7 @@
     fish.enable = lib.mkDefault true;
     glance.enable = lib.mkDefault false;
     gnome.enable = lib.mkDefault false;
+    grafana.enable = lib.mkDefault false;
     hyprland.enable = lib.mkDefault true;
     impermanence.enable = lib.mkDefault false;
     intel.enable = lib.mkDefault false;
@@ -49,6 +52,7 @@
     nixarr.enable = lib.mkDefault false;
     nvidia.enable = lib.mkDefault false;
     orcaslicer.enable = lib.mkDefault false;
+    prometheus.enable = lib.mkDefault false;
     star-citizen.enable = lib.mkDefault false;
     steam.enable = lib.mkDefault false;
     theme.enable = lib.mkDefault true;

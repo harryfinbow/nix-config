@@ -10,10 +10,12 @@
     audio.enable = false;
     caddy.enable = true;
     glance.enable = true;
+    grafana.enable = true;
     hyprland.enable = false;
     intel.enable = true;
     linkding.enable = true;
     nixarr.enable = true;
+    prometheus.enable = true;
     uptime-kuma.enable = true;
     vm.minecraft-server.enable = false;
     vintagestory.enable = false;
