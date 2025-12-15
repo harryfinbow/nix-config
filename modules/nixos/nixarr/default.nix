@@ -39,6 +39,8 @@ in
 
       jellyfin.enable = true;
 
+      jellyseerr.enable = true;
+
       prowlarr.enable = true;
 
       radarr.enable = true;
@@ -71,7 +73,7 @@ in
     };
 
     services.caddy = lib.mkIf config.modules.caddy.enable {
-      virtualHosts."media.{$BASE_DOMAIN}".extraConfig = ''
+      virtualHosts."watch.{$BASE_DOMAIN}".extraConfig = ''
         reverse_proxy localhost:${toString jellyfinDefaultPort}
       '';
 
@@ -79,14 +81,17 @@ in
         reverse_proxy localhost:${toString config.nixarr.transmission.uiPort}
       '';
 
-      virtualHosts."movies.{$BASE_DOMAIN}".extraConfig = ''
+      virtualHosts."radarr.{$BASE_DOMAIN}".extraConfig = ''
         reverse_proxy localhost:${toString config.nixarr.radarr.port}
       '';
 
-      virtualHosts."indexers.{$BASE_DOMAIN}".extraConfig = ''
+      virtualHosts."prowlarr.{$BASE_DOMAIN}".extraConfig = ''
         reverse_proxy localhost:${toString config.nixarr.prowlarr.port}
       '';
 
+      virtualHosts."movies.{$BASE_DOMAIN}".extraConfig = ''
+        reverse_proxy localhost:${toString config.nixarr.jellyseerr.port}
+      '';
     };
 
     environment.persistence = lib.mkIf config.modules.impermanence.enable {
