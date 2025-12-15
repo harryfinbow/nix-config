@@ -11,6 +11,7 @@
     caddy.enable = true;
     glance.enable = true;
     hyprland.enable = false;
+    intel.enable = true;
     linkding.enable = true;
     nixarr.enable = true;
     uptime-kuma.enable = true;

@@ -12,6 +12,7 @@
     ./gnome
     ./hyprland
     ./impermanence
+    ./intel
     ./linkding
     ./logitech
     ./networking
@@ -40,6 +41,7 @@
     gnome.enable = lib.mkDefault false;
     hyprland.enable = lib.mkDefault true;
     impermanence.enable = lib.mkDefault false;
+    intel.enable = lib.mkDefault false;
     linkding.enable = lib.mkDefault false;
     logitech.enable = lib.mkDefault false;
     networking.enable = lib.mkDefault true;
