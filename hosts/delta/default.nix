@@ -11,6 +11,7 @@
     caddy.enable = true;
     glance.enable = true;
     grafana.enable = true;
+    home-assistant.enable = true;
     hyprland.enable = false;
     intel.enable = true;
     linkding.enable = true;

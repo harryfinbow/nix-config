@@ -11,6 +11,7 @@
     ./glance
     ./gnome
     ./grafana
+    ./home-assistant
     ./hyprland
     ./impermanence
     ./intel
@@ -42,6 +43,7 @@
     glance.enable = lib.mkDefault false;
     gnome.enable = lib.mkDefault false;
     grafana.enable = lib.mkDefault false;
+    home-assistant.enable = lib.mkDefault false;
     hyprland.enable = lib.mkDefault true;
     impermanence.enable = lib.mkDefault false;
     intel.enable = lib.mkDefault false;
