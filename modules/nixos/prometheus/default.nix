@@ -55,5 +55,9 @@
         reverse_proxy localhost:${toString config.services.prometheus.port}
       '';
     };
+
+    environment.persistence = lib.mkIf config.modules.impermanence.enable {
+      "/persist/system".directories = [ "/var/lib/${toString config.services.prometheus.stateDir}" ];
+    };
   };
 }
