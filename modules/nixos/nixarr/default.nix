@@ -44,6 +44,8 @@ in
       prowlarr.enable = true;
 
       radarr.enable = true;
+
+      sonarr.enable = true;
     };
 
     # VPN Port Forwarding
@@ -83,6 +85,10 @@ in
 
       virtualHosts."radarr.{$BASE_DOMAIN}".extraConfig = ''
         reverse_proxy localhost:${toString config.nixarr.radarr.port}
+      '';
+
+      virtualHosts."sonarr.{$BASE_DOMAIN}".extraConfig = ''
+        reverse_proxy localhost:${toString config.nixarr.sonarr.port}
       '';
 
       virtualHosts."prowlarr.{$BASE_DOMAIN}".extraConfig = ''
