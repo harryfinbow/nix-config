@@ -9,6 +9,10 @@
 {
   options.modules.caddy = {
     enable = lib.mkEnableOption "enables caddy";
+    metrics_port = lib.mkOption {
+      type = lib.types.port;
+      default = 2019;
+    };
   };
 
   config = lib.mkIf config.modules.caddy.enable {
@@ -38,6 +42,10 @@
             {$BASE_DOMAIN} *
           }
           versions ipv6
+        }
+        admin localhost:${toString config.modules.caddy.metrics_port}
+        metrics {
+          per_host
         }
       '';
 
