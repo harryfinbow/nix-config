@@ -50,5 +50,9 @@
         reverse_proxy localhost:${toString config.services.grafana.settings.server.http_port}
       '';
     };
+
+    environment.persistence = lib.mkIf config.modules.impermanence.enable {
+      "/persist/system".directories = [ config.services.grafana.dataDir ];
+    };
   };
 }
