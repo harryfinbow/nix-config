@@ -3,6 +3,7 @@
   inputs,
   lib,
   config,
+  pkgs,
   ...
 }:
 let
@@ -57,21 +58,44 @@ in
       after = [ "network.target" ];
       wantedBy = [ "default.target" ];
       description = "ProtonVPN Transmission Port Forwarding Service";
+
+      vpnConfinement = {
+        enable = true;
+        vpnNamespace = "wg"; # This must be "wg", that's what nixarr uses
+      };
+
       serviceConfig = {
         Type = "simple";
         ExecStart = ''
           ${inputs.transmission-protonvpn.packages.x86_64-linux.default}/bin/transmission-protonvpn-nat-pmp \
           -transmission.url http://${transmissionRPCAddress}:${toString transmissionRPCPort} \
           -gateway.ip 10.2.0.1 \
-          -period 60s \
-          -verbose
+          -period 60s
         '';
       };
     };
 
-    systemd.services.transmission-protonvpn.vpnConfinement = {
+    systemd.services.vpn-test-service = {
       enable = true;
-      vpnNamespace = "wg"; # This must be "wg", that's what nixarr uses
+
+      vpnConfinement = {
+        enable = true;
+        vpnNamespace = "wg"; # This must be "wg", that's what nixarr uses
+      };
+
+      script =
+        let
+          vpn-test = pkgs.writers.writeNuBin "vpn-test" ''
+            # Retrieve IPv4 address
+            print "Retrieving IPv4 address..."
+            http get ipinfo.io/json | print $"($in | get ip) [($in | get org)]"
+
+            # Retrieve IPv6 address
+            print "Retrieving IPv6 address..."
+            http get v6.ipinfo.io/json | print $"($in | get ip) [($in | get org)]"
+          '';
+        in
+        "${vpn-test}/bin/vpn-test";
     };
 
     services.caddy = lib.mkIf config.modules.caddy.enable {
