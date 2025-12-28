@@ -617,6 +617,22 @@
         "type": "github"
       }
     },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1766947748,
+        "narHash": "sha256-5XVGzhisuEUwsj2Er+3ZWMXXoZrQKxLhkyKBA/Bur/o=",
+        "owner": "harryfinbow",
+        "repo": "nixos-hardware",
+        "rev": "107d4f52e8b7868092e2fd4c894bfa6811b086c2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "harryfinbow",
+        "ref": "update-dell-latitude-7490",
+        "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1703013332,
@@ -891,6 +907,7 @@
         "nix-gaming": "nix-gaming",
         "nixarr": "nixarr",
         "nixos-generators": "nixos-generators",
+        "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
         "nixvim": "nixvim",
         "pre-commit-hooks": "pre-commit-hooks",

@@ -15,12 +15,25 @@
         "input"
       ];
 
-      # TODO: Move public keys to `keys` folder
-      openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBhcj36L0yDUxWBWUo9MoxgrwnJGlm4VJGCsbBR8Owoc harry@alpha"
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINPIM0ukzIdJpYpD6kNRCYkhh0G/UXVhSFKS3otW4VN+ harryf@bravo"
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIITZ9CCMXyd2FZuAW6XgmRt6hQN7rLb8l1+0iexum/Rm harry@foxtrot"
-      ];
+    users = {
+      users."${currentSystemUser}" = {
+        isNormalUser = true;
+        hashedPasswordFile = config.age.secrets.password.path;
+
+        extraGroups = [
+          "networkmanager"
+          "wheel"
+          "input"
+        ];
+
+        # TODO: Move public keys to `keys` folder
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBhcj36L0yDUxWBWUo9MoxgrwnJGlm4VJGCsbBR8Owoc harry@alpha"
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINPIM0ukzIdJpYpD6kNRCYkhh0G/UXVhSFKS3otW4VN+ harryf@bravo"
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGIbtwmjASEl5jw3btx0MVHf5MshDX9JT5EbwI9BXH3G harry@foxtrot"
+        ];
+      };
+      mutableUsers = false;
     };
 
     age.identityPaths = [ "${config.users.users."${currentSystemUser}".home}/.ssh/id_ed25519" ];
