@@ -9,8 +9,8 @@
     services.hyprpaper = {
       enable = true;
       settings = {
-        preload = [ "${./wallpapers/cityscape-nord.png}" ];
-        wallpaper = [ ",${./wallpapers/cityscape-nord.png}" ];
+        preload = [ "${./wallpapers/snowy.png}" ];
+        wallpaper = [ ",${./wallpapers/snowy.png}" ];
       };
     };
   };

@@ -17,7 +17,7 @@
           {
             timeout = 600;
             on-timeout = "hyprctl dispatch dpms off";
-            on-resume = "hyprctl dispatch dpms on";
+            on-resume = "hyprctl dispatch dpms on && systemctl --user restart waybar.service"; # https://github.com/Alexays/Waybar/issues/3344
           }
         ];
       };
