@@ -11,6 +11,10 @@
       type = lib.types.port;
       default = 8123;
     };
+    matter-server.port = lib.mkOption {
+      type = lib.types.port;
+      default = 5580;
+    };
   };
 
   config = lib.mkIf config.modules.home-assistant.enable {
@@ -39,6 +43,14 @@
         };
       };
     };
+
+    services.matter-server = {
+      enable = true;
+      port = config.modules.home-assistant.matter-server.port;
+    };
+
+    # Allow mDNS which is required for Matter
+    networking.firewall.allowedUDPPorts = [ 5353 ];
 
     services.caddy = lib.mkIf config.modules.caddy.enable {
       virtualHosts."home.{$BASE_DOMAIN}".extraConfig = ''
