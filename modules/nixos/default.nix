@@ -17,6 +17,7 @@
     ./intel
     ./linkding
     ./logitech
+    ./mealie
     ./networking
     ./nix
     ./nixarr
@@ -49,6 +50,7 @@
     intel.enable = lib.mkDefault false;
     linkding.enable = lib.mkDefault false;
     logitech.enable = lib.mkDefault false;
+    mealie.enable = lib.mkDefault false;
     networking.enable = lib.mkDefault true;
     nix.enable = lib.mkDefault true;
     nixarr.enable = lib.mkDefault false;

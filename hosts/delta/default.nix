@@ -15,6 +15,7 @@
     hyprland.enable = false;
     intel.enable = true;
     linkding.enable = true;
+    mealie.enable = true;
     nixarr.enable = true;
     prometheus.enable = true;
     uptime-kuma.enable = true;
