@@ -27,6 +27,7 @@
       psmisc
 
       # Games
+      prismlauncher
       runelite
       vintagestory
     ];
