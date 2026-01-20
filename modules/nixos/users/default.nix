@@ -3,17 +3,16 @@
   currentSystemUser,
   ...
 }:
-
+let
+  identityFilePath =
+    if config.modules.impermanence.enable then
+      "/persist/${config.users.users."${currentSystemUser}".home}/.ssh/id_ed25519"
+    else
+      "${config.users.users."${currentSystemUser}".home}/.ssh/id_ed25519";
+in
 {
   config = {
-    users.users."${currentSystemUser}" = {
-      initialPassword = "PepsiMax!";
-      isNormalUser = true;
-      extraGroups = [
-        "networkmanager"
-        "wheel"
-        "input"
-      ];
+    age.secrets.password.file = ../../../secrets/password.age;
 
     users = {
       users."${currentSystemUser}" = {
@@ -36,7 +35,7 @@
       mutableUsers = false;
     };
 
-    age.identityPaths = [ "${config.users.users."${currentSystemUser}".home}/.ssh/id_ed25519" ];
+    age.identityPaths = [ identityFilePath ];
 
     time.timeZone = "Europe/London";
     i18n.defaultLocale = "en_GB.UTF-8";

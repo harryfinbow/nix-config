@@ -28,6 +28,14 @@ in
     delta
   ];
 
+  "password.age".publicKeys = [
+    alpha
+    bravo
+    delta
+    echo
+    foxtrot
+  ];
+
   "transmission.age".publicKeys = [
     alpha
     delta
