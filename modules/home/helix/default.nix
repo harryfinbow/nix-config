@@ -54,6 +54,10 @@
             };
           }
           {
+            name = "markdown";
+            soft-wrap.enable = true;
+          }
+          {
             name = "nix";
             auto-format = true;
             formatter = {
