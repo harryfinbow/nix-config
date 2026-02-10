@@ -17,6 +17,7 @@
       btop
 
       # Utilities
+      brightnessctl
       jq
       eza
     ];
