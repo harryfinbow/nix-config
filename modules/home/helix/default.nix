@@ -33,6 +33,11 @@
 
         # Yaml
         yaml-language-server
+
+        # Zig
+        zig
+        zls
+        lldb
       ];
       settings = {
         editor = {
