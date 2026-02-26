@@ -32,6 +32,7 @@
     ./vintagestory
     ./virtualisation
     ./vms/minecraft-server
+    ./vms
   ];
 
   modules = {
