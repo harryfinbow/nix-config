@@ -2,112 +2,56 @@
   description = "NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=04fd13c64b47a5354ae63f23e4c23f68993fc64f";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixos-hardware.url = "github:harryfinbow/nixos-hardware/update-dell-latitude-7490";
-
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Replaces $XDG_RUNTIME_DIR with ${XDG_RUNTIME_DIR} which Hyprpaper doesn't evaluate
-    agenix.url = "github:ryantm/agenix?ref=c2fc0762bbe8feb06a2e59a364fa81b3a57671c9";
+    impermanence.url = "github:nix-community/impermanence";
+
+    nixos-hardware.url = "github:nixos/nixos-hardware";
+
+    # Dendritic Pattern
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:vic/import-tree";
+
+    # Other
+    agenix.url = "github:ryantm/agenix";
 
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
-    impermanence.url = "github:nix-community/impermanence";
-
     microvm.url = "github:astro/microvm.nix";
     microvm.inputs.nixpkgs.follows = "nixpkgs";
 
-    # /nix/store/prgaw5y3kjcf91y1ld5g9diqnambgyib-wine-tkg-full-10.8.drv fails to build
-    nix-gaming.url = "github:fufexan/nix-gaming?ref=a094fde06697aba9c514b627850261810e771495";
-
-    nixos-generators.url = "github:nix-community/nixos-generators";
-    nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
-
     nixarr.url = "github:rasmus-kirk/nixarr";
 
-    nixvim.url = "github:nix-community/nixvim";
-
-    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
-
-    stylix.url = "github:danth/stylix";
+    stylix.url = "github:nix-community/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
-
-    textfox.url = "github:adriankarlen/textfox";
 
     transmission-protonvpn.url = "github:pborzenkov/transmission-protonvpn-nat-pmp";
 
     # https://github.com/NixOS/nixpkgs/pull/414845
     vs2nix.url = "github:dtomvan/vs2nix";
+
+    # nixos-hardware.url = "github:harryfinbow/nixos-hardware/update-dell-latitude-7490";
+
+    # # /nix/store/prgaw5y3kjcf91y1ld5g9diqnambgyib-wine-tkg-full-10.8.drv fails to build
+    # nix-gaming.url = "github:fufexan/nix-gaming?ref=a094fde06697aba9c514b627850261810e771495";
+
+    # nixos-generators.url = "github:nix-community/nixos-generators";
+    # nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
+
+    # nixvim.url = "github:nix-community/nixvim";
+
+    # pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+
+    # textfox.url = "github:adriankarlen/textfox";
+
   };
 
-  outputs =
-    { self, nixpkgs, ... }@inputs:
-    let
-      mkHost = import ./lib/mkHost.nix { inherit nixpkgs inputs self; };
-      mkDarwin = import ./lib/mkDarwin.nix { inherit nixpkgs inputs self; };
-
-      supportedSystems = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "x86_64-darwin"
-        "aarch64-darwin"
-      ];
-      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-    in
-    {
-      nixosConfigurations.alpha = mkHost "alpha" {
-        system = "x86_64-linux";
-        user = "harry";
-      };
-
-      darwinConfigurations.bravo = mkDarwin "bravo" {
-        system = "aarch64-darwin";
-        user = "harryf";
-      };
-
-      nixosConfigurations.charlie = mkHost "charlie" {
-        system = "aarch64-linux";
-        user = "harry";
-      };
-
-      nixosConfigurations.delta = mkHost "delta" {
-        system = "x86_64-linux";
-        user = "harry";
-      };
-
-      nixosConfigurations.echo = mkHost "echo" {
-        system = "x86_64-linux";
-        user = "harry";
-      };
-
-      nixosConfigurations.foxtrot = mkHost "foxtrot" {
-        system = "x86_64-linux";
-        user = "harry";
-      };
-
-      checks = forAllSystems (system: {
-        pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
-          src = ./.;
-          hooks = {
-            end-of-file-fixer.enable = true;
-            trim-trailing-whitespace.enable = true;
-
-            nixfmt-rfc-style.enable = true;
-          };
-        };
-      });
-
-      devShells = forAllSystems (system: {
-        default = nixpkgs.legacyPackages.${system}.mkShell {
-          inherit (self.checks.${system}.pre-commit-check) shellHook;
-          buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
-        };
-      });
-    };
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 }
