@@ -8,4 +8,13 @@
       };
     };
   };
+
+  flake.modules.homeManager.default =
+    { pkgs, ... }:
+    {
+      services.podman = {
+        enable = true;
+      }
+      // (if pkgs.stdenv.isDarwin then { useDefaultMachine = true; } else { });
+    };
 }
