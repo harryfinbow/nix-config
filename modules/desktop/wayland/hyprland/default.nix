@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.wayland = {
+  flake.modules.nixos.hyprland = {
     programs.hyprland.enable = true;
 
     # Fix missing cursor on Hyprland

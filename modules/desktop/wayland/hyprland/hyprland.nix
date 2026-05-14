@@ -1,5 +1,5 @@
 topLevel: {
-  flake.modules.homeManager.wayland =
+  flake.modules.homeManager.hyprland =
     { config, lib, ... }:
     {
       wayland.windowManager.hyprland = {
