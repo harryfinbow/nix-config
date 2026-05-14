@@ -4,7 +4,7 @@
     {
       home.packages = with pkgs; [
         # System
-        neofetch
+        fastfetch
         btop
 
         # Utilities
