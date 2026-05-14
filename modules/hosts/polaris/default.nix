@@ -21,6 +21,7 @@ let
     # Applications
     "bitwarden"
     "discord"
+    "orcaslicer"
   ];
 in
 {
