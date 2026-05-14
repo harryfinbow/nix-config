@@ -11,6 +11,7 @@
     alacritty
     browser
     hyprland
+    foot
   ];
 
   flake.modules.homeManager."desktop/darwin".imports = with config.flake.modules.homeManager; [
