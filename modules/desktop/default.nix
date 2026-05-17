@@ -13,6 +13,7 @@
     browser
     hyprland
     foot
+    resources
   ];
 
   flake.modules.homeManager."desktop/darwin".imports = with config.flake.modules.homeManager; [
