@@ -11,8 +11,9 @@
     alacritty
     beansprout
     browser
-    hyprland
     foot
+    fuzzel
+    hyprland
     resources
   ];
 
