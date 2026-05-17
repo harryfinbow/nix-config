@@ -22,6 +22,7 @@
     agenix.url = "github:ryantm/agenix";
 
     beansprout.url = "git+https://codeberg.org/harryfinbow/beansprout?ref=nix-flake";
+    beansprout.inputs.nixpkgs.follows = "nixpkgs";
 
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
