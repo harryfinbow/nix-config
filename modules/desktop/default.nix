@@ -9,6 +9,7 @@
 
   flake.modules.homeManager."desktop/nixos".imports = with config.flake.modules.homeManager; [
     alacritty
+    beansprout
     browser
     hyprland
     foot

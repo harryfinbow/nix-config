@@ -1,0 +1,71 @@
+attach_mode bottom
+
+single_window_ratio 0.75
+
+bar {
+    time_format "%H:%M | %A, %d %B"
+}
+
+window_rules {
+    float app_id="librewolf" title="Picture-in-Picture"
+    tags app_id="librewolf" title="Picture-in-Picture" 0xFFFF // Pin to all tags
+}
+
+keybinds {
+    // Applications
+    spawn Super T     foot
+    spawn Super B     librewolf
+    spawn Super Space fuzzel
+
+    // Tags
+    tag_bind Super            set_output_tags
+    tag_bind Super+Shift      set_window_tags
+    tag_bind Super+Ctrl       toggle_output_tags
+    tag_bind Super+Ctrl+Shift toggle_window_tags
+
+    // Windows
+    toggle_fullscreen Super F
+    close_window Super+Shift Q
+
+    change_primary_ratio Super L  0.05
+    change_primary_ratio Super H -0.05
+
+    zoom Super Semicolon // Swap currently selected with primary
+
+    focus_next_window Super J
+    focus_prev_window Super K
+
+    swap_next Super+Shift J
+    swap_prev Super+Shift K
+
+    increment_primary_count Super I
+    decrement_primary_count Super D
+
+    // Floating windows
+    toggle_float Super P
+    center_float Super+Shift P
+
+    resize_width Super+Alt+Shift H -100
+    resize_height Super+Alt+Shift J 100
+    resize_height Super+Alt+Shift K -100
+    resize_width Super+Alt+Shift L 100
+
+    // Beansprout
+    reload_config Super+Shift R
+    exit_river Ctrl+Alt Delete
+}
+
+pointer_binds {
+    move_window Super BTN_LEFT
+    resize_window Super BTN_RIGHT
+}
+
+input {
+    accel_profile "flat"
+}
+
+input name="DELL081C:00 044E:121F Touchpad" {
+    accel_profile "adaptive"
+    accel_speed 0
+    natural_scroll "enabled"
+}

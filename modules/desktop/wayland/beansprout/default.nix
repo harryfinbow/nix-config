@@ -10,4 +10,8 @@ topLevel: {
         pkgs.river
       ];
     };
+
+  flake.modules.homeManager.beansprout = {
+    xdg.configFile."beansprout/config.kdl".source = ./config.kdl;
+  };
 }
