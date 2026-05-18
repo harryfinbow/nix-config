@@ -7,8 +7,6 @@ topLevel: {
       ...
     }:
     {
-      imports = [ topLevel.config.flake.modules.nixos.caddy ];
-
       services.grafana = {
         enable = true;
 

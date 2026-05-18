@@ -7,8 +7,6 @@ topLevel: {
       ...
     }:
     {
-      imports = [ topLevel.config.flake.modules.nixos.caddy ];
-
       services.prometheus = {
         enable = true;
         globalConfig.scrape_interval = "15s"; # To match Grafana datasource scrape interval (else `$__rate_interval` breaks)

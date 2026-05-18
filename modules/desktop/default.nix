@@ -1,7 +1,6 @@
 { config, ... }:
 {
   flake.modules.nixos."desktop/nixos".imports = with config.flake.modules.nixos; [
-    hyprland
     beansprout
     localsend
   ];
@@ -14,7 +13,6 @@
     browser
     foot
     fuzzel
-    hyprland
     resources
   ];
 

@@ -20,6 +20,7 @@
 
     # Other
     agenix.url = "github:ryantm/agenix";
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
 
     beansprout.url = "git+https://codeberg.org/harryfinbow/beansprout?ref=nix-flake";
     beansprout.inputs.nixpkgs.follows = "nixpkgs";
@@ -30,7 +31,9 @@
     microvm.url = "github:astro/microvm.nix";
     microvm.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixarr.url = "github:rasmus-kirk/nixarr";
+    # https://github.com/nix-media-server/nixarr/issues/163
+    nixarr.url = "github:rasmus-kirk/nixarr?rev=7cc521933dc6800ae81ecfc91fe36237476e4ffb";
+    nixarr.inputs.nixpkgs.follows = "nixpkgs";
 
     stylix.url = "github:nix-community/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";

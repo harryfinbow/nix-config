@@ -52,14 +52,6 @@ in
         lib.filter (name: lib.hasAttr name homeManagerModules) modules
       );
 
-      wayland.windowManager.hyprland.settings = {
-        monitor = "eDP-1, 1920x1080@60, 0x0, 1";
-        general = {
-          gaps_in = 5;
-          gaps_out = 10;
-        };
-      };
-
       # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
       home.stateVersion = "23.11";
     };

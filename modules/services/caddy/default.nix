@@ -68,16 +68,15 @@ in
         ];
       };
 
-      # TODO: Work out how to stop this being imported multiple times
-      # services.prometheus.scrapeConfigs = [
-      #   {
-      #     job_name = "caddy";
-      #     static_configs = [
-      #       {
-      #         targets = [ "127.0.0.1:${toString metricsPort}" ];
-      #       }
-      #     ];
-      #   }
-      # ];
+      services.prometheus.scrapeConfigs = [
+        {
+          job_name = "caddy";
+          static_configs = [
+            {
+              targets = [ "127.0.0.1:${toString metricsPort}" ];
+            }
+          ];
+        }
+      ];
     };
 }

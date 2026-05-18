@@ -7,8 +7,6 @@ topLevel: {
       ...
     }:
     {
-      imports = [ topLevel.config.flake.modules.nixos.caddy ];
-
       services.actual.enable = true;
 
       services.caddy.virtualHosts."budget.{$BASE_DOMAIN}".extraConfig = ''

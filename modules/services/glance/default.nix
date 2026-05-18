@@ -7,8 +7,6 @@ topLevel: {
       ...
     }:
     {
-      imports = [ topLevel.config.flake.modules.nixos.caddy ];
-
       services.caddy.virtualHosts."start.{$BASE_DOMAIN}".extraConfig = ''
         reverse_proxy localhost:${toString config.services.glance.settings.server.port}
       '';

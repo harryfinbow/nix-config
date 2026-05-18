@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.wayland = {
+  flake.modules.homeManager.mako = {
     services.mako = {
       enable = true;
     };

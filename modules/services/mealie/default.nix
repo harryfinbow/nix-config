@@ -7,8 +7,6 @@ topLevel: {
       ...
     }:
     {
-      imports = [ topLevel.config.flake.modules.nixos.caddy ];
-
       services.mealie.enable = true;
 
       services.caddy.virtualHosts."meals.{$BASE_DOMAIN}".extraConfig = ''
