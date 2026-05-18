@@ -3,6 +3,7 @@
   flake.modules.nixos."desktop/nixos".imports = with config.flake.modules.nixos; [
     hyprland
     beansprout
+    localsend
   ];
 
   flake.modules.darwin."desktop/darwin".imports = with config.flake.modules.darwin; [ aerospace ];
