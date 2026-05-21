@@ -46,11 +46,15 @@ in
     };
 
   flake.modules.homeManager.nomad =
-    { lib, ... }:
+    { lib, pkgs, ... }:
     {
       imports = map (name: homeManagerModules.${name}) (
         lib.filter (name: lib.hasAttr name homeManagerModules) modules
       );
+
+      home.packages = with pkgs; [
+        brightnessctl
+      ];
 
       # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
       home.stateVersion = "23.11";
