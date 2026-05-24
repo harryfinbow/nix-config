@@ -19,7 +19,6 @@ let
     "grafana"
     "home-assistant"
     "linkding"
-    "mealie"
     "nixarr"
     "prometheus"
   ];
