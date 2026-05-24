@@ -39,6 +39,8 @@ in
             domains {
               {$BASE_DOMAIN} *
             }
+            ip_sources interface enp1s0
+            include "fe80::/10"
             versions ipv6
           }
           admin localhost:${toString metricsPort}

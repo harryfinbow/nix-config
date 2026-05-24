@@ -14,6 +14,7 @@ let
 
     # Services
     "actual"
+    "caddy"
     "glance"
     "grafana"
     "home-assistant"
