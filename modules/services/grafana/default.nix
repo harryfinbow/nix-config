@@ -9,6 +9,7 @@ topLevel: {
     {
       services.grafana = {
         enable = true;
+        settings.server.http_port = 3100;
 
         # TODO: Change this to point at something secure
         settings.security.secret_key = "SW2YcwTIb9zpOOhoPsMm";

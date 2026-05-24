@@ -5,6 +5,7 @@ in
 {
   flake.modules.nixos.caddy =
     {
+      config,
       lib,
       options,
       pkgs,
@@ -12,6 +13,8 @@ in
     }:
     {
       age.secrets.caddy.file = (topLevel.self + "/secrets/caddy.age");
+
+      systemd.services.caddy.serviceConfig.EnvironmentFile = [ config.age.secrets.caddy.path ];
 
       services.caddy = {
         enable = true;
@@ -21,7 +24,7 @@ in
             "github.com/caddy-dns/porkbun@v0.3.1"
             "github.com/mholt/caddy-dynamicdns@v0.0.0-20250430031602-b846b9e8fb83"
           ];
-          hash = "sha256-y+qE2pzWpIUpxVr9tLT4u+pBmb9dY6hPv+FwG7Hp6UA=";
+          hash = "sha256-UzYFhqpcCvWzQ6+xZOikioUd1LeUOvoMpmUE/hGG5wk=";
         };
 
         globalConfig = ''

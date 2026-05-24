@@ -9,6 +9,7 @@ topLevel: {
     {
       services.prometheus = {
         enable = true;
+        port = 9001;
         globalConfig.scrape_interval = "15s"; # To match Grafana datasource scrape interval (else `$__rate_interval` breaks)
 
         exporters = {

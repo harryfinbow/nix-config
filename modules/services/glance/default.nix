@@ -7,6 +7,10 @@ topLevel: {
       ...
     }:
     {
+      age.secrets.glance.file = (topLevel.self + "/secrets/glance.age");
+
+      systemd.services.glance.serviceConfig.EnvironmentFile = [ config.age.secrets.glance.path ];
+
       services.caddy.virtualHosts."start.{$BASE_DOMAIN}".extraConfig = ''
         reverse_proxy localhost:${toString config.services.glance.settings.server.port}
       '';
