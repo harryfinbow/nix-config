@@ -9,10 +9,11 @@ topLevel: {
     {
       services.grafana = {
         enable = true;
-        settings.server.http_port = 3100;
-
-        # TODO: Change this to point at something secure
-        settings.security.secret_key = "SW2YcwTIb9zpOOhoPsMm";
+        settings = {
+          server.http_port = 3100;
+          panels.disable_sanitize_html = true; # Required for Blocky dashboard
+          security.secret_key = "SW2YcwTIb9zpOOhoPsMm"; # TODO: Change this to point at something secure
+        };
 
         provision = {
           enable = true;
@@ -35,6 +36,7 @@ topLevel: {
       '';
 
       environment = {
+        etc."grafana/dashboards/blocky.json".source = ./dashboards/blocky.json;
         etc."grafana/dashboards/node-exporter.json".source = ./dashboards/node-exporter.json;
       }
       // lib.optionalAttrs (options.environment ? persistence) {

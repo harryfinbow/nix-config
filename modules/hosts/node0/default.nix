@@ -13,6 +13,7 @@ let
 
     # Services
     "actual"
+    "blocky"
     "caddy"
     "glance"
     "grafana"
