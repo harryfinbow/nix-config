@@ -12,6 +12,11 @@ topLevel: {
         port = 9001;
         globalConfig.scrape_interval = "15s"; # To match Grafana datasource scrape interval (else `$__rate_interval` breaks)
 
+        extraFlags = [
+          "--storage.tsdb.retention.time=90d"
+          "--storage.tsdb.retention.size=10GB"
+        ];
+
         exporters = {
           node = {
             enable = true;
@@ -24,6 +29,14 @@ topLevel: {
         };
 
         scrapeConfigs = [
+          {
+            job_name = "prometheus";
+            static_configs = [
+              {
+                targets = [ "127.0.0.1:${toString config.services.prometheus.port}" ];
+              }
+            ];
+          }
           {
             job_name = "node";
             static_configs = [
