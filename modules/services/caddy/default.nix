@@ -40,8 +40,6 @@ in
             domains {
               {$BASE_DOMAIN} *
             }
-            ip_source interface enp1s0
-            include fd00::/64
             versions ipv6
           }
           admin localhost:${toString metricsPort}

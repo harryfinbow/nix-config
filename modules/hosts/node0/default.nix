@@ -36,12 +36,26 @@ in
 
       networking = {
         hostName = "node0";
-        networkmanager.enable = false;
-        useNetworkd = true;
+        useDHCP = false; # Not compatible with `systemd.network.enable`
       };
 
       # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
       system.stateVersion = "23.11";
+
+      # Networking
+      systemd.network = {
+        enable = true;
+
+        networks = {
+          "10-enp1s0" = {
+            matchConfig.Name = "enp1s0";
+            networkConfig = {
+              Address = "192.168.1.100/24";
+              Gateway = "192.168.1.1";
+            };
+          };
+        };
+      };
     };
 
   flake.modules.homeManager.node0 =
