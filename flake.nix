@@ -28,6 +28,9 @@
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
+    # https://github.com/NixOS/nixpkgs/pull/498572
+    helium-nix.url = "github:penal-colony/helium-nix";
+
     microvm.url = "github:astro/microvm.nix";
     microvm.inputs.nixpkgs.follows = "nixpkgs";
 
