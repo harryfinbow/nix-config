@@ -20,6 +20,7 @@ let
     "linkding"
     "nixarr"
     "prometheus"
+    "tailscale"
   ];
 in
 {
