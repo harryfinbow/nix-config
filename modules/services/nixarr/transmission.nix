@@ -6,8 +6,6 @@ topLevel: {
       ...
     }:
     {
-      imports = [ topLevel.config.flake.modules.nixos.agenix ];
-
       age.secrets.transmission.file = (topLevel.self + "/secrets/transmission.age");
 
       nixarr.transmission = {

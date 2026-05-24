@@ -11,8 +11,6 @@ in
       ...
     }:
     {
-      imports = [ topLevel.config.flake.modules.nixos.agenix ];
-
       age.secrets.caddy.file = (topLevel.self + "/secrets/caddy.age");
 
       services.caddy = {

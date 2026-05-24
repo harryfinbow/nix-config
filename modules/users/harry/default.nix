@@ -6,8 +6,6 @@ in
   flake.modules.nixos.${username} =
     { config, ... }:
     {
-      imports = [ topLevel.config.flake.modules.nixos.agenix ];
-
       age.secrets.password.file = (topLevel.self + "/secrets/password.age");
 
       users.users.${username} = {

@@ -11,8 +11,6 @@ topLevel: {
       transmissionRPCPort = config.services.transmission.settings.rpc-port;
     in
     {
-      imports = [ topLevel.config.flake.modules.nixos.agenix ];
-
       age.secrets.vpn.file = (topLevel.self + "/secrets/vpn.age");
 
       nixarr.vpn = {

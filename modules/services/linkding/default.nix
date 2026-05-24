@@ -11,8 +11,6 @@ topLevel: {
       port = 9090;
     in
     {
-      imports = [ topLevel.config.flake.modules.nixos.agenix ];
-
       age.secrets.linkding.file = (topLevel.self + "/secrets/linkding.age");
 
       systemd.tmpfiles.rules = [
