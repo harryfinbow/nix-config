@@ -32,7 +32,11 @@ in
 
       home-manager.users.harry.imports = [ config.flake.modules.homeManager.node0 ];
 
-      networking.hostName = "node0";
+      networking = {
+        hostName = "node0";
+        networkmanager.enable = false;
+        useNetworkd = true;
+      };
 
       # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
       system.stateVersion = "23.11";
