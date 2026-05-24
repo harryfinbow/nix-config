@@ -22,9 +22,9 @@ in
         package = pkgs.caddy.withPlugins {
           plugins = [
             "github.com/caddy-dns/porkbun@v0.3.1"
-            "github.com/mholt/caddy-dynamicdns@v0.0.0-20250430031602-b846b9e8fb83"
+            "github.com/mholt/caddy-dynamicdns@v0.0.0-20251231002810-1af4f8876598"
           ];
-          hash = "sha256-UzYFhqpcCvWzQ6+xZOikioUd1LeUOvoMpmUE/hGG5wk=";
+          hash = "sha256-ocW1XLa5DZcXPB4zbJXo3mj3KvaHw5zgp9CWkZOChUw=";
         };
 
         globalConfig = ''
@@ -40,8 +40,8 @@ in
             domains {
               {$BASE_DOMAIN} *
             }
-            ip_sources interface enp1s0
-            include "fe80::/10"
+            ip_source interface enp1s0
+            include fd00::/64
             versions ipv6
           }
           admin localhost:${toString metricsPort}
