@@ -5,7 +5,6 @@ let
 
   modules = [
     "default"
-    "impermanence"
     "ssh"
     "terminal"
 
