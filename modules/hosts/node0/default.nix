@@ -45,6 +45,12 @@ in
         lib.filter (name: lib.hasAttr name homeManagerModules) modules
       );
 
+      programs.zellij = {
+        enableFishIntegration = true;
+        attachExistingSession = true;
+        exitShellOnExit = true;
+      };
+
       # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
       home.stateVersion = "23.11";
     };
