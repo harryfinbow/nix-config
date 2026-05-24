@@ -11,6 +11,13 @@ in
         config = topLevel.config.flake.modules.nixos.vm0;
         extraModules = extraModules ++ [
           {
+            # TODO: Sort this out (maybe make a root user)
+            users.users.root.openssh.authorizedKeys.keys = [
+              "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBhcj36L0yDUxWBWUo9MoxgrwnJGlm4VJGCsbBR8Owoc harry@alpha"
+              "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINPIM0ukzIdJpYpD6kNRCYkhh0G/UXVhSFKS3otW4VN+ harryf@bravo"
+              "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGIbtwmjASEl5jw3btx0MVHf5MshDX9JT5EbwI9BXH3G harry@foxtrot"
+            ];
+
             microvm = {
               vcpu = 4;
               hotplugMem = 8192; # Maximum Memory (8 GiB)
@@ -28,11 +35,11 @@ in
               interfaces = [
                 {
                   id = "vm0";
-                  mac = "02:00:00:00:00:02";
+                  mac = "02:00:00:00:00:01";
                   type = "macvtap";
                   macvtap = {
                     mode = "private";
-                    link = "eno1";
+                    link = "enp1s0";
                   };
                 }
               ];

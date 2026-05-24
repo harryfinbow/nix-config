@@ -2,6 +2,7 @@ topLevel: {
   flake.modules.nixos.vm0 = {
     imports = with topLevel.config.flake.modules.nixos; [
       default
+      ssh
 
       # Services
       vintagestory
