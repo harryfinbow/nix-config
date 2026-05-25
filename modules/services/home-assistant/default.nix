@@ -6,6 +6,26 @@ topLevel: {
       options,
       ...
     }:
+    let
+      excludedComponents = [
+        "assist_pipeline"
+        "conversation"
+        "cloud"
+      ];
+
+      homeAssistant = config.services.home-assistant;
+
+      pythonPath = lib.removePrefix (toString homeAssistant.package.python + "/") (
+        toString homeAssistant.package.pythonPath
+      );
+
+      defaultComponents =
+        (builtins.fromJSON (
+          builtins.readFile "${homeAssistant.package}/${pythonPath}/homeassistant/components/default_config/manifest.json"
+        )).dependencies;
+
+      wantedComponents = builtins.filter (x: !(builtins.elem x excludedComponents)) defaultComponents;
+    in
     {
       services.caddy.virtualHosts."home.{$BASE_DOMAIN}".extraConfig = ''
         reverse_proxy localhost:${toString config.services.home-assistant.config.http.server_port}
@@ -18,9 +38,14 @@ topLevel: {
       services.home-assistant = {
         enable = true;
 
-        extraComponents = [
+        extraComponents = wantedComponents ++ [
           "isal" # https://www.home-assistant.io/integrations/isal
           "zha"
+
+          # Not really sure why these are needed? I think it has discovered
+          # some devices and then activates these (which error unless configured)
+          "apple_tv"
+          "samsungtv"
         ];
 
         config = {
