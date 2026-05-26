@@ -96,14 +96,15 @@
         "flake-parts": "flake-parts",
         "nixpkgs": [
           "nixpkgs"
-        ]
+        ],
+        "zig2nix": "zig2nix"
       },
       "locked": {
-        "lastModified": 1779038204,
-        "narHash": "sha256-mIUZUULRQZNTZUZOZF4nyIRPOaPKTZL0fO/GnCMaCNY=",
+        "lastModified": 1779393887,
+        "narHash": "sha256-1WgfDwux0J2tfUcdsZOPYKWdqxVmahau+ndkAnJWaH0=",
         "ref": "nix-flake",
-        "rev": "f9022f4b60269988a78acb767bb89928431c35ea",
-        "revCount": 224,
+        "rev": "bb8214a13c0f1dd8ba035e947d5d749a0d85fc42",
+        "revCount": 234,
         "type": "git",
         "url": "https://codeberg.org/harryfinbow/beansprout"
       },
@@ -248,7 +249,25 @@
     },
     "flake-utils": {
       "inputs": {
-        "systems": "systems_3"
+        "systems": "systems_2"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_2": {
+      "inputs": {
+        "systems": "systems_4"
       },
       "locked": {
         "lastModified": 1705309234,
@@ -729,7 +748,7 @@
           "nixpkgs"
         ],
         "nur": "nur",
-        "systems": "systems_2",
+        "systems": "systems_3",
         "tinted-kitty": "tinted-kitty",
         "tinted-schemes": "tinted-schemes",
         "tinted-tmux": "tinted-tmux",
@@ -780,6 +799,21 @@
       }
     },
     "systems_3": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_4": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
@@ -860,7 +894,7 @@
     },
     "transmission-protonvpn": {
       "inputs": {
-        "flake-utils": "flake-utils",
+        "flake-utils": "flake-utils_2",
         "gomod2nix": "gomod2nix",
         "nixpkgs": "nixpkgs_4"
       },
@@ -931,6 +965,28 @@
       "original": {
         "owner": "rasmus-kirk",
         "repo": "website-builder",
+        "type": "github"
+      }
+    },
+    "zig2nix": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "beansprout",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1779162598,
+        "narHash": "sha256-QJQo4kT1AZB8VgYjXfrHzUzon0jXb89XaCj6RNa04vk=",
+        "owner": "Cloudef",
+        "repo": "zig2nix",
+        "rev": "df34b757bafcf867517ee209f2b3a4499801e424",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Cloudef",
+        "repo": "zig2nix",
         "type": "github"
       }
     }
