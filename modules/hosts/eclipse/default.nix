@@ -1,5 +1,7 @@
-{ config, ... }:
+{ config, lib, ... }:
 let
+  mkModules = req: all: map (name: all.${name}) (lib.filter (name: lib.hasAttr name all) req);
+
   darwinModules = config.flake.modules.darwin;
   homeManagerModules = config.flake.modules.homeManager;
 
@@ -14,26 +16,18 @@ let
   ];
 in
 {
-  flake.modules.darwin.eclipse =
-    { lib, ... }:
-    {
-      imports = map (name: darwinModules.${name}) (
-        lib.filter (name: lib.hasAttr name darwinModules) modules
-      );
+  flake.modules.darwin.eclipse = {
+    imports = mkModules modules darwinModules;
 
-      home-manager.users.harryf.imports = [ config.flake.modules.homeManager.eclipse ];
+    home-manager.users.harryf.imports = [ config.flake.modules.homeManager.eclipse ];
 
-      system.stateVersion = 4;
-    };
+    system.stateVersion = 4;
+  };
 
-  flake.modules.homeManager.eclipse =
-    { lib, ... }:
-    {
-      imports = map (name: homeManagerModules.${name}) (
-        lib.filter (name: lib.hasAttr name homeManagerModules) modules
-      );
+  flake.modules.homeManager.eclipse = {
+    imports = mkModules modules homeManagerModules;
 
-      # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-      home.stateVersion = "23.11";
-    };
+    # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+    home.stateVersion = "23.11";
+  };
 }
