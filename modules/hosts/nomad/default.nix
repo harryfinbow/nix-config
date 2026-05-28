@@ -5,6 +5,7 @@ let
 
   modules = [
     "default"
+    "audio"
     "desktop/nixos"
     "games"
     "impermanence"
