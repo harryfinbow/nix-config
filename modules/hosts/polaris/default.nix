@@ -9,7 +9,7 @@ let
     "bluetooth"
     "desktop/nixos"
     "games"
-    "impermanence"
+    "persistence"
     "terminal"
 
     # Hardware

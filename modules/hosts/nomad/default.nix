@@ -8,7 +8,7 @@ let
     "audio"
     "desktop/nixos"
     "games"
-    "impermanence"
+    "persistence"
     "terminal"
 
     # Users

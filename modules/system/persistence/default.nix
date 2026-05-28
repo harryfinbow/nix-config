@@ -1,7 +1,7 @@
 { inputs, ... }:
 
 {
-  flake.modules.nixos.impermanence = {
+  flake.modules.nixos.persistence = {
     imports = [ inputs.impermanence.nixosModules.impermanence ];
 
     environment.persistence."/persist/system" = {
@@ -27,20 +27,17 @@
     programs.fuse.userAllowOther = true;
   };
 
-  flake.modules.homeManager.impermanence =
-    { config, ... }:
-    {
-      home.persistence."/persist" = {
-        directories = [
-          ".ssh"
-          "Games"
-          "git"
-          "notes"
+  flake.modules.homeManager.persistence = {
+    home.persistence."/persist" = {
+      directories = [
+        ".ssh"
+        "Games"
+        "git"
+        "notes"
 
-          # TODO: Where should these live?
-          ".local/share/vulkan"
-        ];
-      };
+        # TODO: Where should these live?
+        ".local/share/vulkan"
+      ];
     };
-
+  };
 }
