@@ -23,6 +23,8 @@ keybinds {
     tag_bind Super+Ctrl       toggle_output_tags
     tag_bind Super+Ctrl+Shift toggle_window_tags
 
+    set_window_tags Super+Ctrl+Shift P 0xFFFF // Pin
+
     // Windows
     toggle_fullscreen Super F
     close_window Super+Shift Q
