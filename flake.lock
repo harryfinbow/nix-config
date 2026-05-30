@@ -346,11 +346,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1778958084,
-        "narHash": "sha256-xLy/BwCrzWdGw528FdHwoZLPYSc0Wyfoh0qR4EH5feY=",
+        "lastModified": 1779695465,
+        "narHash": "sha256-PLUPFV5zMO0T+hXwlhuOh6gzhtb/YrfkiU0a6MXLBZI=",
         "owner": "penal-colony",
         "repo": "helium-nix",
-        "rev": "1604d738e8e72900850f25e921efed89d83aad27",
+        "rev": "73229f6c6a7a1fdba3d358a062e33021bb1907e6",
         "type": "github"
       },
       "original": {
