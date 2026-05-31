@@ -53,9 +53,4 @@ in
       stylixModule
     ];
   };
-
-  flake.modules.homeManager.default = {
-    # Failing due to not being able to download old Git archive (2 months old)
-    stylix.targets.gnome.enable = false;
-  };
 }
