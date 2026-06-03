@@ -22,6 +22,7 @@ let
     "actual"
     "blocky"
     "caddy"
+    "cook"
     "glance"
     "grafana"
     "home-assistant"
