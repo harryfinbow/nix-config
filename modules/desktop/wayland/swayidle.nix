@@ -7,7 +7,8 @@
         timeouts = [
           {
             timeout = 600;
-            command = "${pkgs.swaylock}/bin/swaylock --show-failed-attempts --daemonize";
+            command = "${pkgs.wlopm}/bin/wlopm --off DP-1";
+            resumeCommand = "${pkgs.wlopm}/bin/wlopm --on DP-1";
           }
         ];
       };
