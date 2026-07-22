@@ -23,10 +23,4 @@ in
       homeManagerModule
     ];
   };
-
-  flake.modules.homeManager.default = {
-    # evaluation warning: The default value of `gtk.gtk4.theme` has changed from `config.gtk.theme` to `null`.
-    # You are currently using the legacy default (`config.gtk.theme`) because `home.stateVersion` is less than "26.05".
-    gtk.gtk4.theme = null;
-  };
 }

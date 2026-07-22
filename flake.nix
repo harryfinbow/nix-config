@@ -4,6 +4,9 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # https://github.com/NixOS/nixpkgs/issues/513195#issuecomment-4693392854
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
+
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 

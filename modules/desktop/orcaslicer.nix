@@ -1,4 +1,4 @@
-{
+topLevel: {
   flake.modules.nixos.orcaslicer = {
     # https://wiki.bambulab.com/en/general/printer-network-ports
     networking.firewall = {
@@ -17,9 +17,12 @@
       pkgs,
       ...
     }:
+    let
+      system = pkgs.stdenv.hostPlatform.system;
+    in
     {
       home = {
-        packages = with pkgs; [ orca-slicer ];
+        packages = [ topLevel.inputs.nixpkgs-stable.legacyPackages.${system}.orca-slicer ];
       }
       // lib.optionalAttrs (options.home ? persistence) {
         persistence."/persist".directories = [

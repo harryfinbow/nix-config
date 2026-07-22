@@ -11,7 +11,7 @@
       home = {
         packages = with pkgs; [
           bitwarden-cli
-          bitwarden-desktop
+          # bitwarden-desktop # https://github.com/NixOS/nixpkgs/issues/526914
         ];
       }
       // lib.optionalAttrs (options.home ? persistence) {
