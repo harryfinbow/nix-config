@@ -21,6 +21,8 @@ in
 
     home-manager.users.harryf.imports = [ config.flake.modules.homeManager.eclipse ];
 
+    nixpkgs.hostPlatform = "aarch64-darwin";
+
     system.stateVersion = 4;
   };
 
