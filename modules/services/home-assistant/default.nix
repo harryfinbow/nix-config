@@ -15,14 +15,11 @@ topLevel: {
       ];
 
       homeAssistant = config.services.home-assistant;
-
-      pythonPath = lib.removePrefix (toString homeAssistant.package.python + "/") (
-        toString homeAssistant.package.pythonPath
-      );
+      pythonVersion = homeAssistant.package.python3Packages.python.pythonVersion;
 
       defaultComponents =
         (builtins.fromJSON (
-          builtins.readFile "${homeAssistant.package}/${pythonPath}/homeassistant/components/default_config/manifest.json"
+          builtins.readFile "${homeAssistant.package}/lib/python${pythonVersion}/site-packages/homeassistant/components/default_config/manifest.json"
         )).dependencies;
 
       wantedComponents = builtins.filter (x: !(builtins.elem x excludedComponents)) defaultComponents;
