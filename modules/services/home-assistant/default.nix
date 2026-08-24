@@ -4,6 +4,7 @@ topLevel: {
       config,
       lib,
       options,
+      pkgs,
       ...
     }:
     let
@@ -25,6 +26,8 @@ topLevel: {
         )).dependencies;
 
       wantedComponents = builtins.filter (x: !(builtins.elem x excludedComponents)) defaultComponents;
+
+      bambulab = pkgs.callPackage ./_bambulab.nix { };
     in
     {
       services.caddy.virtualHosts."home.{$BASE_DOMAIN}".extraConfig = ''
@@ -37,6 +40,8 @@ topLevel: {
 
       services.home-assistant = {
         enable = true;
+
+        customComponents = [ bambulab ];
 
         extraComponents = wantedComponents ++ [
           "isal" # https://www.home-assistant.io/integrations/isal
