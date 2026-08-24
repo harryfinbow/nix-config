@@ -15,6 +15,14 @@
             "https://dns.mullvad.net/dns-query"
           ];
 
+          bootstrapDns = {
+            upstream = "https://one.one.one.one/dns-query";
+            ips = [
+              "1.1.1.1"
+              "1.0.0.1"
+            ];
+          };
+
           blocking = {
             denylists = {
               ads = [ "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/multi.txt" ];
