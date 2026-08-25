@@ -6,5 +6,11 @@
     security.sudo.extraConfig = ''
       Defaults timestamp_timeout=60
     '';
+
+    services.journald.extraConfig = ''
+      [Journal]
+      SystemMaxUse=500M
+      SystemMaxFileSize=100M
+    '';
   };
 }
