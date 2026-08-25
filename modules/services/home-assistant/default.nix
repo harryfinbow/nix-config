@@ -27,8 +27,9 @@ topLevel: {
       bambulab = pkgs.callPackage ./_bambulab.nix { };
     in
     {
+      # https://www.home-assistant.io/integrations/http/#server-port
       services.caddy.virtualHosts."home.{$BASE_DOMAIN}".extraConfig = ''
-        reverse_proxy localhost:${toString config.services.home-assistant.config.http.server_port}
+        reverse_proxy localhost:8123
       '';
 
       environment = lib.optionalAttrs (options.environment ? persistence) {
@@ -58,11 +59,6 @@ topLevel: {
 
           homeassistant = {
             time_zone = lib.mkForce null;
-          };
-
-          http = {
-            trusted_proxies = [ "::1" ];
-            use_x_forwarded_for = true;
           };
         };
       };

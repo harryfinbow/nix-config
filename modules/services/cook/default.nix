@@ -15,14 +15,15 @@
         reverse_proxy localhost:${toString port}
       '';
 
-      systemd.services.cook = {
-        description = "TODO";
-        wantedBy = [ "multi-user.target" ];
-        after = [ "network.target" ];
-        serviceConfig = {
-          ExecStart = "${lib.getExe pkgs.cook-cli} server --port ${toString port} ${recipeDir}";
-          Restart = "on-failure";
-        };
-      };
+      # https://github.com/NixOS/nixpkgs/pull/552347
+      # systemd.services.cook = {
+      #   description = "TODO";
+      #   wantedBy = [ "multi-user.target" ];
+      #   after = [ "network.target" ];
+      #   serviceConfig = {
+      #     ExecStart = "${lib.getExe pkgs.cook-cli} server --port ${toString port} ${recipeDir}";
+      #     Restart = "on-failure";
+      #   };
+      # };
     };
 }

@@ -15,6 +15,6 @@
       services.podman = {
         enable = true;
       }
-      // (if pkgs.stdenv.isDarwin then { useDefaultMachine = true; } else { });
+      // (if pkgs.stdenv.hostPlatform.isDarwin then { useDefaultMachine = true; } else { });
     };
 }
