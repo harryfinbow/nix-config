@@ -25,7 +25,9 @@
 
           blocking = {
             denylists = {
-              ads = [ "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/multi.txt" ];
+              ads = [
+                "https://raw.githubusercontent.com/hagezi/dns-blocklists/refs/heads/main/wildcard/multi.txt"
+              ];
             };
             clientGroupsBlock = {
               default = [ "ads" ];
