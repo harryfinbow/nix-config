@@ -5,6 +5,8 @@
       services.blocky = {
         enable = true;
         settings = {
+          log.level = "warn";
+
           ports = {
             dns = 53;
             http = 4000;
