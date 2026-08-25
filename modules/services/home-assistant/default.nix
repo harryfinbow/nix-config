@@ -44,6 +44,9 @@ topLevel: {
         extraComponents = wantedComponents ++ [
           "isal" # https://www.home-assistant.io/integrations/isal
           "zha"
+          "matter"
+          "otbr"
+          "thread"
 
           # Not really sure why these are needed? I think it has discovered
           # some devices and then activates these (which error unless configured)
