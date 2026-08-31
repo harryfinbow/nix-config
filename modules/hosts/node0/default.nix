@@ -29,7 +29,6 @@ let
     "linkding"
     "nixarr"
     "prometheus"
-    "tailscale"
   ];
 in
 {
@@ -49,6 +48,29 @@ in
     # Networking
     systemd.network = {
       enable = true;
+      wait-online.enable = false;
+
+      netdevs = {
+        "10-wg1" = {
+          netdevConfig = {
+            Kind = "wireguard";
+            Name = "wg1";
+            MTUBytes = "1300";
+          };
+          wireguardConfig = {
+            PrivateKeyFile = "/persist/secrets/wg-private";
+            ListenPort = 51820;
+          };
+          wireguardPeers = [
+            {
+              PublicKey = "sogAWq75K7Ava751jua1r6USiuySE3YknctHq2lY828=";
+              AllowedIPs = [ "10.99.0.0/24" ];
+              Endpoint = "51.15.85.67:51820";
+              PersistentKeepalive = 25;
+            }
+          ];
+        };
+      };
 
       networks = {
         "10-enp1s0" = {
@@ -57,6 +79,11 @@ in
             Address = "192.168.1.100/24";
             Gateway = "192.168.1.1";
           };
+        };
+
+        "10-wg1" = {
+          matchConfig.Name = "wg1";
+          address = [ "10.99.0.1/24" ];
         };
       };
     };

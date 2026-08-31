@@ -24,7 +24,7 @@ in
             "github.com/caddy-dns/porkbun@v0.3.1"
             "github.com/mholt/caddy-dynamicdns@v0.0.0-20251231002810-1af4f8876598"
           ];
-          hash = "sha256-pUsSoLo3+2mnaSPi+wrn4SkXWxCswKGqSdR9cQFIHV8=";
+          hash = "sha256-kcpn6KZZHGPQQyVVFdJjfmMgs4Xg40OSoqj8Bs9a+ms=";
         };
 
         globalConfig = ''
@@ -40,7 +40,7 @@ in
             domains {
               {$BASE_DOMAIN} *
             }
-            versions ipv6
+            ip_source static 10.99.0.1
           }
           admin localhost:${toString metricsPort}
           metrics {

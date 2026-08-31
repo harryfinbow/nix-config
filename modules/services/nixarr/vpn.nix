@@ -57,11 +57,11 @@ topLevel: {
             vpn-test = pkgs.writers.writeNuBin "vpn-test" ''
               # Retrieve IPv4 address
               print "Retrieving IPv4 address..."
-              http get ipinfo.io/json | print $"($in | get ip) [($in | get org)]"
+              http get https://ipv4.am.i.mullvad.net/json | print $"($in | get ip) [($in | get organization)]"
 
               # Retrieve IPv6 address
               print "Retrieving IPv6 address..."
-              http get v6.ipinfo.io/json | print $"($in | get ip) [($in | get org)]"
+              http get https://ipv6.am.i.mullvad.net/json | print $"($in | get ip) [($in | get organization)]"
             '';
           in
           "${vpn-test}/bin/vpn-test";
