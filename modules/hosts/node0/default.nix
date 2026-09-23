@@ -18,6 +18,9 @@ let
     # Users
     "harry"
 
+    # Hardware
+    "intel"
+
     # Services
     "actual"
     "blocky"
