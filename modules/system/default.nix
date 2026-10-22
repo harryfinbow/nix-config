@@ -7,10 +7,9 @@
       Defaults timestamp_timeout=60
     '';
 
-    services.journald.extraConfig = ''
-      [Journal]
-      SystemMaxUse=500M
-      SystemMaxFileSize=100M
-    '';
+    services.journald.settings.Journal = {
+      SystemMaxUse = "500M";
+      SystemMaxFileSize = "100M";
+    };
   };
 }
