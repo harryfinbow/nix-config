@@ -2,13 +2,13 @@ topLevel: {
   flake.modules.nixos.nixarr =
     { config, pkgs, ... }:
     {
-      nixarr.jellyseerr = {
+      nixarr.seerr = {
         enable = true;
         package = pkgs.seerr;
       };
 
       services.caddy.virtualHosts."movies.{$BASE_DOMAIN}".extraConfig = ''
-        reverse_proxy localhost:${toString config.nixarr.jellyseerr.port}
+        reverse_proxy localhost:${toString config.nixarr.seerr.port}
       '';
     };
 }

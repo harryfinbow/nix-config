@@ -40,12 +40,6 @@
             ".zen" # TODO: Remove this at some point
           ];
         };
-
-        # https://github.com/adriankarlen/textfox/pull/120
-        # textfox = {
-        #   enable = true;
-        #   profile = "default";
-        # };
       }
       // lib.optionalAttrs (options ? stylix) {
         stylix.targets.librewolf.profileNames = [ "default" ];

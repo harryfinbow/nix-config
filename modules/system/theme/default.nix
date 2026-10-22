@@ -53,4 +53,9 @@ in
       stylixModule
     ];
   };
+
+  flake.modules.homeManager.default = {
+    # https://github.com/nix-community/stylix/pull/2501
+    stylix.targets.rofi.enable = false;
+  };
 }

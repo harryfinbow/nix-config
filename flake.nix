@@ -31,38 +31,17 @@
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
-    # https://github.com/NixOS/nixpkgs/pull/498572
-    helium-nix.url = "github:penal-colony/helium-nix";
-
     microvm.url = "github:astro/microvm.nix";
     microvm.inputs.nixpkgs.follows = "nixpkgs";
 
-    # https://github.com/nix-media-server/nixarr/issues/163
-    nixarr.url = "github:rasmus-kirk/nixarr?rev=7cc521933dc6800ae81ecfc91fe36237476e4ffb";
+    nixarr.url = "git+https://github.com/harryfinbow/nixarr?ref=fix-transmission-vpn-port";
     nixarr.inputs.nixpkgs.follows = "nixpkgs";
 
     stylix.url = "github:nix-community/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
 
-    transmission-protonvpn.url = "github:pborzenkov/transmission-protonvpn-nat-pmp";
-
     # https://github.com/NixOS/nixpkgs/pull/414845
     vs2nix.url = "github:dtomvan/vs2nix";
-
-    # nixos-hardware.url = "github:harryfinbow/nixos-hardware/update-dell-latitude-7490";
-
-    # # /nix/store/prgaw5y3kjcf91y1ld5g9diqnambgyib-wine-tkg-full-10.8.drv fails to build
-    # nix-gaming.url = "github:fufexan/nix-gaming?ref=a094fde06697aba9c514b627850261810e771495";
-
-    # nixos-generators.url = "github:nix-community/nixos-generators";
-    # nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
-
-    # nixvim.url = "github:nix-community/nixvim";
-
-    # pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
-
-    # textfox.url = "github:adriankarlen/textfox";
-
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
