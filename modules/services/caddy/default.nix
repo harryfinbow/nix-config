@@ -20,27 +20,14 @@ in
         enable = true;
 
         package = pkgs.caddy.withPlugins {
-          plugins = [
-            "github.com/caddy-dns/porkbun@v0.3.1"
-            "github.com/mholt/caddy-dynamicdns@v0.0.0-20251231002810-1af4f8876598"
-          ];
-          hash = "sha256-kcpn6KZZHGPQQyVVFdJjfmMgs4Xg40OSoqj8Bs9a+ms=";
+          plugins = [ "github.com/caddy-dns/porkbun@v0.3.1" ];
+          hash = "sha256-CjL8dMdnsiawaPiQGRvL3he4Ydd3nIbQs6tBWMwUbaw=";
         };
 
         globalConfig = ''
           acme_dns porkbun {
             api_key {$API_KEY}
             api_secret_key {$API_SECRET_KEY}
-          }
-          dynamic_dns {
-            provider porkbun {
-              api_key {$API_KEY}
-              api_secret_key {$API_SECRET_KEY}
-            }
-            domains {
-              {$BASE_DOMAIN} *
-            }
-            ip_source static 10.99.0.1
           }
           admin localhost:${toString metricsPort}
           metrics {
