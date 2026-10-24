@@ -4,12 +4,15 @@
     {
       home.packages = with pkgs; [
         # System
-        fastfetch
         btop
+        dust
+        fastfetch
 
         # Utilities
-        jq
         eza
+        gh
+        jq
+        unzip
       ];
     };
 }
