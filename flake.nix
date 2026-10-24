@@ -28,6 +28,8 @@
     beansprout.url = "git+https://codeberg.org/harryfinbow/beansprout?ref=nix-flake";
     beansprout.inputs.nixpkgs.follows = "nixpkgs";
 
+    catppuccin.url = "github:catppuccin/nix";
+
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
