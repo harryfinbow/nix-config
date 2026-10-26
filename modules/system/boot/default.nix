@@ -6,10 +6,7 @@
         efi.canTouchEfiVariables = true; # What does this do?
       };
 
-      initrd = {
-        systemd.enable = true;
-        supportedFilesystems = [ "btrfs" ];
-      };
+      initrd.supportedFilesystems = [ "btrfs" ];
     };
   };
 }

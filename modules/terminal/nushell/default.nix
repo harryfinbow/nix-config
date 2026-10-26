@@ -10,6 +10,9 @@
       programs.nushell = {
         enable = true;
 
+        # Default changed in state version `26.11` and above
+        loadSessionVariables = true;
+
         shellAliases = {
           e = "hx";
 
