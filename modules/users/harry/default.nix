@@ -24,6 +24,8 @@ in
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGIbtwmjASEl5jw3btx0MVHf5MshDX9JT5EbwI9BXH3G harry@foxtrot"
         ];
       };
+
+      services.openssh.settings.AllowUsers = [ username ];
     };
 
   flake.modules.homeManager.${username} = {
