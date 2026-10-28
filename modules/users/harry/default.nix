@@ -26,6 +26,8 @@ in
       };
 
       services.openssh.settings.AllowUsers = [ username ];
+
+      nix.settings.trusted-users = [ username ];
     };
 
   flake.modules.homeManager.${username} = {
