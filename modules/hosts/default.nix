@@ -19,4 +19,8 @@ in
   flake.nixosConfigurations.node0 = nixosSystem {
     modules = [ config.flake.modules.nixos.node0 ];
   };
+
+  flake.nixosConfigurations.node1 = nixosSystem {
+    modules = [ config.flake.modules.nixos.node1 ];
+  };
 }
