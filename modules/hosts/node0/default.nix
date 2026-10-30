@@ -32,6 +32,8 @@ let
     "linkding"
     "nixarr"
     "prometheus"
+
+    "minecraft"
   ];
 in
 {

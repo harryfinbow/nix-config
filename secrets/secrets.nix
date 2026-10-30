@@ -7,6 +7,8 @@ let
   foxtrot = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGIbtwmjASEl5jw3btx0MVHf5MshDX9JT5EbwI9BXH3G harry@foxtrot";
 
   node1 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKZN5x9Gde3Ck49NCf2ygHcJjRm7Zd4iyBkv7ahICCQi";
+
+  minecraft = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEWDTkG+H/jUtXcyn8sgzLfTyLBRdeiPsxyA2bAtLGze";
 in
 {
   "caddy.age".publicKeys = [
@@ -37,6 +39,18 @@ in
     echo
     foxtrot
 
+    node1
+
+    minecraft
+  ];
+
+  "rathole-client.age".publicKeys = [
+    alpha
+    minecraft
+  ];
+
+  "rathole-server.age".publicKeys = [
+    alpha
     node1
   ];
 

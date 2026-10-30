@@ -1,13 +1,10 @@
-{
-  config,
-  lib,
-  ...
-}:
+topLevel:
 let
-  mkModules = req: all: map (name: all.${name}) (lib.filter (name: lib.hasAttr name all) req);
+  mkModules =
+    req: all: map (name: all.${name}) (topLevel.lib.filter (name: topLevel.lib.hasAttr name all) req);
 
-  nixosModules = config.flake.modules.nixos;
-  homeManagerModules = config.flake.modules.homeManager;
+  nixosModules = topLevel.config.flake.modules.nixos;
+  homeManagerModules = topLevel.config.flake.modules.homeManager;
 
   modules = [
     "default"
@@ -19,12 +16,12 @@ let
   ];
 in
 {
-  flake.modules.nixos.node1 = { modulesPath, ... }: {
+  flake.modules.nixos.node1 = { config, modulesPath, ... }: {
     imports = (mkModules modules nixosModules) ++ [
       (modulesPath + "/profiles/minimal.nix")
     ];
 
-    home-manager.users.harry.imports = [ config.flake.modules.homeManager.node1 ];
+    home-manager.users.harry.imports = [ topLevel.config.flake.modules.homeManager.node1 ];
 
     # TODO: Enable this globally?
     users.mutableUsers = false;
@@ -42,8 +39,17 @@ in
       }
     ];
 
-    # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-    system.stateVersion = "26.05";
+    # Rathole (Minecraft)
+    networking.firewall.allowedTCPPorts = [
+      2333
+      25565
+    ];
+    age.secrets.rathole-server.file = (topLevel.self + "/secrets/rathole-server.age");
+    services.rathole = {
+      enable = true;
+      role = "server";
+      credentialsFile = config.age.secrets.rathole-server.path;
+    };
 
     # Wireguard
     networking.firewall.allowedUDPPorts = [ 51820 ];
@@ -98,9 +104,12 @@ in
         };
       };
     };
+
+    # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+    system.stateVersion = "26.05";
   };
 
-  flake.modules.homeManager.node1 = {
+  flake.modules.homeManager.node1 = { lib, ... }: {
     imports = mkModules modules homeManagerModules;
 
     # The `extraPackages` make the closure too large for the 10GB disk

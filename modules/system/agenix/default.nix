@@ -12,12 +12,17 @@ topLevel: {
     {
       imports = [ topLevel.inputs.agenix.nixosModules.default ];
 
-      age.identityPaths = [
-        "/etc/ssh/ssh_host_ed25519_key"
-      ]
-      ++ (
-        if options.environment ? persistence then [ "/persist/${identityPath}" ] else [ "${identityPath}" ]
-      );
+      age.identityPaths =
+        if options.environment ? persistence then
+          [
+            "/persist/${identityPath}"
+            "/persist/etc/ssh/ssh_host_ed25519_key"
+          ]
+        else
+          [
+            "${identityPath}"
+            "/etc/ssh/ssh_host_ed25519_key"
+          ];
     };
 
   flake.modules.homeManager.default =
