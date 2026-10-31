@@ -10,6 +10,53 @@ in
       vmConfig = config.microvm.vms.minecraft.config.config;
     in
     {
+      # Backups
+      age.secrets = {
+        "restic/credentials".file = (topLevel.self + "/secrets/restic/credentials.age");
+        "restic/password".file = (topLevel.self + "/secrets/restic/password.age");
+        "restic/minecraft".file = (topLevel.self + "/secrets/restic/minecraft.age");
+      };
+      services.restic.backups =
+        let
+          minecraftDir = "/persist/microvms/minecraft/${vmConfig.services.minecraft-server.dataDir}";
+        in
+        {
+          "minecraft" = {
+            initialize = true;
+
+            repositoryFile = config.age.secrets."restic/minecraft".path;
+            passwordFile = config.age.secrets."restic/password".path;
+            environmentFile = config.age.secrets."restic/credentials".path;
+
+            paths = [ minecraftDir ];
+
+            exclude = [
+              "${minecraftDir}/.cache"
+              "${minecraftDir}/libraries"
+              "${minecraftDir}/logs"
+              "${minecraftDir}/versions"
+              "${minecraftDir}/eula.txt"
+              "${minecraftDir}/usercache.json"
+            ];
+
+            pruneOpts = [
+              "--keep-daily 7"
+              "--keep-weekly 5"
+              "--keep-monthly 12"
+              "--keep-yearly 75"
+            ];
+
+            timerConfig = {
+              OnCalendar = "04:00"; # 4am everyday
+              Persistent = true;
+            };
+
+            # TODO: save-off → save-all flush / save-on
+            backupPrepareCommand = null;
+            backupCleanupCommand = null;
+          };
+        };
+
       microvm.vms.minecraft = {
         inherit extraModules pkgs;
 
