@@ -7,6 +7,11 @@
       };
 
       initrd.supportedFilesystems = [ "btrfs" ];
+
+      # Don't treat FN keys as multi-media keys
+      extraModprobeConfig = ''
+        options hid_apple fnmode=0
+      '';
     };
   };
 }
