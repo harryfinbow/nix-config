@@ -30,6 +30,7 @@ let
     "grafana"
     "home-assistant"
     "linkding"
+    "memos"
     "nixarr"
     "prometheus"
 
