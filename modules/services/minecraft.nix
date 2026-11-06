@@ -76,8 +76,10 @@ in
 
           microvm = {
             vcpu = 4;
-            hotplugMem = 8192; # Maximum Memory (8 GiB)
-            hotpluggedMem = 4096; # Initial Memory (4 GiB)
+
+            mem = 2048; # Initial Memory (2GiB)
+            hotpluggedMem = 6144; # Initial Additional Memory (6 GiB)
+            hotplugMem = 8192; # Maximum Additional Memory (8 GiB)
 
             interfaces = [
               {
