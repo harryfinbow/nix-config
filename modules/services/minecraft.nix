@@ -12,9 +12,9 @@ in
     {
       # Backups
       age.secrets = {
-        "restic/credentials".file = (topLevel.self + "/secrets/restic/credentials.age");
-        "restic/password".file = (topLevel.self + "/secrets/restic/password.age");
-        "restic/minecraft".file = (topLevel.self + "/secrets/restic/minecraft.age");
+        "restic/minecraft/credentials".file = (topLevel.self + "/secrets/restic/minecraft/credentials.age");
+        "restic/minecraft/password".file = (topLevel.self + "/secrets/restic/minecraft/password.age");
+        "restic/minecraft/repository".file = (topLevel.self + "/secrets/restic/minecraft/repository.age");
       };
       services.restic.backups =
         let
@@ -24,9 +24,9 @@ in
           "minecraft" = {
             initialize = true;
 
-            repositoryFile = config.age.secrets."restic/minecraft".path;
-            passwordFile = config.age.secrets."restic/password".path;
-            environmentFile = config.age.secrets."restic/credentials".path;
+            repositoryFile = config.age.secrets."restic/minecraft/repository".path;
+            passwordFile = config.age.secrets."restic/minecraft/password".path;
+            environmentFile = config.age.secrets."restic/minecraft/credentials".path;
 
             paths = [ minecraftDir ];
 

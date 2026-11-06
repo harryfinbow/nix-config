@@ -54,17 +54,32 @@ in
     node1
   ];
 
-  "restic/credentials.age".publicKeys = [
+  "restic/linkding/credentials.age".publicKeys = [
     alpha
     delta
   ];
 
-  "restic/password.age".publicKeys = [
+  "restic/linkding/password.age".publicKeys = [
     alpha
     delta
   ];
 
-  "restic/minecraft.age".publicKeys = [
+  "restic/linkding/repository.age".publicKeys = [
+    alpha
+    delta
+  ];
+
+  "restic/minecraft/credentials.age".publicKeys = [
+    alpha
+    delta
+  ];
+
+  "restic/minecraft/password.age".publicKeys = [
+    alpha
+    delta
+  ];
+
+  "restic/minecraft/repository.age".publicKeys = [
     alpha
     delta
   ];
