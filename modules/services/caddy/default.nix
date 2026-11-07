@@ -42,6 +42,11 @@ in
         virtualHosts."health.{$BASE_DOMAIN}".extraConfig = ''
           respond 200
         '';
+
+        virtualHosts."api.simplelogin.{$BASE_DOMAIN}".extraConfig = ''
+          rewrite /api/alias/random/new ?hostname=harry
+          reverse_proxy https://api.simplelogin.io
+        '';
       };
 
       networking.firewall.allowedTCPPorts = [
