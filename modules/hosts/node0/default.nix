@@ -23,6 +23,8 @@ let
 
     # Services
     "actual"
+    "beszel/agent"
+    "beszel/hub"
     "blocky"
     "caddy"
     "cook"

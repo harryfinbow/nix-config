@@ -162,4 +162,21 @@ in
       delta
     ];
   };
+
+  "tinyauth/beszel.age" = {
+    armor = true;
+    publicKeys = [
+      alpha
+      delta
+    ];
+  };
+
+  "beszel-agent.age" = {
+    armor = true;
+    publicKeys = [
+      alpha
+      delta
+      node1
+    ];
+  };
 }

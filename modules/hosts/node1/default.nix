@@ -13,6 +13,9 @@ let
 
     # Users
     "harry"
+
+    # Services
+    "beszel/agent"
   ];
 in
 {
