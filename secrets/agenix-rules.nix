@@ -138,4 +138,28 @@ in
       delta
     ];
   };
+
+  "tinyauth/config.age" = {
+    armor = true;
+    publicKeys = [
+      alpha
+      delta
+    ];
+  };
+
+  "tinyauth/linkding.age" = {
+    armor = true;
+    publicKeys = [
+      alpha
+      delta
+    ];
+  };
+
+  "tinyauth/memos.age" = {
+    armor = true;
+    publicKeys = [
+      alpha
+      delta
+    ];
+  };
 }

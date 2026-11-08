@@ -60,6 +60,9 @@ topLevel: {
 
       services.caddy.virtualHosts."prometheus.{$BASE_DOMAIN}".extraConfig = ''
         reverse_proxy localhost:${toString config.services.prometheus.port}
+        forward_auth localhost:${toString config.services.tinyauth.settings.SERVER_PORT} {
+          uri /api/auth/caddy
+        }
       '';
 
       environment = lib.optionalAttrs (options.environment ? persistence) {

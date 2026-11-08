@@ -1,4 +1,4 @@
-{
+topLevel: {
   flake.modules.nixos.memos =
     {
       config,
@@ -11,6 +11,10 @@
       port = 5230;
     in
     {
+      age.secrets = {
+        "tinyauth/memos".file = (topLevel.self + "/secrets/tinyauth/memos.age");
+      };
+
       services.caddy.virtualHosts."notes.{$BASE_DOMAIN}".extraConfig = ''
         reverse_proxy localhost:${toString port}
       '';
@@ -20,6 +24,10 @@
           config.services.memos.dataDir
         ];
       };
+
+      systemd.services.tinyauth.serviceConfig.EnvironmentFile = [
+        config.age.secrets."tinyauth/memos".path
+      ];
 
       # https://github.com/NixOS/nixpkgs/issues/561969
       networking.firewall.allowedTCPPorts = [ port ];

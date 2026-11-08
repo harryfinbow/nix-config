@@ -33,6 +33,7 @@ let
     "memos"
     "nixarr"
     "prometheus"
+    "tinyauth"
 
     "minecraft"
   ];
