@@ -43,16 +43,16 @@ in
     ];
 
     # Rathole (Minecraft)
-    networking.firewall.allowedTCPPorts = [
-      2333
-      25565
-    ];
-    age.secrets.rathole-server.file = (topLevel.self + "/secrets/rathole-server.age");
-    services.rathole = {
-      enable = true;
-      role = "server";
-      credentialsFile = config.age.secrets.rathole-server.path;
-    };
+    # networking.firewall.allowedTCPPorts = [
+    #   2333
+    #   25565
+    # ];
+    # age.secrets.rathole-server.file = (topLevel.self + "/secrets/rathole-server.age");
+    # services.rathole = {
+    #   enable = true;
+    #   role = "server";
+    #   credentialsFile = config.age.secrets.rathole-server.path;
+    # };
 
     # Wireguard
     networking.firewall.allowedUDPPorts = [ 51820 ];

@@ -36,8 +36,6 @@ let
     "nixarr"
     "prometheus"
     "tinyauth"
-
-    "minecraft"
   ];
 in
 {
