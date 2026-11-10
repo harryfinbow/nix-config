@@ -17,6 +17,9 @@ topLevel: {
 
       services.caddy.virtualHosts."torrents.{$BASE_DOMAIN}".extraConfig = ''
         reverse_proxy localhost:${toString config.nixarr.transmission.uiPort}
+        forward_auth localhost:${toString config.services.tinyauth.settings.SERVER_PORT} {
+          uri /api/auth/caddy
+        }
       '';
     };
 }
