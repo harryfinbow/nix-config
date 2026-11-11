@@ -17,7 +17,7 @@ topLevel: {
       gitConfigPath = "${config.home.homeDirectory}/.config/git/config.work";
     in
     {
-      imports = [ topLevel.config.flake.modules.homeManager.agenix ];
+      imports = [ topLevel.inputs.agenix.homeManagerModules.default ];
 
       age.secrets.git = {
         file = (topLevel.self + /secrets/git.age);

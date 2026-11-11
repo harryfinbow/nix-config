@@ -16,6 +16,10 @@ in
     modules = [ config.flake.modules.darwin.eclipse ];
   };
 
+  flake.nixosConfigurations.nautilus = nixosSystem {
+    modules = [ config.flake.modules.nixos.nautilus ];
+  };
+
   flake.nixosConfigurations.node0 = nixosSystem {
     modules = [ config.flake.modules.nixos.node0 ];
   };
