@@ -1,57 +1,68 @@
 let
   # Hosts
-  alpha = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBhcj36L0yDUxWBWUo9MoxgrwnJGlm4VJGCsbBR8Owoc harry@alpha";
-  bravo = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINPIM0ukzIdJpYpD6kNRCYkhh0G/UXVhSFKS3otW4VN+ harryf@bravo";
-  delta = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDyVl7Sg9XYn6CCMdTOd+KJcuOLeW+vcU5Dpk5TbIuvF harry@delta";
-  echo = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP2Ho76RvxTQoScXNWCj8xywOfzhcfnzlAcZj0Eis/3+ harry@echo";
-  foxtrot = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGIbtwmjASEl5jw3btx0MVHf5MshDX9JT5EbwI9BXH3G harry@foxtrot";
+  eclipse = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINPIM0ukzIdJpYpD6kNRCYkhh0G/UXVhSFKS3otW4VN+";
+  nautilus = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP2Ho76RvxTQoScXNWCj8xywOfzhcfnzlAcZj0Eis/3+";
+  nomad = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGIbtwmjASEl5jw3btx0MVHf5MshDX9JT5EbwI9BXH3G";
+  polaris = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBhcj36L0yDUxWBWUo9MoxgrwnJGlm4VJGCsbBR8Owoc";
 
+  # Servers
+  node0 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDyVl7Sg9XYn6CCMdTOd+KJcuOLeW+vcU5Dpk5TbIuvF";
   node1 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKZN5x9Gde3Ck49NCf2ygHcJjRm7Zd4iyBkv7ahICCQi";
 
+  # VMs
   minecraft = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEWDTkG+H/jUtXcyn8sgzLfTyLBRdeiPsxyA2bAtLGze";
 in
 {
+  "beszel-agent.age" = {
+    armor = true;
+    publicKeys = [
+      polaris
+      node0
+      node1
+    ];
+  };
+
   "caddy.age" = {
     armor = true;
     publicKeys = [
-      alpha
-      delta
+      polaris
+      node0
     ];
   };
 
   "git.age" = {
     armor = true;
     publicKeys = [
-      alpha
-      bravo
-      echo
+      polaris
+      eclipse
+      nautilus
     ];
   };
 
   "glance.age" = {
     armor = true;
     publicKeys = [
-      alpha
-      delta
+      polaris
+      node0
     ];
   };
 
   "linkding.age" = {
     armor = true;
     publicKeys = [
-      alpha
-      delta
+      polaris
+      node0
     ];
   };
 
   "password.age" = {
     armor = true;
     publicKeys = [
-      alpha
-      bravo
-      delta
-      echo
-      foxtrot
+      polaris
+      eclipse
+      node0
+      nautilus
+      nomad
 
       node1
 
@@ -59,18 +70,18 @@ in
     ];
   };
 
-  "rathole-client.age" = {
+  "rathole/client.age" = {
     armor = true;
     publicKeys = [
-      alpha
+      polaris
       minecraft
     ];
   };
 
-  "rathole-server.age" = {
+  "rathole/server.age" = {
     armor = true;
     publicKeys = [
-      alpha
+      polaris
       node1
     ];
   };
@@ -78,105 +89,96 @@ in
   "restic/linkding/credentials.age" = {
     armor = true;
     publicKeys = [
-      alpha
-      delta
+      polaris
+      node0
     ];
   };
 
   "restic/linkding/password.age" = {
     armor = true;
     publicKeys = [
-      alpha
-      delta
+      polaris
+      node0
     ];
   };
 
   "restic/linkding/repository.age" = {
     armor = true;
     publicKeys = [
-      alpha
-      delta
+      polaris
+      node0
     ];
   };
 
   "restic/minecraft/credentials.age" = {
     armor = true;
     publicKeys = [
-      alpha
-      delta
+      polaris
+      node0
     ];
   };
 
   "restic/minecraft/password.age" = {
     armor = true;
     publicKeys = [
-      alpha
-      delta
+      polaris
+      node0
     ];
   };
 
   "restic/minecraft/repository.age" = {
     armor = true;
     publicKeys = [
-      alpha
-      delta
-    ];
-  };
-
-  "transmission.age" = {
-    armor = true;
-    publicKeys = [
-      alpha
-      delta
-    ];
-  };
-
-  "vpn.age" = {
-    armor = true;
-    publicKeys = [
-      alpha
-      delta
-    ];
-  };
-
-  "tinyauth/config.age" = {
-    armor = true;
-    publicKeys = [
-      alpha
-      delta
-    ];
-  };
-
-  "tinyauth/linkding.age" = {
-    armor = true;
-    publicKeys = [
-      alpha
-      delta
-    ];
-  };
-
-  "tinyauth/memos.age" = {
-    armor = true;
-    publicKeys = [
-      alpha
-      delta
+      polaris
+      node0
     ];
   };
 
   "tinyauth/beszel.age" = {
     armor = true;
     publicKeys = [
-      alpha
-      delta
+      polaris
+      node0
     ];
   };
 
-  "beszel-agent.age" = {
+  "tinyauth/config.age" = {
     armor = true;
     publicKeys = [
-      alpha
-      delta
-      node1
+      polaris
+      node0
+    ];
+  };
+
+  "tinyauth/linkding.age" = {
+    armor = true;
+    publicKeys = [
+      polaris
+      node0
+    ];
+  };
+
+  "tinyauth/memos.age" = {
+    armor = true;
+    publicKeys = [
+      polaris
+      node0
+    ];
+  };
+
+  "transmission.age" = {
+    armor = true;
+    publicKeys = [
+      polaris
+      node0
+    ];
+  };
+
+  "vpn.age" = {
+    armor = true;
+    publicKeys = [
+      polaris
+      node0
     ];
   };
 }
