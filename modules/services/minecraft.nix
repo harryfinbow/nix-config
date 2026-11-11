@@ -49,6 +49,7 @@ in
             timerConfig = {
               OnCalendar = "04:00"; # 4am everyday
               Persistent = true;
+              RandomizedDelaySec = 600;
             };
 
             # TODO: save-off → save-all flush / save-on

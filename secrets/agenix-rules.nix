@@ -110,6 +110,30 @@ in
     ];
   };
 
+  "restic/memos/credentials.age" = {
+    armor = true;
+    publicKeys = [
+      polaris
+      node0
+    ];
+  };
+
+  "restic/memos/password.age" = {
+    armor = true;
+    publicKeys = [
+      polaris
+      node0
+    ];
+  };
+
+  "restic/memos/repository.age" = {
+    armor = true;
+    publicKeys = [
+      polaris
+      node0
+    ];
+  };
+
   "restic/minecraft/credentials.age" = {
     armor = true;
     publicKeys = [

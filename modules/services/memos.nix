@@ -12,6 +12,9 @@ topLevel: {
     in
     {
       age.secrets = {
+        "restic/memos/repository".file = (topLevel.self + "/secrets/restic/memos/repository.age");
+        "restic/memos/password".file = (topLevel.self + "/secrets/restic/memos/password.age");
+        "restic/memos/credentials".file = (topLevel.self + "/secrets/restic/memos/credentials.age");
         "tinyauth/memos".file = (topLevel.self + "/secrets/tinyauth/memos.age");
       };
 
@@ -42,5 +45,35 @@ topLevel: {
           MEMOS_INSTANCE_URL = "http://localhost:${toString port}";
         };
       };
+
+      services.restic.backups."memos" =
+        let
+          databasePath = "${config.services.memos.dataDir}/memos_prod.db";
+          backupPath = "${databasePath}.bak";
+        in
+        {
+          initialize = true;
+
+          repositoryFile = config.age.secrets."restic/memos/repository".path;
+          passwordFile = config.age.secrets."restic/memos/password".path;
+          environmentFile = config.age.secrets."restic/memos/credentials".path;
+
+          paths = [ backupPath ];
+
+          pruneOpts = [
+            "--keep-daily 7"
+            "--keep-weekly 5"
+            "--keep-monthly 12"
+            "--keep-yearly 75"
+          ];
+
+          timerConfig = {
+            OnCalendar = "04:00"; # 4am everyday
+            Persistent = true;
+            RandomizedDelaySec = 600;
+          };
+
+          backupPrepareCommand = "${lib.getExe pkgs.sqlite} -- ${databasePath} '.backup ${backupPath}'";
+        };
     };
 }

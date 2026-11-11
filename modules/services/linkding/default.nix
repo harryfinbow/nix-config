@@ -67,6 +67,7 @@ topLevel: {
           timerConfig = {
             OnCalendar = "04:00"; # 4am everyday
             Persistent = true;
+            RandomizedDelaySec = 600;
           };
 
           backupPrepareCommand = "${lib.getExe pkgs.sqlite} -- ${databasePath} '.backup ${backupPath}'";
