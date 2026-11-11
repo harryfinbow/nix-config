@@ -13,6 +13,7 @@
     browser
     foot
     fuzzel
+    nautilus
     swayidle
     swaylock
     resources
