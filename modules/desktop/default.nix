@@ -13,7 +13,7 @@
     browser
     foot
     fuzzel
-    nautilus
+    "desktop/nautilus"
     swayidle
     swaylock
     resources

@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.nautilus =
+  flake.modules.homeManager."desktop/nautilus" =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [
