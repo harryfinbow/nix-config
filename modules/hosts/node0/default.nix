@@ -28,6 +28,7 @@ let
     "blocky"
     "caddy"
     "cook"
+    "dufs"
     "glance"
     "grafana"
     "home-assistant"
