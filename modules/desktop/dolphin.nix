@@ -1,9 +1,10 @@
 {
-  flake.modules.homeManager."desktop/nautilus" =
+  flake.modules.homeManager.dolphin =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [
-        nautilus
+        kdePackages.dolphin
+        kdePackages.kio
         xdg-utils
       ];
     };
