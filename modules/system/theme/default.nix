@@ -68,9 +68,11 @@ in
     home.packages = with pkgs; [ vivid ];
 
     catppuccin.nushell.enable = true;
+    catppuccin.zellij.enable = true;
     stylix.targets.nushell.enable = false;
+    stylix.targets.zellij.enable = false;
 
-    # https://github.com/nix-community/stylix/pull/2501
-    stylix.targets.rofi.enable = false;
+    # https://github.com/nix-community/stylix/pull/2557
+    stylix.targets.wayprompt.enable = false;
   };
 }
