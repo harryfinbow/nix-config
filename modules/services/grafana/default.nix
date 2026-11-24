@@ -10,6 +10,7 @@ topLevel: {
       services.grafana = {
         enable = true;
         settings = {
+          "auth.anonymous".enabled = true;
           server.http_port = 3100;
           panels.disable_sanitize_html = true; # Required for Blocky dashboard
           security.secret_key = "SW2YcwTIb9zpOOhoPsMm"; # TODO: Change this to point at something secure
@@ -33,6 +34,9 @@ topLevel: {
 
       services.caddy.virtualHosts."grafana.{$BASE_DOMAIN}".extraConfig = ''
         reverse_proxy localhost:${toString config.services.grafana.settings.server.http_port}
+        forward_auth localhost:${toString config.services.tinyauth.settings.SERVER_PORT} {
+          uri /api/auth/caddy
+        }
       '';
 
       environment = {

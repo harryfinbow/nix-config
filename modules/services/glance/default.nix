@@ -13,6 +13,9 @@ topLevel: {
 
       services.caddy.virtualHosts."start.{$BASE_DOMAIN}".extraConfig = ''
         reverse_proxy localhost:${toString config.services.glance.settings.server.port}
+        forward_auth localhost:${toString config.services.tinyauth.settings.SERVER_PORT} {
+          uri /api/auth/caddy
+        }
       '';
 
       # TODO: Is Glance stateless? Do we need to persist any data?
