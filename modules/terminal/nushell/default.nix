@@ -50,6 +50,12 @@
           $env.config.max_last_result_size = 1mb
           $env.config.history.path = $"($nu.data-dir)/history.sqlite3"
           $env.LS_COLORS = (vivid generate catppuccin-frappe)
+
+          # https://www.backblaze.com/docs/cloud-storage-querying-bucket-access-logs
+          def "parse backblaze-access-logs" [] {
+            parse --regex '([^ ]*) ([^ ]*) \[(.*?)\] ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) (\"[^\"]*\"|-) (-|[0-9]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) (\"[^\"]*\"|-) ([^ ]*)(?: ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*))?.*$'
+            | rename bucketowner bucket_name requestdatetime remoteip requester requestid OPERATION KEY request_uri httpstatus errorcode bytessent objectsize totaltime turnaroundtime referrer useragent versionid hostid sigv ciphersuite authtype endpoint tlsversion accesspointarn aclrequired
+          }
         '';
       };
 
